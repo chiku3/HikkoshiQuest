@@ -34,10 +34,15 @@
 - 新生活を始める時
 
 ## 設計書
+- 画面遷移図
+<https://drive.google.com/file/d/1YYBpEXGM-KmQhqh5nUp_Rn7xfXs1Cven/view?usp=sharing>
 - ER図
+<https://drive.google.com/file/d/10Fphjelco23pGMAMydOdczfSLrUQQNZW/view?usp=sharing>
 - テーブル定義書
+<https://docs.google.com/spreadsheets/d/19k-IMNpoSII1W6YJMBDETszxy3gpLDPO8Mp8STxBccY/edit?usp=sharing>
 - アプリケーション詳細設計
-- ワイヤーフレーム
+<https://docs.google.com/spreadsheets/d/18ICqd4Hvup59v9i1UXxFGK4UaFZiDeiT/edit?usp=sharing&ouid=116981816489587572815&rtpof=true&sd=true>
+
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1F-ww5KAr7cqS-dxyLZ7XUkxM7o18W3EYo-EHgHFC3pQ/edit#gid=0>
