@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quest_id: 1
+  title: MyString
+  detail: MyText
+  hint: MyText
+  do_time: 2022-02-10
+  importance: 1
+  enemy_image_id: MyString
+  is_clear: false
+
+two:
+  quest_id: 1
+  title: MyString
+  detail: MyText
+  hint: MyText
+  do_time: 2022-02-10
+  importance: 1
+  enemy_image_id: MyString
+  is_clear: false
