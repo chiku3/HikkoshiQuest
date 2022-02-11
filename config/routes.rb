@@ -1,42 +1,34 @@
 Rails.application.routes.draw do
+  # ホームのルーティング
+  root "homes#top"
+  get 'help' => "homes#help"
+  # タスクのルーティング
+  resources :tasks, only:[:show, :update]
+  # ユーザーのルーティング
+  resource :users, only:[:edit, :update, :destroy]
+  get "my_page" => "users#show"
+  # クエストのルーティング
+  resources :quests, only:[:new, :create, :show, :edit, :update]
+  patch 'quests/:id/clear' => "quests#clear"
+  get 'quests/complete' => "quests#complete"
+  # 掲示板のルーティング
+  resources :boards, only:[:index, :create, :show]
+  # コメントのルーティング
+  resources :comments, only:[:create]
+  # カテゴリのルーティング
+  resources :categories, only:[:create]
+
   namespace :admin do
-    get 'comments/destroy'
-  end
-  namespace :admin do
-    get 'boards/show'
-    get 'boards/destroy'
-  end
-  namespace :admin do
-    get 'tasks/show'
-    get 'tasks/edit'
-    get 'tasks/update'
-    get 'tasks/new'
-    get 'tasks/create'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  get 'categories/create'
-  get 'comments/create'
-  get 'comments/destroy'
-  get 'boards/index'
-  get 'boards/create'
-  get 'boards/show'
-  get 'quests/new'
-  get 'quests/create'
-  get 'quests/show'
-  get 'quests/edit'
-  get 'quests/update'
-  get 'quests/clear'
-  get 'quests/complete'
-  get 'users/show'
-  get 'users/edit'
-  get 'users/update'
-  get 'users/destroy'
-  get 'tasks/show'
-  get 'tasks/update'
-  get 'homes/top'
-  get 'homes/help'
+    # ホームのルーティング
+    get 'home' => "homes#top"
+    # タスクのルーティング
+    resources :tasks, only:[:show, :edit, :update, :new, :create]
+    # 掲示板のルーティング
+    resources :boards, only:[:show, :destory]
+    # コメントのルーティング
+    resources :comments, only:[:destroy]
+  end  
+  
   devise_for :admins
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_10_052742) do
+ActiveRecord::Schema.define(version: 2022_02_10_064301) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2022_02_10_052742) do
     t.string "start_point_city"
     t.string "goal_point"
     t.string "goal_point_city"
-    t.boolean "is_clear"
+    t.boolean "is_clear", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -81,6 +81,8 @@ ActiveRecord::Schema.define(version: 2022_02_10_052742) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "name"
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
