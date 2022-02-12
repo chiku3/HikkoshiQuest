@@ -1,2 +1,10 @@
-<h1>Quests#new</h1>
-<p>Find me in app/views/quests/new.html.erb</p>
+<h3><%= @user.name %>さん、ようこそ転勤クエストへ！</h3>
+
+<p>おめでとう！<br />
+   あなたは今、新たな生活への第一歩を踏み出した。<br />
+   引越しの準備には、簡単なものから厄介なものまである。<br />
+   まずは自分の引っ越し条件から、自分だけのクエストを登録しよう！</p>
+
+<%= link_to "クエスト登録", new_quest_path %>
+
+<%= link_to "クエスト登録せずに進む", my_page_path %>

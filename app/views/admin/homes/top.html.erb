@@ -1,2 +1,45 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<h1>管理者の間</h1>
+
+<p>広間の管理</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>タイトル</th>
+        <th>地域</th>
+        <th>コメント数</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @boards.each do |board| %>
+      <tr>
+        <td><%= board.title %></td>
+        <td><%= board.point %><%= board.city_point %></td>
+        <td><%= board.comment_count %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<p>タスク管理</p>
+
+  <%= link_to "タスク作成",new_admin_task_path %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>件名</th>
+        <th>重要度</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.id %></td>
+        <td><%= link_to task.title, admin_task_path(task) %></td>
+        <td><%= task.importance %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>

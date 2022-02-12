@@ -1,2 +1,26 @@
-<h1>Admin::Tasks#show</h1>
-<p>Find me in app/views/admin/tasks/show.html.erb</p>
+<h1>タスク詳細</h1>
+
+  <table>
+    <tr>
+      <th>タスクID</th>
+      <td><%= @task.id %></td>
+    </tr>
+    <tr>
+      <th>件名</th>
+      <td><%= @task.title %></td>
+    </tr>
+    <tr>
+      <th>タスク内容</th>
+      <td><%= @task.body %></td>
+    </tr>
+    <tr>
+      <th>キャラ画像</th>
+      <td><%= attachment_image_tag @task, :image, :fill, 100, 100, format:"jpeg" %></td>
+    </tr>
+    <tr>
+      <th>重要度</th>
+      <td><%= @task.importance %></td>
+    </tr>
+  </table>
+
+  <%= link_to "編集する", edit_admin_task_path(@task) %>

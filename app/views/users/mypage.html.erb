@@ -1,0 +1,8 @@
+<h1><%= @user.name %>の冒険</h1>
+
+<%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+<p><%= link_to @user.name, users_path %></p>
+
+
+<%= link_to "クエストを登録する", new_quest_path %>
+

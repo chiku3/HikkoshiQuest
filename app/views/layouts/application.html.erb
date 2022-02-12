@@ -14,16 +14,16 @@
       <%= link_to"logo",root_path %>
       
       <% if user_signed_in? %>
-          <li><%= link_to"マイページ", my_page_path%></li>
-          <li><%= link_to"広場", boards_path%></li>
-          <li><%= link_to"ヘルプ",help_path%></li>
+          <li><%= link_to"マイページ", my_page_path %></li>
+          <li><%= link_to"広場", boards_path %></li>
+          <li><%= link_to"ヘルプ",help_path %></li>
           <li><%= link_to"ログアウト", destroy_user_session_path, method: :delete %></li>
       <% elsif admin_signed_in? %>
           <li><%= link_to"ホーム", admin_home_path %></li>
           <li><%= link_to"ログアウト", destroy_admin_session_path, method: :delete %></li>
       <% else %>
-          <li><%= link_to"新規登録", new_user_registration_path%></li>
-          <li><%= link_to"ログイン", new_user_session_path%></li
+          <li><%= link_to"新規登録", new_user_registration_path %></li>
+          <li><%= link_to"ログイン", new_user_session_path %></li>
       <% end %>
     </header>
     

@@ -1,2 +1,30 @@
-<h1>Admin::Tasks#edit</h1>
-<p>Find me in app/views/admin/tasks/edit.html.erb</p>
+<h1>タスク編集</h1>
+
+<%= form_with model: @task, url: admin_task_path(@task), local: true do |f| %>
+
+  <div>
+    <%= f.label :title,"件名" %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :body,"タスク詳細" %>
+    <%= f.text_area :body %>
+  </div>
+
+  <div>
+    <%= f.label :image,"キャラ画像" %>
+    <%= f.attachment_field :image %>
+  </div>
+
+  <div>
+    <%= f.label :importance,"重要度" %>
+    <%= f.text_field :importance %>
+  </div>
+
+
+  <%= f.submit "編集完了！" %>
+
+<% end %>
+
+  <%= link_to "削除する", admin_task_path(@task),method: :delete %>

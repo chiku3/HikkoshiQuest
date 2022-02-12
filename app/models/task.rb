@@ -1,5 +1,7 @@
 class Task < ApplicationRecord
-  
-belongs_to :quest  
-  
+
+has_many :quests, dependent: :destroy
+
+attachment :image
+
 end

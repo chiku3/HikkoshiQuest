@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :quests, dependent: :destroy
   has_many :comments, dependent: :destroy       
   
+  attachment :image
+  
 end

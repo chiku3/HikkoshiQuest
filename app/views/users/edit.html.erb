@@ -1,2 +1,25 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1>アカウント編集</h1>
+
+  <%= form_with model: @user, url: users_path, local: true do |f| %>
+
+  <div>
+    <%= f.label :image,"プロフィール画像" %>
+    <%= f.attachment_field :image %>
+  </div>
+  
+  <div>
+    <%= f.label :name,"ニックネーム" %>
+    <%= f.text_field :name %>
+  </div>
+  
+  <div>
+    <%= f.label :email,"メースアドレス" %>
+    <%= f.email_field :email %>
+  </div>
+  
+  <%= f.submit "登録" %>
+    
+  <% end %>
+  
+  <%= link_to "戻る", users_path %>
+  <p>退会する</p>
