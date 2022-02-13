@@ -6,20 +6,20 @@
     <%= f.label :image,"プロフィール画像" %>
     <%= f.attachment_field :image %>
   </div>
-  
+
   <div>
     <%= f.label :name,"ニックネーム" %>
     <%= f.text_field :name %>
   </div>
-  
+
   <div>
     <%= f.label :email,"メースアドレス" %>
     <%= f.email_field :email %>
   </div>
-  
-  <%= f.submit "登録" %>
-    
+
+  <%= f.submit "登録する" %>
+
   <% end %>
-  
+
   <%= link_to "戻る", users_path %>
-  <p>退会する</p>
+  <%= link_to "退会する", users_path, method: :delete, data: { confirm: '本当に退会しますか？' } %>

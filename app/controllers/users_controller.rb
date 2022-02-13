@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   def mypage
     @user = current_user
+    @quests = Quest.all
   end
-  
+
   def show
     @user = current_user
   end
@@ -18,11 +19,14 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    user = current_user
+    user.destroy
+    redirect_to root_path
   end
-  
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :image_id)
+    params.require(:user).permit(:name, :email, :image)
   end
 end

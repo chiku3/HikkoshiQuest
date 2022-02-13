@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_11_151314) do
+ActiveRecord::Schema.define(version: 2022_02_13_064304) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,16 +25,17 @@ ActiveRecord::Schema.define(version: 2022_02_11_151314) do
   end
 
   create_table "boards", force: :cascade do |t|
-    t.integer "category_id"
     t.string "title"
-    t.string "point"
-    t.string "city_point"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "prefecture_id"
+    t.string "prefecture"
+    t.string "city"
   end
 
-  create_table "categories", force: :cascade do |t|
+  create_table "cities", force: :cascade do |t|
     t.string "name"
+    t.integer "prefecture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,18 +49,25 @@ ActiveRecord::Schema.define(version: 2022_02_11_151314) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "prefectures", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "quests", force: :cascade do |t|
     t.integer "user_id"
     t.integer "task_id"
     t.string "title"
     t.date "due_day"
-    t.string "start_point"
-    t.string "start_point_city"
-    t.string "goal_point"
-    t.string "goal_point_city"
     t.boolean "is_clear", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "prefecture_id"
+    t.string "start_pref"
+    t.string "start_city"
+    t.string "goal_pref"
+    t.string "goal_city"
   end
 
   create_table "tasks", force: :cascade do |t|

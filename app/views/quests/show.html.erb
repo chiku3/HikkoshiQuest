@@ -1,2 +1,7 @@
-<h1>Quests#show</h1>
-<p>Find me in app/views/quests/show.html.erb</p>
+<h1>クエストタイトル</h1>
+
+冒険者<%= @quest.user_id %>
+タスク<%= @quest.task_id %>
+タイトル<%= @quest.title %>
+予定日<%= @quest.due_day %>
+ステータス<%= @quest.is_clear %>

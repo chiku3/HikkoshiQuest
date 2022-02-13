@@ -1,10 +1,51 @@
-<h3><%= @user.name %>さん、ようこそ転勤クエストへ！</h3>
+<h3><%= current_user.name %>さん、ようこそ転勤クエストへ！</h3>
 
 <p>おめでとう！<br />
    あなたは今、新たな生活への第一歩を踏み出した。<br />
    引越しの準備には、簡単なものから厄介なものまである。<br />
-   まずは自分の引っ越し条件から、自分だけのクエストを登録しよう！</p>
+   まずは自分に当てはまる条件を選択し、自分だけのクエストをカスタマイズしよう！</p>
 
-<%= link_to "クエスト登録", new_quest_path %>
+<h4>以下の質問に答えてください。</h4>
 
-<%= link_to "クエスト登録せずに進む", my_page_path %>
+   <%= form_with model: @quest, url:quests_path, local:true do |f| %>
+   <div>
+      <p>質問１:引っ越し予定日は？</p>
+      <%= f.date_field :due_day %>
+   </div>
+   
+   <div>
+      <p>質問１:現在住んでいるところは？</p>
+      <%= f.select :state_pref, options_for_select(Prefecture.all.map{ |pref| [pref.name, pref.id] }) %>
+      <%= f.select :state_city, options_for_select(City.all.map{ |city| [city.name, city.id] }) %>
+   </div>
+
+   <div>
+      <p>質問２:引っ越し先は？</p>
+      <%= f.select :goal_pref, options_for_select(Prefecture.all.map{ |pref| [pref.name, pref.id] }) %>
+      <%= f.select :goal_city, options_for_select(City.all.map{ |city| [city.name, city.id] }) %>
+   </div>
+
+   <div>
+      <p>質問１:現在の住まいは...</p>
+      <%= f.radio_button :question1, 1 %><%= f.label :question1_1, "賃貸" %>
+      <%= f.radio_button :question1, 2 %><%= f.label :question1_2, "実家" %>
+   </div>
+
+   <div>
+      <p>質問２:車は...</p>
+      <%= f.radio_button :question2, 1 %><%= f.label :question2_1, "持ってる" %>
+      <%= f.radio_button :question2, 2 %><%= f.label :question2_2, "持ってない" %>
+   </div>
+
+  
+
+   <%= f.hidden_field :user_id, :value => current_user.id %>
+   <%= f.hidden_field :task_id, :value => 1 %>
+   <%= f.hidden_field :title, :value => "あ" %>
+   
+
+
+   <%= f.submit "クエストを登録！" %>
+   <% end %>
+
+<%= link_to "クエストを登録しない", my_page_path %>
