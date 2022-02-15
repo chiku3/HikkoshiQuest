@@ -1,7 +1,17 @@
-<h1>クエストタイトル</h1>
+<h1><%= @quest.quest_title %></h1>
 
-冒険者<%= @quest.user_id %>
-タスク<%= @quest.task_id %>
-タイトル<%= @quest.title %>
-予定日<%= @quest.due_day %>
-ステータス<%= @quest.is_clear %>
+<p>引越し予定日</p>
+<%= @quest.due_day %>
+
+<p>目的地</p>
+<%= @quest.goal_pref %><%= @quest.goal_city %>
+
+<p>タスク一覧</p>
+  <% @quest_tasks.each do |quest_task| %>
+    <%= link_to quest_task.task.title, quest_task_path(quest_task) %>
+  <% end %>
+  
+
+<p>ステータス</p><%= @quest.is_clear %>
+
+<p><%= link_to "クエスト内容を編集する", edit_quest_path(@quest) %></p>

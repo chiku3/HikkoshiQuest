@@ -1,5 +1,5 @@
 class City < ApplicationRecord
 
-  belongs_to :prefecture_id
+  belongs_to :prefecture
 
 end

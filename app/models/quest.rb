@@ -1,6 +1,11 @@
 class Quest < ApplicationRecord
 
 belongs_to :user
-belongs_to :task
+has_many :quest_tasks, dependent: :destroy
+accepts_nested_attributes_for :quest_tasks
+
+def quest_title
+  goal_city + "を目指そう！"
+end
 
 end

@@ -1,2 +1,38 @@
-<h1>Quests#edit</h1>
-<p>Find me in app/views/quests/edit.html.erb</p>
+  <h1>以下の項目を編集してください。</h1>
+
+   <%= form_with model: @quest, url: quest_path(@quest), local:true do |f| %>
+   <div>
+      <p>質問１:引っ越し予定日は？</p>
+      <%= f.date_field :due_day %>
+   </div>
+
+   <div>
+      <p>質問１:現在住んでいるところは？</p>
+      <%= f.select :state_pref, options_for_select(Prefecture.all.map{ |pref| [pref.name] }) %>
+      <%= f.select :state_city, options_for_select(City.all.map{ |city| [city.name] }) %>
+   </div>
+
+   <div>
+      <p>質問２:引っ越し先は？</p>
+      <%= f.select :goal_pref, options_for_select(Prefecture.all.map{ |pref| [pref.name] }) %>
+      <%= f.select :goal_city, options_for_select(City.all.map{ |city| [city.name] }) %>
+   </div>
+
+     <%= f.fields_for :quest_task do |i| %>
+      <div>
+         <p>質問１:現在の住まいは...</p>
+         <%= i.radio_button :question1, 1 %><%= f.label :question1, "賃貸" %>
+         <%= i.radio_button :question1, 2 %><%= f.label :question1, "実家" %>
+      </div>
+
+      <div>
+         <p>質問２:車は...</p>
+         <%= i.radio_button :question2, 1 %><%= f.label :question2, "持ってる" %>
+         <%= i.radio_button :question2, 2 %><%= f.label :question2, "持ってない" %>
+      </div>
+      <% end %>
+
+   <%= f.hidden_field :user_id, :value => current_user.id %>
+
+   <%= f.submit "編集完了！" %>
+   <% end %>

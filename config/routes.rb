@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root "homes#top"
   get 'help' => "homes#help"
   
-  resources :tasks, only:[:show, :update]
+  resources :quest_tasks, only:[:show, :update]
   
   resource :users, only:[:show, :edit, :update, :destroy]
   get "my_page" => "users#mypage"
@@ -15,9 +15,6 @@ Rails.application.routes.draw do
   resources :boards, only:[:index, :create, :show]
 
   resources :comments, only:[:create]
-
-  resources :categories, only:[:create]
-  
 
   namespace :admin do
   

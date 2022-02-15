@@ -2,25 +2,80 @@ class QuestsController < ApplicationController
   def new
     @user = current_user
     @quest = Quest.new
+    @quest.quest_tasks.build
   end
 
   def create
     @quest = Quest.new(quest_params)
+
     if @quest.save
-       redirect_to quest_path(@quest)
+      
+      if params[:quest][:quest_task][:question1] == "1"
+          quest_task = QuestTask.new
+          quest_task.quest_id  = @quest.id
+          quest_task.task_id = 1
+          quest_task.save
+      end
+
+      if params[:quest][:quest_task][:question2] == "1"
+          quest_task = QuestTask.new
+          quest_task.quest_id  = @quest.id
+          quest_task.task_id = 2
+          quest_task.save
+      end
+
+      redirect_to quest_path(@quest)
     else
-       render :new
+      render :new
     end
   end
 
   def show
     @quest = Quest.find(params[:id])
+    @quest_tasks = QuestTask.where(quest_id: @quest.id)
   end
 
   def edit
+    @quest = Quest.find(params[:id])
+    @user = current_user
+    @quest.quest_tasks.build
   end
 
-  def updates
+  def update
+    @quest = Quest.find(params[:id])
+
+    if @quest.update(quest_params)
+      
+      if  quest_task = QuestTask.find_by(quest_id: @quest.id,task_id: 1) #該当のタスクが存在している、かつ”２”を選んだら削除する
+          if params[:quest][:quest_task][:question1] == "2"
+             quest_task.destroy 
+          end
+      elsif
+          if params[:quest][:quest_task][:question1] == "1"   #”１”を選び、該当のタスクがなければ新しく作る 
+             quest_task = QuestTask.new
+             quest_task.quest_id  = @quest.id
+             quest_task.task_id = 1
+             quest_task.save
+          end
+      end
+
+      if  quest_task = QuestTask.find_by(quest_id: @quest.id,task_id: 2)
+          if params[:quest][:quest_task][:question2] == "2"
+             quest_task.destroy 
+          end
+      elsif
+          if params[:quest][:quest_task][:question2] == "1"    
+             quest_task = QuestTask.new
+             quest_task.quest_id  = @quest.id
+             quest_task.task_id = 2
+             quest_task.save
+          end
+      end
+      
+      redirect_to quest_path(@quest)
+    else
+      render :edit
+    end
   end
 
   def clear
@@ -32,7 +87,9 @@ class QuestsController < ApplicationController
   private
 
   def quest_params
-    params.require(:quest).permit(:user_id, :task_id, :title, :due_day, 
-    :start_pref, :start_city, :goal_pref, :goal_city, :is_clear)
+    params.require(:quest).permit(:user_id, :due_day, :start_pref,
+    :start_city, :goal_pref, :goal_city, :is_clear,
+    quest_tasks_attributes:[:quest_id, :task_id, :is_clear])
   end
+
 end
