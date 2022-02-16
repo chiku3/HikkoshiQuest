@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  clear_day: 2022-02-16
+  start_pref: MyString
+  start_city: MyString
+  goal_pref: MyString
+  goal_city: MyString
+
+two:
+  user_id: 1
+  clear_day: 2022-02-16
+  start_pref: MyString
+  start_city: MyString
+  goal_pref: MyString
+  goal_city: MyString

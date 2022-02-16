@@ -3,11 +3,17 @@
 <%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
 <p><%= link_to @user.name, users_path %></p>
 
+<% if @quest. blank? %>
+  <%= link_to "クエストを登録する", new_quests_path %>
+<%end %>
 
-<%= link_to "クエストを登録する", new_quest_path %>
-
-<h2>クエスト</h2>
-  <% @quests.each do |quest| %>
-    <%= link_to quest.quest_title, quest_path(quest) %>
+<h2>進行中クエスト</h2>
+  <% if @quest. present? %>
+    <%= link_to @quest.due_day, quests_path %>
+  <% end %>
+  
+<h2>過去クエスト</h2>
+  <% @clear_quests.each do |quest| %>
+    <%= link_to quest.clear_day, clear_quest_path(quest) %>
   <% end %>
   

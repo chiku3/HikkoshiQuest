@@ -24,25 +24,25 @@ class QuestsController < ApplicationController
           quest_task.save
       end
 
-      redirect_to quest_path(@quest)
+      redirect_to quests_path
     else
       render :new
     end
   end
 
   def show
-    @quest = Quest.find(params[:id])
+    @quest = current_user.quest
     @quest_tasks = QuestTask.where(quest_id: @quest.id)
   end
   
   def edit
-    @quest = Quest.find(params[:id])
+    @quest = current_user.quest
     @user = current_user
     @quest.quest_tasks.build
   end
 
   def update
-    @quest = Quest.find(params[:id])
+    @quest = current_user.quest
 
     if @quest.update(quest_params)
       
@@ -72,15 +72,24 @@ class QuestsController < ApplicationController
           end
       end
       
-      redirect_to quest_path(@quest)
+      redirect_to quests_path
     else
       render :edit
     end
   end
 
   def clear
-    quest = Quest.find(params[:id])
-    quest.update(quest_params)
+    quest = current_user.quest
+    if quest.destroy
+        clear_quest = ClearQuest.new
+          clear_quest.user_id = current_user.id
+          clear_quest.clear_day = quest.due_day
+          clear_quest.start_pref = quest.start_pref
+          clear_quest.start_city = quest.start_city
+          clear_quest.goal_pref = quest.goal_pref
+          clear_quest.goal_city = quest.goal_city
+        clear_quest.save
+    end
     redirect_to complete_path
   end
 
@@ -94,6 +103,11 @@ class QuestsController < ApplicationController
     params.require(:quest).permit(:user_id, :due_day, :start_pref,
     :start_city, :goal_pref, :goal_city, :is_clear,
     quest_tasks_attributes:[:quest_id, :task_id, :is_clear])
+  end
+  
+  def clear_quest_params
+    params.require(:clear_quest).permit(:user_id, :clear_day, :start_pref,
+    :start_city, :goal_pref, :goal_city)
   end
 
 end

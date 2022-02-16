@@ -9,7 +9,7 @@ class QuestTasksController < ApplicationController
      @quest_task = QuestTask.find(params[:id])
      @quest = @quest_task.quest_id
      @quest_task.update(quest_task_params)
-     redirect_to quest_path(@quest)
+     redirect_to quests_path
   end
 
   private

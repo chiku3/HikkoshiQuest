@@ -1,4 +1,4 @@
-<h1><%= @quest.quest_title %></h1>
+<h1><%= @quest.title %></h1>
 
   <table>
     <tr>
@@ -22,13 +22,13 @@
     </tr>
   </table>
   
-  <%= link_to "クエスト内容を編集する", edit_quest_path(@quest) %>
+  <%= link_to "クエスト内容を編集する", edit_quests_path %>
   
   <%= @quest_tasks.count %>
-  <%= quest_path(@quest).scan("達成！").length %>
+  <%= quests_path.scan("達成！").length %>
 
-   <p>すべてのタスクをクリアしましたか？</p>
-    <%= form_with model: @quest, url: clear_path(@quest), local: true do |f| %>
+   <p>すべてのタスクを達成しましたか？</p>
+    <%= form_with model: @quest, url: clear_path, method: :delete, local: true do |f| %>
       <%= f.check_box :is_clear %>
       <%= f.submit "すべてのタスクを達成した！" %>
     <% end %>

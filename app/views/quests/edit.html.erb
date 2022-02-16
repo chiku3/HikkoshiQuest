@@ -1,6 +1,6 @@
   <h1>以下の項目を編集してください。</h1>
 
-   <%= form_with model: @quest, url: quest_path(@quest), local:true do |f| %>
+   <%= form_with model: @quest, url: quests_path, local:true do |f| %>
    <div>
       <p>質問１:引っ越し予定日は？</p>
       <%= f.date_field :due_day %>
@@ -38,4 +38,4 @@
    
    <% end %>
    
-   <%= link_to "戻る", quest_path(@quest) %>
+   <%= link_to "戻る", quests_path %>

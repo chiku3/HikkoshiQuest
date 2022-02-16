@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   def mypage
     @user = current_user
-    @quests = Quest.all
+    @quest = current_user.quest
+    @clear_quests = ClearQuest.all
   end
 
   def show
