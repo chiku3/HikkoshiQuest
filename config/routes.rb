@@ -1,29 +1,29 @@
 Rails.application.routes.draw do
-  
+
   root "homes#top"
   get 'help' => "homes#help"
-  
+
   resources :quest_tasks, only:[:show, :update]
-  
+
   resource :users, only:[:show, :edit, :update, :destroy]
   get "my_page" => "users#mypage"
-  
+
+  patch 'quests/clear/:id' => "quests#clear", as:"clear"
+  get 'quests/complete' => "quests#complete", as:"complete"
   resources :quests, only:[:new, :create, :show, :edit, :update]
-  patch 'quests/:id/clear' => "quests#clear"
-  get 'quests/complete' => "quests#complete"
-  
+
   resources :boards, only:[:index, :create, :show]
 
   resources :comments, only:[:create]
 
   namespace :admin do
-  
+
     get 'home' => "homes#top"
-  
+
     resources :tasks, only:[:show, :edit, :update, :new, :create, :destroy]
-  
+
     resources :boards, only:[:show, :destory]
-   
+
     resources :comments, only:[:destroy]
   end
 

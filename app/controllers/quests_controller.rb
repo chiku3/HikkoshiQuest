@@ -34,7 +34,7 @@ class QuestsController < ApplicationController
     @quest = Quest.find(params[:id])
     @quest_tasks = QuestTask.where(quest_id: @quest.id)
   end
-
+  
   def edit
     @quest = Quest.find(params[:id])
     @user = current_user
@@ -79,9 +79,13 @@ class QuestsController < ApplicationController
   end
 
   def clear
+    quest = Quest.find(params[:id])
+    quest.update(quest_params)
+    redirect_to complete_path
   end
 
   def complete
+    @user = current_user
   end
 
   private

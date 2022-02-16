@@ -1,17 +1,35 @@
 <h1><%= @quest.quest_title %></h1>
 
-<p>引越し予定日</p>
-<%= @quest.due_day %>
-
-<p>目的地</p>
-<%= @quest.goal_pref %><%= @quest.goal_city %>
-
-<p>タスク一覧</p>
-  <% @quest_tasks.each do |quest_task| %>
-    <%= link_to quest_task.task.title, quest_task_path(quest_task) %>
-  <% end %>
+  <table>
+    <tr>
+      <th>引越し予定日</th>
+      <td><%= @quest.due_day %></td>
+    </tr>
+    <tr>
+      <th>目的地</th>
+      <td><%= @quest.goal_pref %> <%= @quest.goal_city %></td>
+    </tr>
+    <tr>
+      <th>タスク一覧</th>
+      <td>
+      <% @quest_tasks.each do |quest_task| %>
+      <%= link_to quest_task.task.title, quest_task_path(quest_task) %>
+        <% if quest_task.is_clear == true %>
+          <p>達成！</p>
+        <% end %><br />
+      <% end %>
+      </td>
+    </tr>
+  </table>
   
+  <%= link_to "クエスト内容を編集する", edit_quest_path(@quest) %>
+  
+  <%= @quest_tasks.count %>
+  <%= quest_path(@quest).scan("達成！").length %>
 
-<p>ステータス</p><%= @quest.is_clear %>
+   <p>すべてのタスクをクリアしましたか？</p>
+    <%= form_with model: @quest, url: clear_path(@quest), local: true do |f| %>
+      <%= f.check_box :is_clear %>
+      <%= f.submit "すべてのタスクを達成した！" %>
+    <% end %>
 
-<p><%= link_to "クエスト内容を編集する", edit_quest_path(@quest) %></p>

@@ -1,1 +1,14 @@
 <h1><%= @quest_task.task.title %></h1>
+
+  <p>タスク詳細</p>
+  <%= @quest_task.task.body %>
+  
+  <%= attachment_image_tag @quest_task.task, :image, :fill, 100, 100, format:"jpeg" %>
+  
+  <p>ステータス</p>
+  <%= form_with model: @quest_task,url: quest_task_path(@quest_task), local: true do |f| %>
+  　<%= f.check_box :is_clear %>
+    <%= f.submit "タスク達成！" %>
+  <% end %>
+ 
+ <%= link_to "戻る", quest_path(@quest) %>

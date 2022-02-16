@@ -35,4 +35,7 @@
    <%= f.hidden_field :user_id, :value => current_user.id %>
 
    <%= f.submit "編集完了！" %>
+   
    <% end %>
+   
+   <%= link_to "戻る", quest_path(@quest) %>
