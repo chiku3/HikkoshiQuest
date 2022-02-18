@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   def mypage
     @user = current_user
-    @quest = current_user.quest
-    @clear_quests = ClearQuest.all
+    @quest = Quest.find_by(is_clear: false)
+    @quests = Quest.where(is_clear: true)
   end
 
   def show

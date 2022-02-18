@@ -5,15 +5,17 @@
 
 <% if @quest. blank? %>
   <%= link_to "クエストを登録する", new_quests_path %>
-<%end %>
+<% end %>
 
 <h2>進行中クエスト</h2>
   <% if @quest. present? %>
-    <%= link_to @quest.due_day, quests_path %>
+    <%= link_to @quest.title, quests_path(@quest) %>
   <% end %>
-  
-<h2>過去クエスト</h2>
-  <% @clear_quests.each do |quest| %>
-    <%= link_to quest.clear_day, clear_quest_path(quest) %>
+
+<% if @quests. present? %>  
+<h2>達成済クエスト</h2>
+  <% @quests.each do |quest| %>
+    <%= link_to quest.title, quest_path(quest) %>
   <% end %>
+<% end %>
   

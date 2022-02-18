@@ -15,8 +15,8 @@
    
    <div>
       <p>質問１:現在住んでいるところは？</p>
-      <%= f.select :state_pref, options_for_select(Prefecture.all.map{ |pref| [pref.name] }) %>
-      <%= f.select :state_city, options_for_select(City.all.map{ |city| [city.name] }) %>
+      <%= f.select :start_pref, options_for_select(Prefecture.all.map{ |pref| [pref.name] }) %>
+      <%= f.select :start_city, options_for_select(City.all.map{ |city| [city.name] }) %>
    </div>
 
    <div>

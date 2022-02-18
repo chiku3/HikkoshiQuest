@@ -8,11 +8,9 @@ Rails.application.routes.draw do
   resource :users, only:[:show, :edit, :update, :destroy]
   get "my_page" => "users#mypage"
 
-  delete 'quests/clear' => "quests#clear", as:"clear"
+  patch 'quests/clear' => "quests#clear", as:"clear"
   get 'quests/complete' => "quests#complete", as:"complete"
-  resource :quests, only:[:new, :create, :show, :edit, :update]
-  
-  resources :clear_quest, only:[:show]
+  resources :quests, only:[:new, :create, :show, :edit, :update]
 
   resources :boards, only:[:index, :create, :show]
 

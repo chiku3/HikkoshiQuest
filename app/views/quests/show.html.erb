@@ -24,12 +24,11 @@
   
   <%= link_to "クエスト内容を編集する", edit_quests_path %>
   
-  <%= @quest_tasks.count %>
-  <%= quests_path.scan("達成！").length %>
-
+  
+  <% if @quest_tasks.count  == @quest_tasks.where(is_clear: true).count %>
    <p>すべてのタスクを達成しましたか？</p>
     <%= form_with model: @quest, url: clear_path, method: :delete, local: true do |f| %>
       <%= f.check_box :is_clear %>
       <%= f.submit "すべてのタスクを達成した！" %>
     <% end %>
-
+ <% end %>

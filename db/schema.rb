@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_16_064137) do
+ActiveRecord::Schema.define(version: 2022_02_18_034614) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -40,17 +40,6 @@ ActiveRecord::Schema.define(version: 2022_02_16_064137) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "clear_quests", force: :cascade do |t|
-    t.integer "user_id"
-    t.date "clear_day"
-    t.string "start_pref"
-    t.string "start_city"
-    t.string "goal_pref"
-    t.string "goal_city"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "comments", force: :cascade do |t|
     t.integer "board_id"
     t.integer "user_id"
@@ -76,7 +65,7 @@ ActiveRecord::Schema.define(version: 2022_02_16_064137) do
 
   create_table "quests", force: :cascade do |t|
     t.integer "user_id"
-    t.date "due_day"
+    t.datetime "due_day"
     t.boolean "is_clear", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

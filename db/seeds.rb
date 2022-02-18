@@ -6,11 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
+# アドミン
 Admin.create!(
    email: 'admin@admin',
    password: 'zxcvbnm'
 )
+
+# クエスチョン
 
 
 # 以下、都道府県市区町村.csvの呼び出し
