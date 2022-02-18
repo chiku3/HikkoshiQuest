@@ -16,22 +16,6 @@ Rails.application.routes.draw do
 
   resources :comments, only:[:create]
 
-  namespace :admin do
-
-    get 'home' => "homes#top"
-
-    resources :tasks, only:[:show, :edit, :update, :new, :create, :destroy]
-
-    resources :boards, only:[:show, :destory]
-
-    resources :comments, only:[:destroy]
-  end
-
-  devise_for :admin, controllers: {
-    sessions:      'admin/sessions',
-    passwords:     'admin/passwords',
-    registrations: 'admin/registrations'
-  }
 
   devise_for :users, controllers: {
     sessions:      'users/sessions',

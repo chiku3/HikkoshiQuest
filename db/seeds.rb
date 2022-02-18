@@ -6,12 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# アドミン
-Admin.create!(
-   email: 'admin@admin',
-   password: 'zxcvbnm'
-)
-
 # タスク
  Task.create!([
   {
