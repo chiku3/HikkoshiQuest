@@ -3,14 +3,14 @@
 <%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
 <p><%= link_to @user.name, users_path %></p>
 
-<% if @quest. blank? %>
-  <%= link_to "クエストを登録する", new_quests_path %>
-<% end %>
-
 <h2>進行中クエスト</h2>
   <% if @quest. present? %>
     <%= link_to @quest.title, quests_path(@quest) %>
   <% end %>
+  
+<% if @quest. blank? %>
+  <%= link_to "クエストを登録する", new_quest_path %>
+<% end %>
 
 <% if @quests. present? %>  
 <h2>達成済クエスト</h2>

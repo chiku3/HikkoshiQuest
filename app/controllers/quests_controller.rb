@@ -24,25 +24,25 @@ class QuestsController < ApplicationController
           quest_task.save
       end
 
-      redirect_to quests_path
+      redirect_to quest_path(@quest)
     else
       render :new
     end
   end
 
   def show
-    @quest = current_user.quest
+    @quest = Quest.find(params[:id])
     @quest_tasks = QuestTask.where(quest_id: @quest.id)
   end
 
   def edit
-    @quest = current_user.quest
+    @quest = Quest.find(params[:id])
     @user = current_user
     @quest.quest_tasks.build
   end
 
   def update
-    @quest = current_user.quest
+    @quest = Quest.find(params[:id])
 
     if @quest.update(quest_params)
 
@@ -72,32 +72,16 @@ class QuestsController < ApplicationController
           end
       end
 
-      redirect_to quests_path
+      redirect_to quest_path(@quest)
     else
       render :edit
     end
   end
 
   def clear
-    quest = current_user.quest
+    quest = Quest.find(params[:id])
     quest_tasks = QuestTask.where(quest_id: quest.id)
-    if quest.destroy
-        clear_quest = ClearQuest.new
-          clear_quest.user_id = current_user.id
-          clear_quest.start_pref = quest.start_pref
-          clear_quest.start_city = quest.start_city
-          clear_quest.goal_pref = quest.goal_pref
-          clear_quest.goal_city = quest.goal_city
-        clear_quest.save
-        
-        quest_tasks.each do |quest_task|
-          comp_task = CompTask.new
-          comp_task.clear_quest_id = clear_quest.id
-          comp_task.task_id = quest_task.task_id
-          comp_task.save
-        end
-         
-    end
+    quest.update(quest_params)
     redirect_to complete_path
   end
 

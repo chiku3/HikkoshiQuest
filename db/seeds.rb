@@ -12,7 +12,21 @@ Admin.create!(
    password: 'zxcvbnm'
 )
 
-# クエスチョン
+# タスク
+ Task.create!([
+  {
+   title: '電気の解約',
+   body: '電話で電気を解約しよう',
+   importance: "3",
+   image: 'no_image.jp'
+  },
+  {
+   title: '免許の住所変更',
+   body: '警察署で手続きしよう',
+   importance: "3",
+   image: 'no_image.jp'
+  }
+   ])
 
 
 # 以下、都道府県市区町村.csvの呼び出し
