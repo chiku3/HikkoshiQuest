@@ -16,7 +16,6 @@ Rails.application.routes.draw do
 
   resources :comments, only:[:create]
 
-
   devise_for :users, controllers: {
     sessions:      'users/sessions',
     passwords:     'users/passwords',

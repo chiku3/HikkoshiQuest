@@ -10,17 +10,25 @@ class QuestsController < ApplicationController
 
     if @quest.save
 
+      quest_task = QuestTask.new
+        quest_task.quest_id  = @quest.id
+        quest_task.task_id = 1
+        quest_task.start_time = @quest.due_day
+      quest_task.save
+
       if params[:quest][:quest_task][:question1] == "1"
           quest_task = QuestTask.new
           quest_task.quest_id  = @quest.id
-          quest_task.task_id = 1
+          quest_task.task_id = 2
+          quest_task.start_time = @quest.due_day.ago(7.days)
           quest_task.save
       end
 
       if params[:quest][:quest_task][:question2] == "1"
           quest_task = QuestTask.new
           quest_task.quest_id  = @quest.id
-          quest_task.task_id = 2
+          quest_task.task_id = 3
+          quest_task.start_time = @quest.due_day.yesterday
           quest_task.save
       end
 
@@ -32,6 +40,7 @@ class QuestsController < ApplicationController
 
   def show
     @quest = Quest.find(params[:id])
+    @quest_task = QuestTask.where(quest_id: @quest.id)
     @quest_tasks = QuestTask.where(quest_id: @quest.id)
   end
 
@@ -97,13 +106,8 @@ class QuestsController < ApplicationController
     quest_tasks_attributes:[:quest_id, :task_id, :is_clear])
   end
 
-  def clear_quest_params
-    params.require(:clear_quest).permit(:user_id, :clear_day, :start_pref,
-    :start_city, :goal_pref, :goal_city)
-  end
-
-  def comp_task_params
-    params.require(:comp_task).permit(:clear_quest_id, :task_id)
+  def event_params
+    params.require(:event).permit(:quest_id, :quest_task_id, :name, :start_time)
   end
 
 end

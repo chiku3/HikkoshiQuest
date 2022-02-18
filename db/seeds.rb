@@ -9,6 +9,12 @@
 # タスク
  Task.create!([
   {
+   title: '引越当日',
+   body: '当日',
+   importance: "3",
+   image: 'no_image.jp'
+  },
+  {
    title: '電気の解約',
    body: '電話で電気を解約しよう',
    importance: "3",

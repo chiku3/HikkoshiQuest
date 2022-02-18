@@ -5,7 +5,7 @@
 
 <h2>進行中クエスト</h2>
   <% if @quest. present? %>
-    <%= link_to @quest.title, quests_path(@quest) %>
+    <%= link_to @quest.title, quest_path(@quest) %>
   <% end %>
   
 <% if @quest. blank? %>
@@ -18,4 +18,4 @@
     <%= link_to quest.title, quest_path(quest) %>
   <% end %>
 <% end %>
-  
+
