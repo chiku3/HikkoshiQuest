@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_18_082846) do
+ActiveRecord::Schema.define(version: 2022_02_19_061606) do
 
   create_table "boards", force: :cascade do |t|
     t.string "title"
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 2022_02_18_082846) do
     t.boolean "is_clear", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "prefecture_id"
     t.string "start_pref"
     t.string "start_city"
     t.string "goal_pref"
@@ -67,11 +66,12 @@ ActiveRecord::Schema.define(version: 2022_02_18_082846) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "title"
-    t.text "body"
-    t.integer "importance"
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "body_a"
+    t.text "body_b"
+    t.string "name"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,7 +1,11 @@
 <h1><%= @quest_task.task.title %></h1>
 
   <p>タスク詳細</p>
-  <%= @quest_task.task.body %>
+  <% if @quest_task.quest.start_pref == @quest_task.quest.goal_pref and @quest_task.quest.start_city == @quest_task.quest.goal_city %>
+    <%= @quest_task.task.body_b %>
+  <% else %>
+    <%= @quest_task.task.body_a %>
+  <% end %>
   
   <%= attachment_image_tag @quest_task.task, :image, :fill, 100, 100, format:"jpeg" %>
   

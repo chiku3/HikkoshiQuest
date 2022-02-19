@@ -7,27 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # タスク
- Task.create!([
-  {
-   title: '引越当日',
-   body: '当日',
-   importance: "3",
-   image: 'no_image.jp'
-  },
-  {
-   title: '電気の解約',
-   body: '電話で電気を解約しよう',
-   importance: "3",
-   image: 'no_image.jp'
-  },
-  {
-   title: '免許の住所変更',
-   body: '警察署で手続きしよう',
-   importance: "3",
-   image: 'no_image.jp'
-  }
-   ])
-
+ require "csv"
+ CSV.foreach('lib/タスク一覧.csv', headers: true) do |row|
+  Task.create(
+    name: row["name"],
+    title: row['title'],
+    body_a: row["body_a"],
+    body_b: row["body_b"],
+    image: row["image"]
+  )
+end
 
 # 以下、都道府県市区町村.csvの呼び出し
 require 'csv'
