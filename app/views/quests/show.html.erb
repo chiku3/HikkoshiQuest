@@ -22,8 +22,6 @@
     </tr>
   </table>
 
-  <%= link_to "クエスト内容を編集する", edit_quest_path(@quest) %>
-
 
 <% if @quest_tasks.count  == @quest_tasks.where(is_clear: true).count %>
    <p>すべてのタスクを達成しましたか？</p>
@@ -38,9 +36,9 @@
  <%= month_calendar events: @quest_tasks do |date, quest_tasks| %>
   <%= date.day %>
 
-  <% quest_tasks.each do |quest_task| %>
-      <%= quest_task.task.name %>
-  <% end %>
+  <%# quest_tasks.each do |quest_task| %>
+      <%#= quest_task.task.name %>
+  <%# end %>
 
 <% end %>
 

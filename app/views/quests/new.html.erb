@@ -3,45 +3,71 @@
 <p>おめでとう！<br />
    あなたは今、新たな生活への第一歩を踏み出した。<br />
    引越しの準備には、簡単なものから厄介なものまである。<br />
-   まずは自分に当てはまる条件を選択し、自分だけのクエストをカスタマイズしよう！</p>
+   下記の質問に答えたら、転勤クエストの始まりだ！</p>
 
 <h4>以下の質問に答えてください。</h4>
 
    <%= form_with model: @quest, url: quests_path, local:true do |f| %>
    <div>
-      <p>質問１:引っ越し予定日は？</p>
+      <p>質問１:引っ越し予定日は...？</p>
       <%= f.date_field :due_day %>
    </div>
-   
+
    <div>
-      <p>質問１:現在住んでいるところは？</p>
+      <p>質問２:現在住んでいるところは...？</p>
       <%= f.select :start_pref, options_for_select(Prefecture.all.map{ |pref| [pref.name] }) %>
       <%= f.select :start_city, options_for_select(City.all.map{ |city| [city.name] }) %>
    </div>
 
    <div>
-      <p>質問２:引っ越し先は？</p>
+      <p>質問３:引っ越し先は...？</p>
       <%= f.select :goal_pref, options_for_select(Prefecture.all.map{ |pref| [pref.name] }) %>
       <%= f.select :goal_city, options_for_select(City.all.map{ |city| [city.name] }) %>
    </div>
-     
-     <%= f.fields_for :quest_task do |i| %>
-      <div>
-         <p>質問１:現在の住まいは...</p>
-         <%= i.radio_button :question1, 1 %><%= f.label :question1, "賃貸" %>
-         <%= i.radio_button :question1, 2 %><%= f.label :question1, "実家" %>
-      </div>
    
-      <div>
-         <p>質問２:車は...</p>
-         <%= i.radio_button :question2, 1 %><%= f.label :question2, "持ってる" %>
-         <%= i.radio_button :question2, 2 %><%= f.label :question2, "持ってない" %>
-      </div>
-      <% end %>
-      
-   <%= f.hidden_field :user_id, :value => current_user.id %>
-   
-   <%= f.submit "クエストを保存" %>
-   <% end %>
+   <div>
+      <p>質問４：住んでる家は...?</p>
+      <%= f.radio_button :question_4, 1 %><%= f.label :question_4, "賃貸" %>
+      <%= f.radio_button :question_4, 2 %><%= f.label :question_4, "実家" %>
+   </div>
 
-<%= link_to "クエストを登録しない", my_page_path %>
+   <div>
+      <p>質問５：免許は...?</p>
+      <%= f.radio_button :question_5, 1 %><%= f.label :question_5, "持ってる" %>
+      <%= f.radio_button :question_5, 2 %><%= f.label :question_5, "持ってない" %>
+   </div>
+      
+   <div>
+      <p>質問６：車は...?</p>
+      <%= f.radio_button :question_6, 1 %><%= f.label :question_6, "持ってる" %>
+      <%= f.radio_button :question_6, 2 %><%= f.label :question_6, "持ってない" %>
+   </div>
+   
+   <div>
+      <p>質問7：バイクは...?</p>
+      <%= f.radio_button :question_7, 1 %><%= f.label :question_7, "持ってる" %>
+      <%= f.radio_button :question_7, 2 %><%= f.label :question_7, "持ってない" %>
+   </div>
+
+   <div>
+      <p>質問８：子供いる?一緒に引っ越す...?</p>
+      <%= f.radio_button :question_8, 1 %><%= f.label :question_8, "一緒" %>
+      <%= f.radio_button :question_8, 2 %><%= f.label :question_8, "自分だけ" %>
+   </div>
+   
+   <div>
+      <p>質問９：固定電話は...?</p>
+      <%= f.radio_button :question_9, 1 %><%= f.label :question_9, "ある" %>
+      <%= f.radio_button :question_9, 2 %><%= f.label :question_9, "ない" %>
+   </div>
+   
+   <div>
+      <p>質問１０：新聞とってる...?</p>
+      <%= f.radio_button :question_10, 1 %><%= f.label :question_10, "とってる" %>
+      <%= f.radio_button :question_10, 2 %><%= f.label :question_10, "とってない" %>
+   </div>
+   
+   <%= f.hidden_field :user_id, :value => current_user.id %>
+
+   <%= f.submit "内容を保存" %>
+   <% end %>

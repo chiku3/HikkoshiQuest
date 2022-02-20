@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   patch 'clear/:id' => "quests#clear", as:"clear"
   get 'quests/complete' => "quests#complete", as:"complete"
-  resources :quests, only:[:new, :create, :show, :edit, :update]
+  resources :quests, only:[:new, :create, :show]
   
   resources :boards, only:[:index, :create, :show]
 
