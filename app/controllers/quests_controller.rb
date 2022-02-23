@@ -138,61 +138,17 @@ class QuestsController < ApplicationController
 
   def show
     @quest = Quest.find(params[:id])
-    @quest_task = QuestTask.where(quest_id: @quest.id).where("id > ?", 5)     #すべての実行タスク
-    @quest_tasks = QuestTask.where(quest_id: @quest.id).where("id < ?", 6)    #カレンダー表示用
-    @quest_task_1 = QuestTask.where(quest_id: @quest.id).where(task_id: [6..10])   #すぐやろうタスク
-    @quest_task_2 = QuestTask.where(quest_id: @quest.id).where(task_id: [11,12])   #引越し３０日前頃にやろうタスク
-    @quest_task_3 = QuestTask.where(quest_id: @quest.id).where(task_id: [13..24])   #引越し１４日前頃にやろうタスク
-    @quest_task_4 = QuestTask.where(quest_id: @quest.id).where(task_id: [25..28])   #引越し当日にやろうタスク
-    @quest_task_5 = QuestTask.where(quest_id: @quest.id).where(task_id: [29..45])   #引越し後１４日以内にやろうタスク
+    @quest_task = QuestTask.where(quest_id: @quest.id).where("task_id > ?", 5)     #すべての実行タスク
+    @quest_tasks = QuestTask.where(quest_id: @quest.id).where("task_id < ?", 6)    #カレンダー表示用
+    @quest_task_1 = QuestTask.where(quest_id: @quest.id).where(task_id: [6..10]).order(:task_id)    #すぐやろうタスク
+    @quest_task_2 = QuestTask.where(quest_id: @quest.id).where(task_id: [11,12]).order(:task_id)    #引越し３０日前頃にやろうタスク
+    @quest_task_3 = QuestTask.where(quest_id: @quest.id).where(task_id: [13..24]).order(:task_id)  #引越し１４日前頃にやろうタスク
+    @quest_task_4 = QuestTask.where(quest_id: @quest.id).where(task_id: [25..28]).order(:task_id)    #引越し当日にやろうタスク
+    @quest_task_5 = QuestTask.where(quest_id: @quest.id).where(task_id: [29..45]).order(:task_id)   #引越し後１４日以内にやろうタスク
   end
 
-  # def edit
-  #   @quest = Quest.find(params[:id])
-  #   @user = current_user
-  #   @quest.quest_tasks.build
-  # end
-
-  # def update
-  #   @quest = Quest.find(params[:id])
-
-  #   if @quest.update(quest_params)
-
-  #     if  quest_task = QuestTask.find_by(quest_id: @quest.id,task_id: 1) #該当のタスクが存在している、かつ”２”を選んだら削除する
-  #         if params[:quest][:quest_task][:question1] == "2"
-  #           quest_task.destroy
-  #         end
-  #     elsif
-  #         if params[:quest][:quest_task][:question1] == "1"   #”１”を選び、該当のタスクがなければ新しく作る
-  #           quest_task = QuestTask.new
-  #           quest_task.quest_id  = @quest.id
-  #           quest_task.task_id = 1
-  #           quest_task.save
-  #         end
-  #     end
-
-  #     if  quest_task = QuestTask.find_by(quest_id: @quest.id,task_id: 2)
-  #         if params[:quest][:quest_task][:question2] == "2"
-  #           quest_task.destroy
-  #         end
-  #     elsif
-  #         if params[:quest][:quest_task][:question2] == "1"
-  #           quest_task = QuestTask.new
-  #           quest_task.quest_id  = @quest.id
-  #           quest_task.task_id = 2
-  #           quest_task.save
-  #         end
-  #     end
-
-  #     redirect_to quest_path(@quest)
-  #   else
-  #     render :edit
-  #   end
-  # end
-
-  def clear
+  def update
     quest = Quest.find(params[:id])
-    quest_tasks = QuestTask.where(quest_id: quest.id)
     quest.update(quest_params)
     redirect_to complete_path
   end

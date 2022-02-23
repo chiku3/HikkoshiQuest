@@ -8,10 +8,9 @@ Rails.application.routes.draw do
   resource :users, only:[:show, :edit, :update, :destroy]
   get "my_page" => "users#mypage"
 
-  patch 'clear/:id' => "quests#clear", as:"clear"
   get 'quests/complete' => "quests#complete", as:"complete"
-  resources :quests, only:[:new, :create, :show]
-  
+  resources :quests, only:[:new, :create, :show, :update]
+
   resources :boards, only:[:index, :create, :show]
 
   resources :comments, only:[:create]

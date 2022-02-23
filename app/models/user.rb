@@ -7,6 +7,7 @@ class User < ApplicationRecord
   attachment :image
 
   has_many :quests, dependent: :destroy
+  has_many :boards, dependent: :destroy
   has_many :comments, dependent: :destroy
 
 

@@ -1,2 +1,27 @@
-<h1>Boards#show</h1>
-<p>Find me in app/views/boards/show.html.erb</p>
+<h1><%= @board.title %></h1>
+
+<h3><%= @board.body %></h3>
+
+<%= form_with model: @comment, url: comments_path, local:true do |f| %>
+  <div>
+    <%= f.label :comment,"コメント" %>
+    <%= f.text_area :comment %>
+  </div>
+
+　<%= f.hidden_field :user_id, :value => current_user.id %>
+　<%= f.hidden_field :board_id, :value => @board.id %>
+
+　<%= f.submit "コメントする" %>
+<% end %>
+
+<% @comments.each do |comment| %>
+  <table>
+    <tr>
+      <td>インデックス</td>
+      <td><%= attachment_image_tag comment.user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+          <%= comment.user.name %></td>
+      <td><%= comment.comment %></td>
+      <td><%= comment.created_at %></td>
+    </tr>
+  </table>
+<% end %>

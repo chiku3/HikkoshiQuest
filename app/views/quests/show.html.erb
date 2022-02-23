@@ -12,7 +12,7 @@
     <tr>
       <th>タスク一覧</th>
       <td>
-        <p>〜すぐやろう！〜</p>
+        <p>〜すぐ始めよう！〜</p>
           <% @quest_task_1.each do |quest_task| %>
           <%= link_to quest_task.task.title, quest_task_path(quest_task) %>
             <% if quest_task.is_clear == true %>
@@ -20,7 +20,7 @@
             <% end %><br />
           <% end %>
         
-        <p>〜３０日前頃からやろう！〜</p>
+        <p>〜３０日前頃から始めよう！〜</p>
           <% @quest_task_2.each do |quest_task| %>
           <%= link_to quest_task.task.title, quest_task_path(quest_task) %>
             <% if quest_task.is_clear == true %>
@@ -28,7 +28,7 @@
             <% end %><br />
           <% end %>
           
-        <p>〜１４日前頃からやろう！〜</p>
+        <p>〜１４日前頃から始めよう！〜</p>
           <% @quest_task_3.each do |quest_task| %>
           <%= link_to quest_task.task.title, quest_task_path(quest_task) %>
             <% if quest_task.is_clear == true %>
@@ -58,7 +58,7 @@
 
 <% if @quest_task.count  == @quest_task.where(is_clear: true).count %>
    <p>すべてのタスクを達成しましたか？</p>
-    <%= form_with model: @quest, url: clear_path(@quest), local: true do |f| %>
+    <%= form_with model: @quest, url: quest_path(@quest), local: true do |f| %>
       <%= f.check_box :is_clear %>
       <%= f.submit "すべてのタスクを達成した！" %>
     <% end %>
