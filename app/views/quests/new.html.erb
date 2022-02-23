@@ -24,7 +24,7 @@
       <%= f.select :goal_pref, options_for_select(Prefecture.all.map{ |pref| [pref.name] }) %>
       <%= f.select :goal_city, options_for_select(City.all.map{ |city| [city.name] }) %>
    </div>
-   
+
    <div>
       <p>質問４：住んでる家は...?</p>
       <%= f.radio_button :question_4, 1 %><%= f.label :question_4, "賃貸" %>
@@ -36,13 +36,13 @@
       <%= f.radio_button :question_5, 1 %><%= f.label :question_5, "持ってる" %>
       <%= f.radio_button :question_5, 2 %><%= f.label :question_5, "持ってない" %>
    </div>
-      
+
    <div>
       <p>質問６：車は...?</p>
       <%= f.radio_button :question_6, 1 %><%= f.label :question_6, "持ってる" %>
       <%= f.radio_button :question_6, 2 %><%= f.label :question_6, "持ってない" %>
    </div>
-   
+
    <div>
       <p>質問7：バイクは...?</p>
       <%= f.radio_button :question_7, 1 %><%= f.label :question_7, "持ってる" %>
@@ -54,19 +54,25 @@
       <%= f.radio_button :question_8, 1 %><%= f.label :question_8, "一緒" %>
       <%= f.radio_button :question_8, 2 %><%= f.label :question_8, "自分だけ" %>
    </div>
-   
+
    <div>
-      <p>質問９：固定電話は...?</p>
-      <%= f.radio_button :question_9, 1 %><%= f.label :question_9, "ある" %>
-      <%= f.radio_button :question_9, 2 %><%= f.label :question_9, "ない" %>
+      <p>質問９：インターネット契約は...?</p>
+      <%= f.radio_button :question_9, 1 %><%= f.label :question_9, "してる" %>
+      <%= f.radio_button :question_9, 2 %><%= f.label :question_9, "してない" %>
    </div>
-   
+
    <div>
-      <p>質問１０：新聞とってる...?</p>
-      <%= f.radio_button :question_10, 1 %><%= f.label :question_10, "とってる" %>
-      <%= f.radio_button :question_10, 2 %><%= f.label :question_10, "とってない" %>
+      <p>質問１０：固定電話は...?</p>
+      <%= f.radio_button :question_10, 1 %><%= f.label :question_10, "ある" %>
+      <%= f.radio_button :question_10, 2 %><%= f.label :question_10, "ない" %>
    </div>
-   
+
+   <div>
+      <p>質問１１：新聞とってる...?</p>
+      <%= f.radio_button :question_11, 1 %><%= f.label :question_11, "とってる" %>
+      <%= f.radio_button :question_11, 2 %><%= f.label :question_11, "とってない" %>
+   </div>
+
    <%= f.hidden_field :user_id, :value => current_user.id %>
 
    <%= f.submit "内容を保存" %>
