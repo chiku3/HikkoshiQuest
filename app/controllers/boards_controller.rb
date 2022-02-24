@@ -1,7 +1,12 @@
 class BoardsController < ApplicationController
   def index
     @board = Board.new
-    @boards = Board.all
+    if params[:word].present?
+      @boards = Board.where('title LIKE ? OR body LIKE ?', "%#{params[:word]}%", "%#{params[:word]}%").order(created_at: "DESC").page(params[:page])
+      @word = params[:word]
+    else
+      @boards = Board.all.order(created_at: "DESC").page(params[:page]).per(20)
+    end
   end
 
   def create
@@ -13,8 +18,14 @@ class BoardsController < ApplicationController
   def show
     @board = Board.find(params[:id])
     @comment = Comment.new
-    @comments = Comment.where(board_id: @board.id)
+    if params[:word].present?
+      @comments = Comment.where('comment LIKE ?', "%#{params[:word]}%").order(created_at: "DESC").page(params[:page])
+      @word = params[:word]
+    else  
+      @comments = Comment.where(board_id: @board.id).order(created_at: "DESC").page(params[:page])
+    end
   end
+
 
   private
 

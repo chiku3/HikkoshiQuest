@@ -68,11 +68,11 @@
 <!--カレンダー-->
  <%= month_calendar events: @quest_tasks do |date, quest_tasks| %>
   <%= date.day %>
-
   <% quest_tasks.each do |quest_task| %>
       <%= quest_task.task.name %>
   <% end %>
-
 <% end %>
+
+<%= link_to "削除する", quest_path(@quest),method: :delete %>
 
 

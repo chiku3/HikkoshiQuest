@@ -1,5 +1,12 @@
 <h1>広場</h1>
 
+  <div class="search_form">
+    <%= form_with url: boards_path,method: :get, local: true do |f| %>
+      <%= f.text_field :word %>
+      <%= f.submit "検索", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
 <p>ここは引越しに関するアレやコレやの質問や便利情報などを<br />
    共有する掲示板です。<br/>
    同志と共に引越しクエストを乗り越えよう！</p>
@@ -20,6 +27,10 @@
 　<%= f.submit "投稿" %>
 <% end %>
 
+<% if @word.present? %>
+  <h3>検索結果 "<%= @word %>"</h3>
+<% end %>
+
 <% @boards.each do |board| %>
   <table>
     <thead>
@@ -34,9 +45,11 @@
       <tr>
         <td><%= board.created_at %></td>
         <td><%= link_to board.title, board_path(board) %></td>
-        <td><%= board.body %></td>
+        <td><%= board.body.truncate(50) %></td>
         <td><%= board.comments.count %></td>
       </tr>
     </tbody>
   </table>
 <% end %>
+
+<%= paginate @boards, theme: 'bootstrap-5' %>

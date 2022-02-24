@@ -3,19 +3,43 @@
 <%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
 <p><%= link_to @user.name, users_path %></p>
 
-<h2>進行中クエスト</h2>
+<h3>進行中クエスト</h3>
   <% if @quest. present? %>
     <%= link_to @quest.title, quest_path(@quest) %>
+  <% else %>
+    <%= link_to "クエストを登録する", new_quest_path %>
   <% end %>
-  
-<% if @quest. blank? %>
-  <%= link_to "クエストを登録する", new_quest_path %>
-<% end %>
 
 <% if @quests. present? %>  
-<h2>達成済クエスト</h2>
+<h3>達成済クエスト</h3>
   <% @quests.each do |quest| %>
     <%= link_to quest.title, quest_path(quest) %>
   <% end %>
 <% end %>
 
+<h3>あなたの掲示板</h3>
+<% if @boards.blank? %>
+  <p>ありません</p>
+<% else %>
+  <% @boards.each do |board| %>
+    <%= link_to board.title, board_path(board) %>
+    <p>コメント数(<%= board.comments.count %>)</p>
+  <% end %>
+<% end %>
+
+<%= paginate @boards, theme: 'bootstrap-5' %>
+
+<!--カレンダー-->
+  <% if @quest.blank? %>
+    <%= month_calendar do |date| %>
+      <%= date.day %>
+    <% end %>
+  <% else %>
+    <%= month_calendar events: @quest_tasks do |date, quest_tasks| %>
+      <%= date.day %>
+      <% quest_tasks.each do |quest_task| %>
+        <%= quest_task.task.name %>
+      <% end %>
+    <% end %>
+  <% end %>
+<!--カレンダー-->

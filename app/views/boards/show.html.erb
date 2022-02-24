@@ -1,5 +1,6 @@
 <h1><%= @board.title %></h1>
-
+<%= attachment_image_tag @board.user, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
+<h3><%= @board.user.name %></h3>
 <h3><%= @board.body %></h3>
 
 <%= form_with model: @comment, url: comments_path, local:true do |f| %>
@@ -14,14 +15,27 @@
 　<%= f.submit "コメントする" %>
 <% end %>
 
-<% @comments.each do |comment| %>
+  <div class="search_form">
+    <%= form_with url: board_path(@board), method: :get, local: true do |f| %>
+      <%= f.text_field :word %>
+      <%= f.submit "検索", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  
+<% if @word.present? %>
+  <h3>検索結果 "<%= @word %>"</h3>
+<% end %>
+
+<% @comments.each.with_index(1).reverse_each do |comment, index| %>
   <table>
     <tr>
-      <td>インデックス</td>
-      <td><%= attachment_image_tag comment.user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+      <td><%= "#{index}" %></td>
+      <td><%= attachment_image_tag comment.user, :image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg" %><br/>
           <%= comment.user.name %></td>
       <td><%= comment.comment %></td>
       <td><%= comment.created_at %></td>
     </tr>
   </table>
 <% end %>
+
+<%= paginate @comments, theme: 'bootstrap-5' %>

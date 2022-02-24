@@ -14,7 +14,9 @@
  *= require_tree .
  *= require_self
  */
- 
+ @import "bootstrap";
+
+// カレンダーのデザイン
  .simple-calendar {
  .day {}
  .wday-0 {color: #FF3300;}
@@ -31,6 +33,20 @@
  .prev-month {}
  .next-month { }
  .current-month {}
- .has-events {background-color: #FFFF99;}
+ .has-events {background-color: #FF99CC;}
 }
- 
+
+// ページネーションのデザイン
+.pagination>li>a {          
+  border: none;     
+  color: #696969;  
+}
+
+.pagination>.active>a {     
+  background: #93c9ff;     
+  border-radius: 15px;     
+}
+
+.pagination>li>a:hover {        
+  border-radius: 15px;   
+}

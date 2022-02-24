@@ -156,6 +156,12 @@ class QuestsController < ApplicationController
   def complete
     @user = current_user
   end
+  
+  def destroy
+    quest = Quest.find(params[:id])
+    quest.destroy
+    redirect_to my_page_path
+  end
 
   private
 

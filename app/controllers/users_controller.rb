@@ -3,6 +3,8 @@ class UsersController < ApplicationController
     @user = current_user
     @quest = Quest.find_by(is_clear: false,user_id: current_user)
     @quests = Quest.where(is_clear: true)
+    @boards = Board.where(user_id: current_user).page(params[:page]).per(5)
+    @quest_tasks = QuestTask.where(quest_id: @quest).where("task_id < ?", 5)
   end
 
   def show
