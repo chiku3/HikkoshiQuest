@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get 'quests/complete' => "quests#complete", as:"complete"
   resources :quests, only:[:new, :create, :show, :update, :destroy]
 
-  get "search" => "boards#search"
   resources :boards, only:[:index, :create, :show]
 
   resources :comments, only:[:create]
