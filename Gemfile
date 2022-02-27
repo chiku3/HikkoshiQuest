@@ -79,3 +79,4 @@ gem 'bootstrap5-kaminari-views', '~> 0.0.1'
 
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
+gem 'font-awesome-sass', '~> 5.13'

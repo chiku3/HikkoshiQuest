@@ -1,25 +1,37 @@
-<h1>アカウント編集</h1>
+<div class="container" >
 
-  <%= form_with model: @user, url: users_path, local: true do |f| %>
-
-  <div>
-    <%= f.label :image,"プロフィール画像" %>
-    <%= f.attachment_field :image %>
+  <div class ="row" >
+    <div class="mx-auto my-5">
+      <h1>ユーザー情報編集</h1>
+    </div>
   </div>
-
-  <div>
-    <%= f.label :name,"ニックネーム" %>
-    <%= f.text_field :name %>
+  
+  <div class ="row" >
+    <div class="mx-auto">    
+        <%= form_with model: @user, url: users_path, local: true do |f| %>
+      
+        <div>
+          <%= f.label :image,"プロフィール画像" %>
+          <%= f.attachment_field :image %>
+        </div>
+      
+        <div>
+          <%= f.label :name,"ニックネーム" %>
+          <%= f.text_field :name %>
+        </div>
+      
+        <div>
+          <%= f.label :email,"メースアドレス" %>
+          <%= f.email_field :email %>
+        </div>
+    </div>
   </div>
-
-  <div>
-    <%= f.label :email,"メースアドレス" %>
-    <%= f.email_field :email %>
+  
+  <div class ="row" >
+    <div class="mx-auto">      
+        <%= f.submit "登録する" %>
+        <%= link_to "退会する", users_path, method: :delete, data: { confirm: '本当に退会しますか？' } %>
+      <% end %>
+    </div>
   </div>
-
-  <%= f.submit "登録する" %>
-
-  <% end %>
-
-  <%= link_to "戻る", users_path %>
-  <%= link_to "退会する", users_path, method: :delete, data: { confirm: '本当に退会しますか？' } %>
+</div>

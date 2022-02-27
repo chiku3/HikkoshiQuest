@@ -1,18 +1,35 @@
-<h1><%= @quest_task.task.title %></h1>
+<div class="container">
 
-  <p>タスク詳細</p>
-  <% if @quest_task.quest.start_pref == @quest_task.quest.goal_pref and @quest_task.quest.start_city == @quest_task.quest.goal_city %>
-    <%= simple_format(@quest_task.task.body_b) %>    <!--同じ市区町村へ引っ越す場合-->
-  <% else %>
-    <%= simple_format(@quest_task.task.body_a) %>    <!--違う市区町村へ引っ越す場合-->
-  <% end %>
+  <div class="row">
+    <div class="mx-auto my-5">
+      <h1><%= @quest_task.task.title %></h1>
+    </div>
+  </div>
+      
+  <div class="row">
+    <div class="mx-auto">
+        <% if @quest_task.quest.start_pref == @quest_task.quest.goal_pref and @quest_task.quest.start_city == @quest_task.quest.goal_city %>
+          <%= simple_format(@quest_task.task.body_b) %>    <!--同じ市区町村へ引っ越す場合-->
+        <% else %>
+          <%= simple_format(@quest_task.task.body_a) %>    <!--違う市区町村へ引っ越す場合-->
+        <% end %>
+        
+        <%= attachment_image_tag @quest_task.task, :image, :fill, 100, 100, format:"jpeg" %>
+    </div>
+  </div>
   
-  <%= attachment_image_tag @quest_task.task, :image, :fill, 100, 100, format:"jpeg" %>
+  <div class="row">
+    <div class="mx-auto my-4">      
+        <%= form_with model: @quest_task,url: quest_task_path(@quest_task), local: true do |f| %>
+          <%= f.check_box :is_clear %>
+          <%= f.submit "タスク達成！" %>
+        <% end %>
+    </div>
+  </div>  
   
-  <p>ステータス</p>
-  <%= form_with model: @quest_task,url: quest_task_path(@quest_task), local: true do |f| %>
-    <%= f.check_box :is_clear %>
-    <%= f.submit "タスク達成！" %>
-  <% end %>
- 
- <%= link_to "戻る", quest_path(@quest) %>
+  <div class="row">
+    <div class="ml-auto">     
+       <%= link_to "戻る", quest_path(@quest) %>
+    </div>
+  </div>     
+</div>

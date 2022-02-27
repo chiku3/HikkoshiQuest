@@ -1,55 +1,79 @@
-<h1>広場</h1>
-
-  <div class="search_form">
-    <%= form_with url: boards_path,method: :get, local: true do |f| %>
-      <%= f.text_field :word %>
-      <%= f.submit "検索", class: "btn btn-primary" %>
-    <% end %>
+<div class="container" >
+ 
+  <div class="row">
+    <div class="mx-auto my-4">
+      <h1>広場</h1>
+    </div>
   </div>
-
-<p>ここは引越しに関するアレやコレやの質問や便利情報などを<br />
-   共有する掲示板です。<br/>
-   同志と共に引越しクエストを乗り越えよう！</p>
-
-<%= form_with model: @board, url: boards_path, local:true do |f| %>
-  <div>
-    <%= f.label :title,"タイトル" %>
-    <%= f.text_field :title %>
+      
+  <div class="row">
+    <div class="mx-auto">
+      <p>ここは引越しに関するアレやコレやの質問や便利情報などを<br />
+         共有する掲示板です。<br/>
+         同志と共に引越しクエストを乗り越えよう！</p>
+    </div>
   </div>
-
-  <div>
-    <%= f.label :body,"内容" %>
-    <%= f.text_area :body %>
-  </div>
-
-　<%= f.hidden_field :user_id, :value => current_user.id %>
-
-　<%= f.submit "投稿" %>
-<% end %>
-
-<% if @word.present? %>
-  <h3>検索結果 "<%= @word %>"</h3>
-<% end %>
-
-<% @boards.each do |board| %>
-  <table>
-    <thead>
-      <tr>
-        <th>投稿日時</th>
-        <th>タイトル</th>
-        <th>内容</th>
-        <th>コメント数</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= board.created_at %></td>
-        <td><%= link_to board.title, board_path(board) %></td>
-        <td><%= board.body.truncate(50) %></td>
-        <td><%= board.comments.count %></td>
-      </tr>
-    </tbody>
-  </table>
-<% end %>
-
-<%= paginate @boards, theme: 'bootstrap-5' %>
+      
+  <div class="row">
+    <div class="mx-auto my-4">    
+      <%= form_with model: @board, url: boards_path, local:true do |f| %>
+        <div>
+          <%= f.label :title,"タイトル" %>
+          <%= f.text_field :title %>
+        </div>
+      
+        <div>
+          <%= f.label :body,"内容" %>
+          <%= f.text_area :body %>
+        </div>
+      
+      　<%= f.hidden_field :user_id, :value => current_user.id %>
+      
+      　<%= f.submit "投稿" %>
+      <% end %>
+    </div>
+  </div>  
+          
+  <div class="row">
+    <div class="ml-auto">
+      <div class="search_form">
+            <%= form_with url: boards_path,method: :get, local: true do |f| %>
+              <%= f.text_field :word %>
+              <%= f.submit "検索", class: "btn btn-primary" %>
+            <% end %>
+      </div>    
+      <% if @word.present? %>
+        <p>検索結果 "<%= @word %>"</p>
+      <% end %>
+      
+    </div>
+  </div> 
+  
+  <div class="row">
+    <div class="mx-auto my-3">    
+        <table class="table">
+          <thead>
+            <tr>
+              <th>投稿日時</th>
+              <th>タイトル</th>
+              <th>内容</th>
+              <th>コメント数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @boards.each do |board| %>
+            <tr>
+              <td><%= l board.created_at %></td>
+              <td><%= link_to board.title, board_path(board) %></td>
+              <td><%= board.body.truncate(50) %></td>
+              <td><%= board.comments.count %></td>
+            </tr>
+          　<% end %>
+          </tbody>
+        </table>
+      
+      
+      <%= paginate @boards, theme: 'bootstrap-5' %>
+    </div>
+  </div>   
+</div>

@@ -1,41 +1,63 @@
-<h1><%= @board.title %></h1>
-<%= attachment_image_tag @board.user, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
-<h3><%= @board.user.name %></h3>
-<h3><%= @board.body %></h3>
+<div class="container" >
 
-<%= form_with model: @comment, url: comments_path, local:true do |f| %>
-  <div>
-    <%= f.label :comment,"コメント" %>
-    <%= f.text_area :comment %>
-  </div>
-
-　<%= f.hidden_field :user_id, :value => current_user.id %>
-　<%= f.hidden_field :board_id, :value => @board.id %>
-
-　<%= f.submit "コメントする" %>
-<% end %>
-
-  <div class="search_form">
-    <%= form_with url: board_path(@board), method: :get, local: true do |f| %>
-      <%= f.text_field :word %>
-      <%= f.submit "検索", class: "btn btn-primary" %>
-    <% end %>
+  <div class="row">
+    <div class="mx-auto my-4">
+      <h1><%= @board.title %></h1>
+      <%= attachment_image_tag @board.user, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
+      <h3><%= @board.user.name %></h3>
+      <h3><%= @board.body %></h3>
+    </div>
   </div>
   
-<% if @word.present? %>
-  <h3>検索結果 "<%= @word %>"</h3>
-<% end %>
-
-<% @comments.each.with_index(1).reverse_each do |comment, index| %>
-  <table>
-    <tr>
-      <td><%= "#{index}" %></td>
-      <td><%= attachment_image_tag comment.user, :image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg" %><br/>
-          <%= comment.user.name %></td>
-      <td><%= comment.comment %></td>
-      <td><%= comment.created_at %></td>
-    </tr>
-  </table>
-<% end %>
-
-<%= paginate @comments, theme: 'bootstrap-5' %>
+  <div class="row">
+    <div class="mx-auto my-4">
+      <%= form_with model: @comment, url: comments_path, local:true do |f| %>
+        <div>
+          <%= f.label :comment,"コメント" %>
+          <%= f.text_area :comment %>
+        </div>
+      
+      　<%= f.hidden_field :user_id, :value => current_user.id %>
+      　<%= f.hidden_field :board_id, :value => @board.id %>
+      
+      　<%= f.submit "コメントする" %>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="ml-auto">    
+        <div class="search_form">
+          <%= form_with url: board_path(@board), method: :get, local: true do |f| %>
+            <%= f.text_field :word %>
+            <%= f.submit "検索", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+        <% if @word.present? %>
+        <p>検索結果 "<%= @word %>"</p>
+      　<% end %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="mx-auto my-4">  
+      <% if @comments.blank? %>
+        <p>コメントはまだありません。</p>
+      <% else %>
+        <% @comments.each.with_index(1).reverse_each do |comment, index| %>
+          <table class="table">
+            <tr>
+              <td><%= "#{index}" %></td>
+              <td><%= attachment_image_tag comment.user, :image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg" %><br/>
+                  <%= comment.user.name %></td>
+              <td><%= comment.comment %></td>
+              <td><%= l comment.created_at %></td>
+            </tr>
+          </table>
+        <% end %>
+      <% end %>
+      
+      <%= paginate @comments, theme: 'bootstrap-5' %>
+    </div>
+  </div>    
+</div>

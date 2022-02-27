@@ -5,23 +5,32 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <script src="https://kit.fontawesome.com/3e46d09fe1.js" crossorigin="anonymous"></script>
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-      <%= link_to"logo",root_path %>
+      <nav class="navbar navbar-expend-md navbar-dark bg-dark border-bottom border-dark">
+      <div class="container">
+        
+        <%= link_to image_tag('logo.png'),root_path %>
       
-      <% if user_signed_in? %>
-          <li><%= link_to"マイページ", my_page_path %></li>
-          <li><%= link_to"広場", boards_path %></li>
-          <li><%= link_to"ヘルプ",help_path %></li>
-          <li><%= link_to"ログアウト", destroy_user_session_path, method: :delete %></li>
-      <% else %>
-          <li><%= link_to"新規登録", new_user_registration_path %></li>
-          <li><%= link_to"ログイン", new_user_session_path %></li>
-      <% end %>
+        <ul class="navbar-nav d-flex flex-row">
+        <% if user_signed_in? %>
+            <li><%= link_to"マイページ", my_page_path %></li>
+            <li><%= link_to"広場", boards_path %></li>
+            <li><%= link_to"ヘルプ",help_path %></li>
+            <li><%= link_to"ログアウト", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+            <li><%= link_to"新規登録", new_user_registration_path %></li>
+            <li><%= link_to"ヘルプ",help_path %></li>
+        <% end %>
+        </ul>
+        
+      </div>
+      </nav>
     </header>
     
     <%= yield %>

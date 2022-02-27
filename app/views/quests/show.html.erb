@@ -1,78 +1,93 @@
-<h1><%= @quest.title %></h1>
+<div class="container">
 
-  <table>
-    <tr>
-      <th>引越し予定日</th>
-      <td><%= @quest.due_day %></td>
-    </tr>
-    <tr>
-      <th>目的地</th>
-      <td><%= @quest.goal_pref %> <%= @quest.goal_city %></td>
-    </tr>
-    <tr>
-      <th>タスク一覧</th>
-      <td>
-        <p>〜すぐ始めよう！〜</p>
-          <% @quest_task_1.each do |quest_task| %>
-          <%= link_to quest_task.task.title, quest_task_path(quest_task) %>
-            <% if quest_task.is_clear == true %>
-              <p>達成！</p>
-            <% end %><br />
+  <div class="row">
+    <div class="mx-auto my-4">
+      <h1><%= @quest.title %></h1>
+    </div>
+    <%= link_to "削除する", quest_path(@quest),method: :delete %>
+  </div>
+
+  <div class="row">
+    <div class="mx-auto">
+      <h3>引越予定日：<%= l @quest.due_day, format: :short %></h3>
+      <h3>目的地：<%= @quest.goal_pref %> <%= @quest.goal_city %></h3>
+    </div>
+  </div>
+
+  <div class="row">
+    
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <h4>タスク一覧</h4>
+            <p>〜すぐ始めよう！〜</p>
+              <div class="ml-5">
+              <% @quest_task_1.each do |quest_task| %>
+              <%= link_to quest_task.task.title, quest_task_path(quest_task) %>
+                <% if quest_task.is_clear == true %>
+                  <span>達成！</span>
+                <% end %><br/>
+              <% end %>
+              </div>
+  
+            <p>〜３０日前頃から始めよう！〜</p>
+              <div class="ml-5">
+              <% @quest_task_2.each do |quest_task| %>
+              <%= link_to quest_task.task.title, quest_task_path(quest_task) %>
+                <% if quest_task.is_clear == true %>
+                  <span>達成！</span>
+                <% end %><br />
+              <% end %>
+              </div>
+  
+            <p>〜１４日前頃から始めよう！〜</p>
+              <div class="ml-5">
+              <% @quest_task_3.each do |quest_task| %>
+              <%= link_to quest_task.task.title, quest_task_path(quest_task) %>
+                <% if quest_task.is_clear == true %>
+                  <span>達成！</span>
+                <% end %><br />
+              <% end %>
+              </div>
+  
+            <p>〜当日〜</p>
+              <div class="ml-5">
+              <% @quest_task_4.each do |quest_task| %>
+              <%= link_to quest_task.task.title, quest_task_path(quest_task) %>
+                <% if quest_task.is_clear == true %>
+                  <span>達成！</span>
+                <% end %><br />
+              <% end %>
+              </div>
+  
+            <p>〜翌日から１４日後までにやろう！〜</p>
+              <div class="ml-5">
+              <% @quest_task_5.each do |quest_task| %>
+              <%= link_to quest_task.task.title, quest_task_path(quest_task) %>
+                <% if quest_task.is_clear == true %>
+                  <span>達成！</span>
+                <% end %><br />
+              <% end %>
+              </div>
+            
+      <% if @quest_task.count  == @quest_task.where(is_clear: true).count %>
+         <p>すべてのタスクを達成しましたか？</p>
+          <%= form_with model: @quest, url: quest_path(@quest), local: true do |f| %>
+            <%= f.check_box :is_clear %>
+            <%= f.submit "すべてのタスクを達成した！" %>
           <% end %>
-        
-        <p>〜３０日前頃から始めよう！〜</p>
-          <% @quest_task_2.each do |quest_task| %>
-          <%= link_to quest_task.task.title, quest_task_path(quest_task) %>
-            <% if quest_task.is_clear == true %>
-              <p>達成！</p>
-            <% end %><br />
-          <% end %>
-          
-        <p>〜１４日前頃から始めよう！〜</p>
-          <% @quest_task_3.each do |quest_task| %>
-          <%= link_to quest_task.task.title, quest_task_path(quest_task) %>
-            <% if quest_task.is_clear == true %>
-              <p>達成！</p>
-            <% end %><br />
-          <% end %> 
-          
-        <p>〜当日〜</p>
-          <% @quest_task_4.each do |quest_task| %>
-          <%= link_to quest_task.task.title, quest_task_path(quest_task) %>
-            <% if quest_task.is_clear == true %>
-              <p>達成！</p>
-            <% end %><br />
-          <% end %>
-          
-        <p>〜翌日から１４日後までにやろう！〜</p>
-          <% @quest_task_5.each do |quest_task| %>
-          <%= link_to quest_task.task.title, quest_task_path(quest_task) %>
-            <% if quest_task.is_clear == true %>
-              <p>達成！</p>
-            <% end %><br />
-          <% end %>
-      </td>
-    </tr>
-  </table>
+       <% end %>
 
+    </div>
 
-<% if @quest_task.count  == @quest_task.where(is_clear: true).count %>
-   <p>すべてのタスクを達成しましたか？</p>
-    <%= form_with model: @quest, url: quest_path(@quest), local: true do |f| %>
-      <%= f.check_box :is_clear %>
-      <%= f.submit "すべてのタスクを達成した！" %>
-    <% end %>
- <% end %>
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <!--カレンダー-->
+       <%= month_calendar events: @quest_tasks do |date, quest_tasks| %>
+        <%= date.day %>
+        <% quest_tasks.each do |quest_task| %>
+            <%= quest_task.task.name %>
+        <% end %>
+      <% end %>
 
+     </div>
 
-<!--カレンダー-->
- <%= month_calendar events: @quest_tasks do |date, quest_tasks| %>
-  <%= date.day %>
-  <% quest_tasks.each do |quest_task| %>
-      <%= quest_task.task.name %>
-  <% end %>
-<% end %>
-
-<%= link_to "削除する", quest_path(@quest),method: :delete %>
-
-
+  </div>
+</div>
