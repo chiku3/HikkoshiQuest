@@ -1,0 +1,14 @@
+ja:
+    activerecord:
+      models:
+        user:
+        quest: 'クエスト'
+        board: '掲示板'
+      attributes:
+        user:
+          name: 'ニックネーム'
+        quest:
+          due_day: '引越し予定日'
+        board:
+          title: 'タイトル'
+          body: '内容'

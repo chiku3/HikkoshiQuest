@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_23_062807) do
+ActiveRecord::Schema.define(version: 2022_03_06_034841) do
 
   create_table "boards", force: :cascade do |t|
     t.string "title"
@@ -30,7 +30,17 @@ ActiveRecord::Schema.define(version: 2022_02_23_062807) do
   create_table "comments", force: :cascade do |t|
     t.integer "board_id"
     t.integer "user_id"
-    t.text "comment"7
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "board_id"
+    t.integer "comment_id"
+    t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -52,7 +62,7 @@ ActiveRecord::Schema.define(version: 2022_02_23_062807) do
 
   create_table "quests", force: :cascade do |t|
     t.integer "user_id"
-    t.datetime "due_day"
+    t.date "due_day"
     t.boolean "is_clear", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -64,7 +74,6 @@ ActiveRecord::Schema.define(version: 2022_02_23_062807) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "title"
-    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "body_a"

@@ -1,9 +1,13 @@
 class CommentsController < ApplicationController
   def create
-    comment = Comment.new(comment_params)
-    comment.save
-    board = comment.board.id
-    redirect_to board_path(board)
+    @comment = Comment.new(comment_params)
+    @board = @comment.board
+    if @comment.save
+       @board.create_notification_comment!(current_user, @comment.id)
+       redirect_to board_path(@board)
+    else
+       redirect_to board_path(@board)
+    end
   end
 
   private

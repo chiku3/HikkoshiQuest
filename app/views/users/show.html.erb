@@ -1,14 +1,14 @@
 <div class="container" >
 
   <div class ="row" >
-    <div class="mx-auto my-5">
+    <div class="mx-auto mb-5">
       <h1>ユーザー情報</h1>
     </div>
   </div>
 
   <div class ="row" >
     <div class="mx-auto">
-        <%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+        <%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-circle border" %>
 
         <table class="table">
           <tr>
@@ -21,8 +21,8 @@
           </tr>
         </table>
 
-        <%= link_to "編集する", edit_users_path %>
-        <%= link_to "戻る", my_page_path %>
+        <%= link_to "編集する", edit_users_path, class:"btn btn-sm btn-primary" %>
+        <%= link_to "戻る", my_page_path, class:"btn btn-sm btn-success" %>
     </div>
   </div>
 </div>

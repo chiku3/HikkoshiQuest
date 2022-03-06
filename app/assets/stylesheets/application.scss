@@ -17,6 +17,16 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+ @import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
+ 
+//  全体ページ
+body{
+    font-family: 'RocknRoll One', sans-serif;
+}
+
+.jumbotron{
+    background-color: #ffffff;
+}
 
 // カレンダーのデザイン
  .simple-calendar {
@@ -39,16 +49,17 @@
 }
 
 // ページネーションのデザイン
-.pagination>li>a {          
-  border: none;     
-  color: #696969;  
+.pagination>li>a {
+  border: none;
+  color: #696969;
 }
 
-.pagination>.active>a {     
-  background: #93c9ff;     
-  border-radius: 15px;     
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 15px;
 }
 
-.pagination>li>a:hover {        
-  border-radius: 15px;   
+.pagination>li>a:hover {
+  border-radius: 15px;
 }
+

@@ -11,18 +11,22 @@ class BoardsController < ApplicationController
 
   def create
     @board = Board.new(board_params)
-    @board.save
-    redirect_to board_path(@board)
+    @boards = Board.all.order(created_at: "DESC").page(params[:page]).per(20)
+    if @board.save
+       redirect_to board_path(@board)
+    else
+       render :index
+    end
   end
 
   def show
     @board = Board.find(params[:id])
     @comment = Comment.new
     if params[:word].present?
-      @comments = Comment.where('comment LIKE ?', "%#{params[:word]}%").order(created_at: "DESC").page(params[:page])
+      @comments = Comment.where('comment LIKE ?', "%#{params[:word]}%").page(params[:page])
       @word = params[:word]
-    else  
-      @comments = Comment.where(board_id: @board.id).order(created_at: "DESC").page(params[:page])
+    else
+      @comments = Comment.where(board_id: @board.id).page(params[:page])
     end
   end
 

@@ -14,7 +14,6 @@
     title: row['title'],
     body_a: row["body_a"],
     body_b: row["body_b"],
-    image: row["image"]
   )
 end
 

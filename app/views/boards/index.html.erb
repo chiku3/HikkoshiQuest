@@ -1,79 +1,96 @@
 <div class="container" >
- 
+
+<!--検索フォーム-->
   <div class="row">
-    <div class="mx-auto my-4">
+    <div class="ml-auto mt-0">
+      <div class="search_form">
+        <%= form_with url: boards_path,method: :get, local: true do |f| %>
+          <%= f.text_field :word %>
+          <%= f.submit "検索", class: "btn btn-primary btn-sm" %>
+        <% end %>
+      </div>
+        <% if @word.present? %>
+          <p>検索結果 "<%= @word %>"</p>
+        <% end %>
+    </div>
+  </div>
+
+<!--見出し-->
+  <div class="row">
+    <div class="mx-auto mb-4">
       <h1>広場</h1>
     </div>
   </div>
-      
+
   <div class="row">
     <div class="mx-auto">
-      <p>ここは引越しに関するアレやコレやの質問や便利情報などを<br />
-         共有する掲示板です。<br/>
-         同志と共に引越しクエストを乗り越えよう！</p>
+      <p class="text-center">ここは引越しに関するアレやコレやの質問や便利情報などを</p>
+      <p class="text-center">共有する掲示板です。</p>
+      <p class="text-center">同志と共に引越しクエストを乗り越えよう！</p>
     </div>
   </div>
-      
+
+<!--エラーメッセージ-->
   <div class="row">
-    <div class="mx-auto my-4">    
+    <div class="mx-auto">
+    <% if @board.errors.any? %>
+      <ul>
+      <% @board.errors.full_messages.each do |message| %>
+        <li class="text-danger"><%= message %></li>
+      <% end %>
+      </ul>
+    <% end %>
+    </div>
+  </div>
+
+<!--投稿フォーム-->
+  <div class="row">
+    <div class="mx-auto mb-4">
       <%= form_with model: @board, url: boards_path, local:true do |f| %>
         <div>
-          <%= f.label :title,"タイトル" %>
-          <%= f.text_field :title %>
+          <%= f.label :title,"タイトル" %><br>
+          <%= f.text_field :title, size: "30" %>
         </div>
-      
+
         <div>
-          <%= f.label :body,"内容" %>
-          <%= f.text_area :body %>
+          <%= f.label :body,"内容" %><br>
+          <%= f.text_area :body, size: "60x5" %>
         </div>
-      
+
       　<%= f.hidden_field :user_id, :value => current_user.id %>
-      
-      　<%= f.submit "投稿" %>
+
+        <div class="text-center">
+      　<%= f.submit "投稿",class:"btn btn-sm btn-success" %>
+      　</div>
       <% end %>
     </div>
-  </div>  
-          
+  </div>
+
+<!--掲示板一覧-->
   <div class="row">
-    <div class="ml-auto">
-      <div class="search_form">
-            <%= form_with url: boards_path,method: :get, local: true do |f| %>
-              <%= f.text_field :word %>
-              <%= f.submit "検索", class: "btn btn-primary" %>
-            <% end %>
-      </div>    
-      <% if @word.present? %>
-        <p>検索結果 "<%= @word %>"</p>
-      <% end %>
-      
-    </div>
-  </div> 
-  
-  <div class="row">
-    <div class="mx-auto my-3">    
+    <div class="mx-auto my-3">
         <table class="table">
           <thead>
             <tr>
-              <th>投稿日時</th>
-              <th>タイトル</th>
-              <th>内容</th>
-              <th>コメント数</th>
+              <th scope="col" style="width: 20%">投稿日時</th>
+              <th scope="col" style="width: 20%">タイトル</th>
+              <th scope="col" style="width: 45%">内容</th>
+              <th scope="col" style="width: 15%">コメント数</th>
             </tr>
           </thead>
           <tbody>
             <% @boards.each do |board| %>
             <tr>
               <td><%= l board.created_at %></td>
-              <td><%= link_to board.title, board_path(board) %></td>
+              <td><%= link_to board.title.truncate(25), board_path(board) %></td>
               <td><%= board.body.truncate(50) %></td>
               <td><%= board.comments.count %></td>
             </tr>
           　<% end %>
           </tbody>
         </table>
-      
-      
+
       <%= paginate @boards, theme: 'bootstrap-5' %>
     </div>
-  </div>   
+  </div>
 </div>

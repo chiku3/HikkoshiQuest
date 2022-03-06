@@ -1,100 +1,138 @@
 <div class="container" >
- 
+
+ <!--見出し-->
   <div class ="row" >
-    <div class="mx-auto my-3">
-      <h3><%= current_user.name %>さん、ようこそ転勤クエストへ！</h3>
+    <div class="mx-auto mb-5">
+      <h2><%= current_user.name %>さん、ようこそ転勤クエストへ！</h2>
     </div>
   </div>
-      
+
    <div class ="row" >
-     <div class="mx-auto">
+     <div class="mx-auto text-center">
       <p>おめでとう！<br />
          あなたは今、新たな生活への第一歩を踏み出した。<br />
          引越しの準備には、簡単なものから厄介なものまである。<br />
          下記の質問に答えたら、転勤クエストの始まりだ！</p>
      </div>
    </div>
-      
+
    <div class ="row" >
-     <div class="mx-auto my-2">
+     <div class="mx-auto mt-4">
       <h4>以下の質問に答えてください。</h4>
      </div>
    </div>
-      
+
+<!--エラーメッセージ-->
+  <div class="row">
+    <div class="mx-auto">
+    <% if @quest.errors.any? %>
+      <ul>
+      <% @quest.errors.full_messages.each do |message| %>
+        <li class="text-danger"><%= message %></li>
+      <% end %>
+      </ul>
+    <% end %>
+    </div>
+  </div>
+
+<!--質問一覧-->
   <div class ="row" >
      <div class="mx-auto my-4">
          <%= form_with model: @quest, url: quests_path, local:true do |f| %>
          <div>
-            <p>質問１:引っ越し予定日は...？</p>
-            <%= f.date_field :due_day %>
+            <p>質問１:引越し予定日は...？</p>
+            <%= f.date_field :due_day,class:"ml-5" %>
          </div>
-      
+
          <div>
             <p>質問２:現在住んでいるところは...？</p>
+            <div class="ml-5">
             <%= f.select :start_pref, options_for_select(Prefecture.all.map{ |pref| [pref.name] }) %>
             <%= f.select :start_city, options_for_select(City.all.map{ |city| [city.name] }) %>
+            </div>
          </div>
-      
+
          <div>
             <p>質問３:引っ越し先は...？</p>
+            <div class="ml-5">
             <%= f.select :goal_pref, options_for_select(Prefecture.all.map{ |pref| [pref.name] }) %>
             <%= f.select :goal_city, options_for_select(City.all.map{ |city| [city.name] }) %>
+            </div>
          </div>
-      
+
          <div>
             <p>質問４：住んでる家は...?</p>
-            <%= f.radio_button :question_4, 1 %><%= f.label :question_4, "賃貸" %>
-            <%= f.radio_button :question_4, 2 %><%= f.label :question_4, "実家" %>
+            <div class="ml-5">
+            <%= f.radio_button :question_4, 1, checked: true %><%= f.label :question_4_1, "賃貸" %><br>
+            <%= f.radio_button :question_4, 2 %><%= f.label :question_4_2, "実家" %>
+            </div>
          </div>
-      
+
          <div>
             <p>質問５：免許は...?</p>
-            <%= f.radio_button :question_5, 1 %><%= f.label :question_5, "持ってる" %>
-            <%= f.radio_button :question_5, 2 %><%= f.label :question_5, "持ってない" %>
+            <div class="ml-5">
+            <%= f.radio_button :question_5, 1, checked: true %><%= f.label :question_5_1, "持ってる" %><br>
+            <%= f.radio_button :question_5, 2 %><%= f.label :question_5_2, "持ってない" %>
+            </div>
          </div>
-      
+
          <div>
             <p>質問６：車は...?</p>
-            <%= f.radio_button :question_6, 1 %><%= f.label :question_6, "持ってる" %>
-            <%= f.radio_button :question_6, 2 %><%= f.label :question_6, "持ってない" %>
+            <div class="ml-5">
+            <%= f.radio_button :question_6, 1, checked: true %><%= f.label :question_6_1, "持ってる" %><br>
+            <%= f.radio_button :question_6, 2 %><%= f.label :question_6_2, "持ってない" %>
+            </div>
          </div>
-      
+
          <div>
             <p>質問7：バイクは...?</p>
-            <%= f.radio_button :question_7, 1 %><%= f.label :question_7, "持ってる" %>
-            <%= f.radio_button :question_7, 2 %><%= f.label :question_7, "持ってない" %>
+            <div class="ml-5">
+            <%= f.radio_button :question_7, 1, checked: true %><%= f.label :question_7_1, "持ってる" %><br>
+            <%= f.radio_button :question_7, 2 %><%= f.label :question_7_2, "持ってない" %>
+            </div>
          </div>
-      
+
          <div>
             <p>質問８：子供いる?一緒に引っ越す...?</p>
-            <%= f.radio_button :question_8, 1 %><%= f.label :question_8, "一緒" %>
-            <%= f.radio_button :question_8, 2 %><%= f.label :question_8, "自分だけ" %>
+            <div class="ml-5">
+            <%= f.radio_button :question_8, 1, checked: true %><%= f.label :question_8_1, "一緒" %><br>
+            <%= f.radio_button :question_8, 2 %><%= f.label :question_8_2, "自分だけ" %>
+            </div>
          </div>
-      
+
          <div>
             <p>質問９：インターネット契約は...?</p>
-            <%= f.radio_button :question_9, 1 %><%= f.label :question_9, "してる" %>
-            <%= f.radio_button :question_9, 2 %><%= f.label :question_9, "してない" %>
+            <div class="ml-5">
+            <%= f.radio_button :question_9, 1, checked: true %><%= f.label :question_9_1, "してる" %><br>
+            <%= f.radio_button :question_9, 2 %><%= f.label :question_9_2, "してない" %>
+            </div>
          </div>
-      
+
          <div>
             <p>質問１０：固定電話は...?</p>
-            <%= f.radio_button :question_10, 1 %><%= f.label :question_10, "ある" %>
-            <%= f.radio_button :question_10, 2 %><%= f.label :question_10, "ない" %>
+            <div class="ml-5">
+            <%= f.radio_button :question_10, 1, checked: true %><%= f.label :question_10_1, "ある" %><br>
+            <%= f.radio_button :question_10, 2 %><%= f.label :question_10_2, "ない" %>
+            </div>
          </div>
-      
+
          <div>
             <p>質問１１：新聞とってる...?</p>
-            <%= f.radio_button :question_11, 1 %><%= f.label :question_11, "とってる" %>
-            <%= f.radio_button :question_11, 2 %><%= f.label :question_11, "とってない" %>
+            <div class="ml-5">
+            <%= f.radio_button :question_11, 1, checked: true %><%= f.label :question_11_1, "とってる" %><br>
+            <%= f.radio_button :question_11, 2 %><%= f.label :question_11_2, "とってない" %>
+            </div>
          </div>
-      
+
          <%= f.hidden_field :user_id, :value => current_user.id %>
-      
-         <%= f.submit "内容を保存" %>
+         <%= f.hidden_field :is_clear, :value => 0 %>
+
+         <div class="text-center">
+         <%= f.submit "内容を保存", data: { confirm: 'この内容で保存しますか？'}, class:"btn btn-sm btn-success mt-4" %>
+         </div>
          <% end %>
      </div>
    </div>
-         
+
 
 </div>

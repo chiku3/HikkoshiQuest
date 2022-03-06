@@ -1,7 +1,7 @@
 <div class="container" >
 
   <div class ="row" >
-    <div class="mx-auto my-5">
+    <div class="mx-auto mb-5">
       <h1>ユーザー情報編集</h1>
     </div>
   </div>
@@ -29,9 +29,10 @@
   
   <div class ="row" >
     <div class="mx-auto">      
-        <%= f.submit "登録する" %>
-        <%= link_to "退会する", users_path, method: :delete, data: { confirm: '本当に退会しますか？' } %>
-      <% end %>
+        <%= f.submit "登録する", class:"btn btn-sm btn-success" %>
+        <%= link_to "退会する", users_path, method: :delete, data: { confirm: '本当に退会しますか？' }, class:"btn btn-sm btn-danger" %>
     </div>
   </div>
+  <% end %>
+  
 </div>

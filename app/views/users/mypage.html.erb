@@ -1,61 +1,84 @@
 <div class="container" >
- 
+  
+<div class="text-danger">
+<%= notice %>
+</div>
+
+<!--見出し-->
   <div class ="row" >
-    <div class="mx-auto my-3">
-      <h1><%= @user.name %>の冒険</h1>
+    <div class="mx-auto mb-5">
+      <h1><%= link_to users_path do %>
+          <%= attachment_image_tag @user, :image, :fill, 90, 90, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-circle border" %>
+          <% end %>
+          <%= @user.name %>の冒険</h1>
     </div>
   </div>
-      
+
+<!--左サイド-->
   <div class ="row" >
     <div class="col-lg-5 col-md-5 col-sm-12">
-    
-      <%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-      <p><%= link_to @user.name, users_path %></p>
-      
-      <h3>進行中クエスト</h3>
-        <% if @quest. present? %>
-          <%= link_to @quest.title, quest_path(@quest) %>
-        <% else %>
-          <%= link_to "クエストを登録する", new_quest_path %>
-        <% end %>
-      
-      <% if @quests. present? %>  
-      <h3>達成済クエスト</h3>
-        <% @quests.each do |quest| %>
-          <%= link_to quest.title, quest_path(quest) %>
-        <% end %>
-      <% end %>
-      
-      <h3>あなたの掲示板</h3>
-      <% if @boards.blank? %>
-        <p>ありません</p>
-      <% else %>
-        <% @boards.each do |board| %>
-          <%= link_to board.title, board_path(board) %>
-          <p>コメント数(<%= board.comments.count %>)</p>
-        <% end %>
-      <% end %>
-      
-      <%= paginate @boards, theme: 'bootstrap-5' %>
-    
-    </div>
-  
-    <div class="col-lg-7 col-md-7 col-sm-12">
-      <!--カレンダー-->
-        <% if @quest.blank? %>
-          <%= month_calendar do |date| %>
-            <%= date.day %>
+
+<!--進行中クエスト-->
+      <div class="mt-4">
+        <h3>進行中クエスト</h3>
+         <div class="ml-4">
+          <% if @quest. present? %>
+            <%= link_to @quest.date_title, quest_path(@quest), class:"text-dark" %>
+          <% else %>
+            <%= link_to "クエストを登録する", new_quest_path,class:"text-dark" %>
           <% end %>
-        <% else %>
-          <%= month_calendar events: @quest_tasks do |date, quest_tasks| %>
-            <%= date.day %>
-            <% quest_tasks.each do |quest_task| %>
-              <%= quest_task.task.name %>
+         </div>
+      </div>
+
+<!--過去クエスト-->
+      <div class="mt-4">
+        <h3>達成済クエスト</h3>
+          <% if @quests. blank? %>
+            <p class="ml-4">ありません</p>
+          <% else %>
+            <div class="ml-4">
+            <% @quests.each do |quest| %>
+              <%= link_to quest.date_title, complete_quest_path(quest), class:"text-dark" %><br>
             <% end %>
+            </div>
+          <% end %>
+      </div>
+
+<!--ユーザーの掲示板-->
+      <div class="mt-4">
+        <h3>あなたの掲示板</h3>
+          <% if @boards.blank? %>
+            <p class="ml-4">ありません</p>
+          <% else %>
+           <div class="ml-4">
+            <% @boards.each do |board| %>
+              <%= link_to board.title.truncate(20), board_path(board), class:"text-dark" %>
+              <span>(<%= board.comments.count %>)</span><br/>
+            <% end %>
+           </div>
+          <% end %>
+      </div>
+
+      <%= paginate @boards, theme: 'bootstrap-5' %>
+
+    </div>
+
+<!--カレンダー-->
+    <div class="col-lg-7 col-md-7 col-sm-12">
+
+      <% if @quest.blank? %>
+        <%= month_calendar do |date| %>
+          <%= date.day %>
+        <% end %>
+      <% else %>
+        <%= month_calendar events: @quest_tasks do |date, quest_tasks| %>
+          <%= date.day %>
+          <% quest_tasks.each do |quest_task| %>
+            <%= quest_task.task.name %>
           <% end %>
         <% end %>
-      <!--カレンダー-->
-      
+      <% end %>
+
     </div>
   </div>
 </div>

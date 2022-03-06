@@ -9,9 +9,10 @@ class QuestsController < ApplicationController
     @quest = Quest.new(quest_params)
     @quests = Quest.find_by(user_id: current_user,is_clear: false)
     if
-    #   @quests.present?
-    #   redirect_to my_page_path
-    # elsif
+      @quests.present?
+      flash[:notice] = "現在進行中のクエストがあるため保存できませんでした。"
+      redirect_to my_page_path
+    elsif
       @quest.save
 
       # カレンダー表示用タスクを保存
@@ -42,13 +43,23 @@ class QuestsController < ApplicationController
          quest_task.save
 
       # 必須のタスクを保存
-      task_0 = Task.where(id: [6,9,11,13,14,15,21,24,27,28,29,30,31,32,33,34,35,36,44,45])
-        task_0.each do |task|
-          quest_task = QuestTask.new
-            quest_task.quest_id  = @quest.id
-            quest_task.task_id = task.id
-          quest_task.save
-        end
+      if  @quest.start_pref == @quest.goal_pref and @quest.start_city == @quest.goal_city
+        task_0 = Task.where(id: [6,9,11,21,24,27,28,29,31,32,33,34,35,36,44,45])  # 同市区町村の場合
+          task_0.each do |task|
+            quest_task = QuestTask.new
+              quest_task.quest_id  = @quest.id
+              quest_task.task_id = task.id
+            quest_task.save
+          end
+      else
+        task_0 = Task.where(id: [6,9,11,13,14,15,21,24,27,28,30,31,32,33,34,35,36,44,45])  # 異なる市区町村の場合
+          task_0.each do |task|
+            quest_task = QuestTask.new
+              quest_task.quest_id  = @quest.id
+              quest_task.task_id = task.id
+            quest_task.save
+          end
+      end
 
         if params[:quest][:question_4] == "1"      # 質問４で「賃貸」を選んだ場合に保存
           task_4 = Task.where(id: [7,16,17,18,25,26])
@@ -130,7 +141,9 @@ class QuestsController < ApplicationController
           end
         end
 
+      flash[:notice] = "クエストが発生しました！"
       redirect_to quest_path(@quest)
+      
     else
       render :new
     end
@@ -150,13 +163,24 @@ class QuestsController < ApplicationController
   def update
     quest = Quest.find(params[:id])
     quest.update(quest_params)
-    redirect_to complete_path
+    redirect_to clear_path
+  end
+
+  def clear
+    @user = current_user
   end
 
   def complete
-    @user = current_user
+    @quest = Quest.find(params[:id])
+    @quest_task = QuestTask.where(quest_id: @quest.id).where("task_id > ?", 5)     #すべての実行タスク
+    @quest_tasks = QuestTask.where(quest_id: @quest.id).where("task_id < ?", 6)    #カレンダー表示用
+    @quest_task_1 = QuestTask.where(quest_id: @quest.id).where(task_id: [6..10]).order(:task_id)    #すぐやろうタスク
+    @quest_task_2 = QuestTask.where(quest_id: @quest.id).where(task_id: [11,12]).order(:task_id)    #引越し３０日前頃にやろうタスク
+    @quest_task_3 = QuestTask.where(quest_id: @quest.id).where(task_id: [13..24]).order(:task_id)  #引越し１４日前頃にやろうタスク
+    @quest_task_4 = QuestTask.where(quest_id: @quest.id).where(task_id: [25..28]).order(:task_id)    #引越し当日にやろうタスク
+    @quest_task_5 = QuestTask.where(quest_id: @quest.id).where(task_id: [29..45]).order(:task_id)   #引越し後１４日以内にやろうタスク
   end
-  
+
   def destroy
     quest = Quest.find(params[:id])
     quest.destroy

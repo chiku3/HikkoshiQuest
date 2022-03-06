@@ -1,63 +1,78 @@
 <div class="container" >
 
+<!--検索フォーム-->
   <div class="row">
-    <div class="mx-auto my-4">
-      <h1><%= @board.title %></h1>
-      <%= attachment_image_tag @board.user, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
-      <h3><%= @board.user.name %></h3>
-      <h3><%= @board.body %></h3>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="mx-auto my-4">
-      <%= form_with model: @comment, url: comments_path, local:true do |f| %>
-        <div>
-          <%= f.label :comment,"コメント" %>
-          <%= f.text_area :comment %>
-        </div>
-      
-      　<%= f.hidden_field :user_id, :value => current_user.id %>
-      　<%= f.hidden_field :board_id, :value => @board.id %>
-      
-      　<%= f.submit "コメントする" %>
-      <% end %>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="ml-auto">    
+    <div class="ml-auto">
         <div class="search_form">
           <%= form_with url: board_path(@board), method: :get, local: true do |f| %>
             <%= f.text_field :word %>
             <%= f.submit "検索", class: "btn btn-primary" %>
           <% end %>
         </div>
-        <% if @word.present? %>
-        <p>検索結果 "<%= @word %>"</p>
-      　<% end %>
+          <% if @word.present? %>
+          <p>検索結果 "<%= @word %>"</p>
+        　<% end %>
     </div>
   </div>
-  
+
+<!--見出し-->
   <div class="row">
-    <div class="mx-auto my-4">  
+    <div class="mx-auto mb-5">
+      <h1><%= @board.title %></h1>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+      <div class="flex-column">
+        <%= attachment_image_tag @board.user, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-circle border" %>
+        <h5><%= @board.user.name %></h5>
+      </div>
+        <h3><%= @board.body %></h3>
+  </div>
+
+<!--コメント投稿フォーム-->
+  <div class="row">
+    <div class="mx-auto my-4">
+      <%= form_with model: @comment, url: comments_path, local:true do |f| %>
+        <div>
+          <%= f.label :comment,"コメント" %><br>
+          <%= f.text_area :comment, size: "60x5" %>
+        </div>
+
+      　<%= f.hidden_field :user_id, :value => current_user.id %>
+      　<%= f.hidden_field :board_id, :value => @board.id %>
+
+        <div class="text-center">
+      　<%= f.submit "コメントする", class:"btn btn-sm btn-success" %>
+      　</div>
+
+      <% end %>
+    </div>
+  </div>
+
+<!--コメント一覧-->
+  <div class="row">
+    <div class="mx-auto my-4">
       <% if @comments.blank? %>
         <p>コメントはまだありません。</p>
       <% else %>
         <% @comments.each.with_index(1).reverse_each do |comment, index| %>
           <table class="table">
-            <tr>
-              <td><%= "#{index}" %></td>
-              <td><%= attachment_image_tag comment.user, :image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg" %><br/>
-                  <%= comment.user.name %></td>
-              <td><%= comment.comment %></td>
-              <td><%= l comment.created_at %></td>
-            </tr>
+            <tbody>
+              <tr>
+                <td scope="col" style="width: 10%"><%= "#{index}" %></td>
+                <td scope="col" style="width: 15%">
+                    <%= attachment_image_tag comment.user, :image, :fill, 20, 20, format: 'jpeg', fallback: "no_image.jpg" %>
+                    <%= comment.user.name %></td>
+                <td scope="col" style="width: 60%"><%= comment.comment.truncate(50) %></td>
+                <td scope="col" style="width: 15%"><%= l comment.created_at %></td>
+              </tr>
+            </tbody>
           </table>
         <% end %>
       <% end %>
-      
+
       <%= paginate @comments, theme: 'bootstrap-5' %>
     </div>
-  </div>    
+  </div>
 </div>

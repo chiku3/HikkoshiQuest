@@ -1,0 +1,35 @@
+<div class="container">
+
+<% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+  <% if notifications.exists? %>
+  
+  <% @notifications.each do |notif| %>
+  
+  <div class="col-md-6 mx-auto">
+    <div class="form-inline">
+      <span>
+          <strong><%= notif.visitor.name %></strong><%= 'さんが' %>
+      </span>
+  
+        <% if notif.board.user_id == current_user.id %>
+          <%= link_to "あなたの投稿", board_path(notif.board), style: "font-weight: bold;" %>
+        <% else %>
+          <span>
+            <strong><%= notif.board.user.name %> + 'さんの投稿'</strong>
+          </span>
+        <% end %>
+          <%= "にコメントしました"%>
+
+      <div class="small text-muted text-right">
+        <%= time_ago_in_words(notif.created_at).upcase %>
+      </div>
+    
+    <% end %>
+    </div>
+  </div>
+
+  <% else %>
+    <p>通知はありません</p>
+  <% end %>
+
+</div>

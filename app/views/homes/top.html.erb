@@ -1,41 +1,44 @@
 <div class="container" >
-   
+
  <div class ="row" >
-   <div class="mx-auto my-5">
-      <h1><%= image_tag 'logo.png', :size =>'400x200' %></h1>
+   <div class="mx-auto mb-5">
+      <h1>引越クエスト</h1>
    </div>
- </div>   
- 
- <div class ="row" > 
-   <div class="mx-auto">
-      <p>ここへ訪れたあなたは今、新たな生活への第一歩を踏み出そうとしていることだろう。<br />
-         だが、あらゆる手続きがあなたを待ち受けている！<br />
-         ここは、そんなあなたをサポートするタスク管理サイトである。<br />
-         さあ、冒険者として共に手続きを倒し、気持ちの良い新生活を手に入れよう！</p>
-   </div>   
  </div>
- 
-   <div class ="row" > 
+
+ <div class ="row mb-4" >
+   <div class="mx-auto">
+      <p class="text-center">ここへ訪れたあなたは今、新たな生活への第一歩を踏み出そうとしていることだろう。</p>
+      <p class="text-center">だが、あらゆる手続きがあなたを待ち受けている！</p>
+      <p class="text-center">ここは、そんなあなたをサポートするタスク管理サイトである。</p>
+      <p>さあ、冒険者として共に手続きを倒し、気持ちの良い新生活を手に入れよう！</p>
+   </div>
+ </div>
+
+   <div class ="row" >
     <div class="mx-auto">
-       
-      <h4>ユーザーログイン</h4> 
+
+      <h4 class="font-weight-bold">ユーザーログイン</h4>
+
  　　 　<%= form_with model: @user, url: user_session_path, local: true do |f| %>
          <div class="field">
-          <%= f.label :email %><br />
+          <%= f.label :email,"メールアドレス" %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
          </div>
-      
+
          <div class="field">
-          <%= f.label :password %><br />
+          <%= f.label :password,"パスワード" %><br />
           <%= f.password_field :password, autocomplete: "current-password" %>
          </div>
-        
-         <%= f.submit "ログイン" %>
-        
-         <p>ユーザー登録がまだの方は<%= link_to"こちら",new_user_registration_path %></p>
-        
+         
+         <div class="text-center">
+         <%= f.submit "ログイン" ,class:"btn btn-success btn-sm my-3 "%>
+         </div>
+
+         <p>ユーザー登録がまだの方は<%= link_to "こちら", new_user_registration_path %></p>
+
       <% end %>
-     </div>   
+     </div>
    </div>
- 
+
 </div>
