@@ -1,6 +1,6 @@
 class HomesController < ApplicationController
   def top
-    @user = User.find_by_name(params[:name])
+    @user = User.new
   end
 
   def help
