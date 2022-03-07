@@ -14,12 +14,14 @@
     </div>
   </div>
 
-<!--左サイド-->
+<!--左サイド空欄-->
   <div class ="row" >
     <div class="col-lg-5 col-md-5 col-sm-12">
 
+
+    <div class="border rounded-lg bg-white px-3">
 <!--進行中クエスト-->
-      <div class="mt-4">
+      <div class="mt-2">
         <h3>進行中クエスト</h3>
          <div class="ml-4">
           <% if @quest. present? %>
@@ -29,10 +31,10 @@
           <% end %>
          </div>
       </div>
-
+      
 <!--過去クエスト-->
       <div class="mt-4">
-        <h3>達成済クエスト</h3>
+        <h3 class="border-top">達成済クエスト</h3>
           <% if @quests. blank? %>
             <p class="ml-4">ありません</p>
           <% else %>
@@ -46,7 +48,7 @@
 
 <!--ユーザーの掲示板-->
       <div class="mt-4">
-        <h3>あなたの掲示板</h3>
+        <h3 class="border-top">あなたの掲示板</h3>
           <% if @boards.blank? %>
             <p class="ml-4">ありません</p>
           <% else %>
@@ -62,6 +64,8 @@
       <%= paginate @boards, theme: 'bootstrap-5' %>
 
     </div>
+  
+  </div>
 
 <!--カレンダー-->
     <div class="col-lg-7 col-md-7 col-sm-12">

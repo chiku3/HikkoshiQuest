@@ -24,10 +24,10 @@
 
   <div class="row justify-content-center">
       <div class="flex-column">
-        <%= attachment_image_tag @board.user, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-circle border" %>
+        <%= attachment_image_tag @board.user, :image,format: 'jpeg', fallback: "no_image.jpg", size: "80x80" , class: "rounded-circle border" %>
         <h5><%= @board.user.name %></h5>
       </div>
-        <h3><%= @board.body %></h3>
+        <h3 class="rouded-lg bg-white p-3 ml-3"><%= @board.body %></h3>
   </div>
 
 <!--コメント投稿フォーム-->
@@ -52,7 +52,7 @@
 
 <!--コメント一覧-->
   <div class="row">
-    <div class="mx-auto my-4">
+    <div class="mx-auto my-4 border rounded-lg bg-white px-3">
       <% if @comments.blank? %>
         <p>コメントはまだありません。</p>
       <% else %>
@@ -62,7 +62,7 @@
               <tr>
                 <td scope="col" style="width: 10%"><%= "#{index}" %></td>
                 <td scope="col" style="width: 15%">
-                    <%= attachment_image_tag comment.user, :image, :fill, 20, 20, format: 'jpeg', fallback: "no_image.jpg" %>
+                    <%= attachment_image_tag comment.user, :image, format: 'jpeg', fallback: "no_image.jpg",size: "40x40", class: "rounded-circle border" %>
                     <%= comment.user.name %></td>
                 <td scope="col" style="width: 60%"><%= comment.comment.truncate(50) %></td>
                 <td scope="col" style="width: 15%"><%= l comment.created_at %></td>

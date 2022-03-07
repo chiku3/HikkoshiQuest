@@ -8,7 +8,7 @@
   </div>
 
    <div class ="row" >
-     <div class="mx-auto text-center">
+     <div class="mx-auto text-center rouded-lg bg-white px-3">
       <p>おめでとう！<br />
          あなたは今、新たな生活への第一歩を踏み出した。<br />
          引越しの準備には、簡単なものから厄介なものまである。<br />
@@ -26,18 +26,20 @@
   <div class="row">
     <div class="mx-auto">
     <% if @quest.errors.any? %>
+    <div class="border border-danger px-2 bg-white">
       <ul>
       <% @quest.errors.full_messages.each do |message| %>
         <li class="text-danger"><%= message %></li>
       <% end %>
       </ul>
+    </div>
     <% end %>
     </div>
   </div>
 
 <!--質問一覧-->
   <div class ="row" >
-     <div class="mx-auto my-4">
+     <div class="mx-auto my-4 border rounded-lg bg-white px-5 py-2">
          <%= form_with model: @quest, url: quests_path, local:true do |f| %>
          <div>
             <p>質問１:引越し予定日は...？</p>
@@ -45,7 +47,7 @@
          </div>
 
          <div>
-            <p>質問２:現在住んでいるところは...？</p>
+            <p class="border-top mt-2">質問２:現在住んでいるところは...？</p>
             <div class="ml-5">
             <%= f.select :start_pref, options_for_select(Prefecture.all.map{ |pref| [pref.name] }) %>
             <%= f.select :start_city, options_for_select(City.all.map{ |city| [city.name] }) %>
@@ -53,7 +55,7 @@
          </div>
 
          <div>
-            <p>質問３:引っ越し先は...？</p>
+            <p class="border-top mt-2">質問３:引っ越し先は...？</p>
             <div class="ml-5">
             <%= f.select :goal_pref, options_for_select(Prefecture.all.map{ |pref| [pref.name] }) %>
             <%= f.select :goal_city, options_for_select(City.all.map{ |city| [city.name] }) %>
@@ -61,7 +63,7 @@
          </div>
 
          <div>
-            <p>質問４：住んでる家は...?</p>
+            <p class="border-top mt-2">質問４：住んでる家は...?</p>
             <div class="ml-5">
             <%= f.radio_button :question_4, 1, checked: true %><%= f.label :question_4_1, "賃貸" %><br>
             <%= f.radio_button :question_4, 2 %><%= f.label :question_4_2, "実家" %>
@@ -69,7 +71,7 @@
          </div>
 
          <div>
-            <p>質問５：免許は...?</p>
+            <p class="border-top mt-2">質問５：免許は...?</p>
             <div class="ml-5">
             <%= f.radio_button :question_5, 1, checked: true %><%= f.label :question_5_1, "持ってる" %><br>
             <%= f.radio_button :question_5, 2 %><%= f.label :question_5_2, "持ってない" %>
@@ -77,7 +79,7 @@
          </div>
 
          <div>
-            <p>質問６：車は...?</p>
+            <p class="border-top mt-2">質問６：車は...?</p>
             <div class="ml-5">
             <%= f.radio_button :question_6, 1, checked: true %><%= f.label :question_6_1, "持ってる" %><br>
             <%= f.radio_button :question_6, 2 %><%= f.label :question_6_2, "持ってない" %>
@@ -85,7 +87,7 @@
          </div>
 
          <div>
-            <p>質問7：バイクは...?</p>
+            <p class="border-top mt-2">質問7：バイクは...?</p>
             <div class="ml-5">
             <%= f.radio_button :question_7, 1, checked: true %><%= f.label :question_7_1, "持ってる" %><br>
             <%= f.radio_button :question_7, 2 %><%= f.label :question_7_2, "持ってない" %>
@@ -93,7 +95,7 @@
          </div>
 
          <div>
-            <p>質問８：子供いる?一緒に引っ越す...?</p>
+            <p class="border-top mt-2">質問８：子供いる?一緒に引っ越す...?</p>
             <div class="ml-5">
             <%= f.radio_button :question_8, 1, checked: true %><%= f.label :question_8_1, "一緒" %><br>
             <%= f.radio_button :question_8, 2 %><%= f.label :question_8_2, "自分だけ" %>
@@ -101,7 +103,7 @@
          </div>
 
          <div>
-            <p>質問９：インターネット契約は...?</p>
+            <p class="border-top mt-2">質問９：インターネット契約は...?</p>
             <div class="ml-5">
             <%= f.radio_button :question_9, 1, checked: true %><%= f.label :question_9_1, "してる" %><br>
             <%= f.radio_button :question_9, 2 %><%= f.label :question_9_2, "してない" %>
@@ -109,7 +111,7 @@
          </div>
 
          <div>
-            <p>質問１０：固定電話は...?</p>
+            <p class="border-top mt-2">質問１０：固定電話は...?</p>
             <div class="ml-5">
             <%= f.radio_button :question_10, 1, checked: true %><%= f.label :question_10_1, "ある" %><br>
             <%= f.radio_button :question_10, 2 %><%= f.label :question_10_2, "ない" %>
@@ -117,7 +119,7 @@
          </div>
 
          <div>
-            <p>質問１１：新聞とってる...?</p>
+            <p class="border-top mt-2">質問１１：新聞とってる...?</p>
             <div class="ml-5">
             <%= f.radio_button :question_11, 1, checked: true %><%= f.label :question_11_1, "とってる" %><br>
             <%= f.radio_button :question_11, 2 %><%= f.label :question_11_2, "とってない" %>
@@ -126,13 +128,15 @@
 
          <%= f.hidden_field :user_id, :value => current_user.id %>
          <%= f.hidden_field :is_clear, :value => 0 %>
-
+      </div>
+    </div>
+    
          <div class="text-center">
          <%= f.submit "内容を保存", data: { confirm: 'この内容で保存しますか？'}, class:"btn btn-sm btn-success mt-4" %>
          </div>
          <% end %>
-     </div>
-   </div>
+     
+   
 
 
 </div>

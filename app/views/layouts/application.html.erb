@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script src="https://kit.fontawesome.com/3e46d09fe1.js" crossorigin="anonymous"></script>
-    
+
     <title>HikkoshiQuest</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -14,9 +14,9 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-md navbar-light bg-warning">
 
-      <%= link_to "引越クエスト",root_path, class:"nabvar-brand text-light m-3" %>
+      <%= link_to "引越クエスト",root_path, class:"nabvar-brand text-dark m-3" %>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -25,14 +25,28 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
-            <li class="nav-item ml-auto mr-3"><i class="fas fa-home text-light"></i><%= link_to"マイページ", my_page_path,class:"text-light" %></li>
-            <li class="nav-item ml-auto mr-3"><i class="fas fa-users text-light"></i><%= link_to"広場", boards_path,class:"text-light" %></li>
-            <li class="nav-item ml-auto mr-3"><i class="far fa-question-circle text-light"></i><%= link_to"通知",notifications_path,class:"text-light" %></li>
-            <li class="nav-item ml-auto mr-3"><i class="far fa-question-circle text-light"></i><%= link_to"ヘルプ",help_path,class:"text-light" %></li>
-            <li class="nav-item ml-auto mr-3"><i class="fas fa-door-open text-light"></i><%= link_to"ログアウト", destroy_user_session_path, method: :delete,class:"text-light" %></li>
+            <li class="nav-item ml-auto mr-3"><i class="fas fa-home text-dark"></i><%= link_to"マイページ", my_page_path,class:"text-dark" %></li>
+            <li class="nav-item ml-auto mr-3"><i class="fas fa-users text-dark"></i><%= link_to"広場", boards_path,class:"text-dark" %></li>
+            <li class="nav-item ml-auto mr-3">
+              <% if unchecked_notifications.any? %>
+                <style>
+                  .fa-stack.small { font-size: 0.5em; }
+                </style>
+                <span class="fa-stack small">
+                  <i class="fas fa-bell fa-stack-2x text-dark"></i>
+                  <i class="fas fa-circle n-circle fa-stack-1x"></i>
+                </span>
+                  <%= link_to"通知",notifications_path,class:"text-dark" %>
+              <% else %>
+                <i class="fas fa-bell text-dark"></i>
+                <%= link_to"通知",notifications_path,class:"text-dark" %>
+              <% end %>
+            </li>
+            <li class="nav-item ml-auto mr-3"><i class="far fa-question-circle text-dark"></i><%= link_to"ヘルプ",help_path,class:"text-dark" %></li>
+            <li class="nav-item ml-auto mr-3"><i class="fas fa-door-open text-dark"></i><%= link_to"ログアウト", destroy_user_session_path, method: :delete,class:"text-dark" %></li>
         <% else %>
-            <li class="nav-item ml-auto mr-3"><i class="fas fa-sign-in-alt text-light"></i><%= link_to"新規登録", new_user_registration_path,class:"text-light" %></li>
-            <li class="nav-item ml-auto mr-3"><i class="far fa-question-circle text-light"></i><%= link_to"ヘルプ",help_path,class:"text-light" %></li>
+            <li class="nav-item ml-auto mr-3"><i class="fas fa-sign-in-alt text-dark"></i><%= link_to"新規登録", new_user_registration_path,class:"text-dark" %></li>
+            <li class="nav-item ml-auto mr-3"><i class="far fa-question-circle text-dark"></i><%= link_to"ヘルプ",help_path,class:"text-dark" %></li>
         <% end %>
         </ul>
        </div>

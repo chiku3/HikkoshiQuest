@@ -6,14 +6,14 @@
 
 <!--見出し-->
   <div class="row">
-    <div class="mx-auto mb-5">
+    <div class="mx-auto mb-3">
       <h1><%= @quest_task.task.title %></h1>
     </div>
   </div>
 
 <!--タスク内容-->
   <div class="row">
-    <div class="col-lg-8 col-md-8 col-sm-8 mx-auto" >
+    <div class="col-lg-8 col-md-8 col-sm-8 mx-auto rounded-lg bg-white p-4" >
         <% if @quest_task.quest.start_pref == @quest_task.quest.goal_pref and @quest_task.quest.start_city == @quest_task.quest.goal_city %>
           <%= simple_format(@quest_task.task.body_b) %>    <!--同じ市区町村へ引っ越す場合-->
         <% else %>
@@ -22,7 +22,7 @@
     </div>
   </div>
 
-  <div class="text-center">
+  <div class="text-center mt-3">
     <%= link_to "戻る", complete_quest_path(@quest),class:"text-dark" %>
   </div>
 

@@ -2,34 +2,33 @@
 
 <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
   <% if notifications.exists? %>
-  
-  <% @notifications.each do |notif| %>
-  
-  <div class="col-md-6 mx-auto">
-    <div class="form-inline">
-      <span>
-          <strong><%= notif.visitor.name %></strong><%= 'さんが' %>
-      </span>
-  
+
+  <div class="col-lg-6 col-md-10 mx-auto border rounded-lg bg-white p-5">
+      <% @notification.each do |notif| %>
+        <span><strong><%= notif.visitor.name %></strong><%= 'さんが' %></span>
+
         <% if notif.board.user_id == current_user.id %>
           <%= link_to "あなたの投稿", board_path(notif.board), style: "font-weight: bold;" %>
         <% else %>
-          <span>
-            <strong><%= notif.board.user.name %> + 'さんの投稿'</strong>
-          </span>
+          <span><strong><%= link_to notif.board.user.name + 'さんの投稿', board_path(notif.board)%></strong></span>
         <% end %>
-          <%= "にコメントしました"%>
+          <%= "にコメントしました。"%>
 
-      <div class="small text-muted text-right">
-        <%= time_ago_in_words(notif.created_at).upcase %>
-      </div>
-    
+          <p class="small text-muted">
+            <%= Comment.find_by(id: notif.comment_id)&.comment.truncate(25) %></p>
+
+        <div class="small text-muted text-right ml-4">
+          <%= time_ago_in_words(notif.created_at).upcase %>
+        </div>
+
+        <div class="border mt-1"></div>
     <% end %>
-    </div>
   </div>
 
   <% else %>
-    <p>通知はありません</p>
+    <div class="text-center">
+      <p>通知はありません</p>
+    </div>
   <% end %>
 
 </div>

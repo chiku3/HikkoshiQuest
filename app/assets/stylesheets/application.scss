@@ -18,14 +18,14 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
  @import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
- 
+
 //  全体ページ
 body{
     font-family: 'RocknRoll One', sans-serif;
 }
 
 .jumbotron{
-    background-color: #ffffff;
+    background-color: #ffffd6;
 }
 
 // カレンダーのデザイン
@@ -63,3 +63,9 @@ body{
   border-radius: 15px;
 }
 
+.n-circle {
+  position: absolute;
+  padding-left: 0.7rem;
+  padding-bottom: 0.6rem;
+  color: orange;
+}
