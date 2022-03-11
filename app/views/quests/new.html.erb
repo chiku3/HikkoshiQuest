@@ -56,11 +56,14 @@
 
          <div>
             <p class="border-top mt-2">質問３:引っ越し先は...？</p>
-            <div class="ml-5">
-            <%= f.select :goal_pref, options_for_select(Prefecture.all.map{ |pref| [pref.name] }) %>
-            <%= f.select :goal_city, options_for_select(City.all.map{ |city| [city.name] }) %>
-            </div>
+            <!--<div class="ml-5">-->
+            <%#= f.select :goal_pref, options_for_select(Prefecture.all.map{ |pref| [pref.name] }) %>
+            <%#= f.select :goal_city, options_for_select(City.all.map{ |city| [city.name] }) %>
+            <!--</div>-->
          </div>
+         
+         <select id="select-pref"><option value="">都道府県を選択してください</option></select>
+         <select id="select-city"><option value="">市区町村を選択してください</option></select>
 
          <div>
             <p class="border-top mt-2">質問４：住んでる家は...?</p>
@@ -130,13 +133,13 @@
          <%= f.hidden_field :is_clear, :value => 0 %>
       </div>
     </div>
-    
+
          <div class="text-center">
          <%= f.submit "内容を保存", data: { confirm: 'この内容で保存しますか？'}, class:"btn btn-sm btn-success mt-4" %>
          </div>
          <% end %>
-     
-   
+
+
 
 
 </div>
