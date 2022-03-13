@@ -13,5 +13,5 @@ class User < ApplicationRecord
   has_many :passive_notifications, foreign_key:"visited_id", class_name: "Notification", dependent: :destroy
 
   validates :name,presence: true
-
+  
 end

@@ -9,6 +9,10 @@ ja:
           name: 'ニックネーム'
         quest:
           due_day: '引越し予定日'
+          start_pref: "現在お住まいの都道府県"
+          start_city: "現在お住まいの市区町村"
+          goal_pref: "引越先の都道府県"
+          goal_city: "引越先の市区町村"
         board:
           title: 'タイトル'
           body: '内容'

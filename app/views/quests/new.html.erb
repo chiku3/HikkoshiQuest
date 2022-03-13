@@ -24,16 +24,13 @@
 
 <!--エラーメッセージ-->
   <div class="row">
-    <div class="mx-auto">
-    <% if @quest.errors.any? %>
-    <div class="border border-danger px-2 bg-white">
-      <ul>
-      <% @quest.errors.full_messages.each do |message| %>
-        <li class="text-danger"><%= message %></li>
+    <div class="mx-auto text-danger">
+      <% flash.each do |message_type, message| %>
+        <div class="rouded-lg bg-white p-2">
+          <% message2 = message.gsub(",","<br>") %>
+          <%= message2.html_safe %>
+        </div>
       <% end %>
-      </ul>
-    </div>
-    <% end %>
     </div>
   </div>
 
@@ -49,21 +46,18 @@
          <div>
             <p class="border-top mt-2">質問２:現在住んでいるところは...？</p>
             <div class="ml-5">
-            <%= f.select :start_pref, options_for_select(Prefecture.all.map{ |pref| [pref.name] }) %>
-            <%= f.select :start_city, options_for_select(City.all.map{ |city| [city.name] }) %>
+            <select name="quest[start_pref]" id="start-pref"><option value="">都道府県を選択してください</option></select><br>
+            <select name="quest[start_city]" id="start-city"><option value="">市区町村を選択してください</option></select>
             </div>
          </div>
 
          <div>
             <p class="border-top mt-2">質問３:引っ越し先は...？</p>
-            <!--<div class="ml-5">-->
-            <%#= f.select :goal_pref, options_for_select(Prefecture.all.map{ |pref| [pref.name] }) %>
-            <%#= f.select :goal_city, options_for_select(City.all.map{ |city| [city.name] }) %>
-            <!--</div>-->
+            <div class="ml-5">
+            <select name="quest[goal_pref]" id="goal-pref"><option value="">都道府県を選択してください</option></select><br>
+            <select name="quest[goal_city]" id="goal-city"><option value="">市区町村を選択してください</option></select>
+            </div>
          </div>
-         
-         <select id="select-pref"><option value="">都道府県を選択してください</option></select>
-         <select id="select-city"><option value="">市区町村を選択してください</option></select>
 
          <div>
             <p class="border-top mt-2">質問４：住んでる家は...?</p>
@@ -139,7 +133,5 @@
          </div>
          <% end %>
 
-
-
-
 </div>
+

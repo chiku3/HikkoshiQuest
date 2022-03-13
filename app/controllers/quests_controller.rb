@@ -143,9 +143,9 @@ class QuestsController < ApplicationController
 
       flash[:notice] = "クエストが発生しました！"
       redirect_to quest_path(@quest)
-      
+
     else
-      render :new
+	    redirect_to new_quest_path, flash:{ danger: @quest.errors.full_messages.join(',')}
     end
   end
 
