@@ -40,11 +40,11 @@ describe "ユーザー新規登録のテスト" do
     end
 
     it "正しく新規登録される" do
-      expect {click_button "新規登録"}.to change(User.all, :count).by(1)
+      expect{click_button "新規登録"}.to change(User.all, :count).by(1)
     end
     it "新規登録後のリダイレクト先が、クエスト登録画面になっている" do
       click_button "新規登録"
-      expect (current_path).to eq "/quests/new"
+      expect(current_path).to eq "/quests/new"
     end
   end
 end
@@ -53,24 +53,46 @@ describe "ユーザーログインのテスト" do
   let(:user) { create(:user) }
 
   before do
-    visit new_user_session_path
+    visit root_path
   end
+
+  context '表示内容の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/'
+      end
+      it '「ログイン」と表示される' do
+        expect(page).to have_content 'ログイン'
+      end
+      it 'nameフォームが表示される' do
+        expect(page).to have_field 'user[email]'
+      end
+      it 'passwordフォームが表示される' do
+        expect(page).to have_field 'user[password]'
+      end
+      it 'ログインボタンが表示される' do
+        expect(page).to have_button 'ログイン'
+      end
+      it 'nameフォームは表示されない' do
+        expect(page).not_to have_field 'user[name]'
+      end
+    end
 
   context "ログイン成功のテスト" do
     before do
-      fill_in "user[name]", with: user.name
+      visit root_path
+      fill_in "user[email]", with: user.email
       fill_in "user[password]", with: user.password
       click_button "ログイン"
     end
 
     it "ログイン後のリダイレクト先が、ログインしたユーザーのマイページになっている" do
-      expect (current_path).to eq "/my_page"
+      expect(current_path).to eq "/my_page"
     end
   end
 
   context "ログイン失敗のテスト" do
     before do
-      fill_in "user[name]", with: ""
+      fill_in "user[email]", with: ""
       fill_in "user[password]", with: ""
       click_button "ログイン"
     end
@@ -85,13 +107,11 @@ describe "ユーザーログアウトのテスト" do
   let(:user) {create(:user)}
 
   before do
-    visit new_user_session_path
-    fill_in "user[name]", with: user.name
+    visit root_path
+    fill_in "user[email]", with: user.email
     fill_in "user[password]", with: user.password
     click_button "ログイン"
-    logout_link = find_all("a")[6].native.inner_text
-    logout_link = logout_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-    click_link logout_link
+    click_link "ログアウト"
   end
 
 
