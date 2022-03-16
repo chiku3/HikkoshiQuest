@@ -1,7 +1,5 @@
 require 'rails_helper'
 
-
-
 describe "ユーザー新規登録のテスト" do
   before do
     visit new_user_registration_path
