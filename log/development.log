@@ -26817,3 +26817,1042 @@ Processing by QuestsController#new as HTML
 Completed 200 OK in 105ms (Views: 102.8ms | ActiveRecord: 0.3ms)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to DeviseCreateUsers (20220210050636)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "name" varchar, "image_id" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220210050636_devise_create_users.rb:5
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  ↳ db/migrate/20220210050636_devise_create_users.rb:41
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  ↳ db/migrate/20220210050636_devise_create_users.rb:42
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220210050636"]]
+  ↳ bin/rails:9
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateQuests (20220210051334)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "quests" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "task_id" integer, "title" varchar, "due_day" date, "start_point" varchar, "start_point_city" varchar, "goal_point" varchar, "goal_point_city" varchar, "is_clear" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220210051334_create_quests.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220210051334"]]
+  ↳ bin/rails:9
+  [1m[35m (3.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateTasks (20220210051610)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quest_id" integer, "title" varchar, "detail" text, "hint" text, "do_time" date, "importance" integer, "enemy_image_id" varchar, "is_clear" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220210051610_create_tasks.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220210051610"]]
+  ↳ bin/rails:9
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateBoards (20220210052623)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "boards" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "category_id" integer, "title" varchar, "point" varchar, "city_point" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220210052623_create_boards.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220210052623"]]
+  ↳ bin/rails:9
+  [1m[35m (8.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateComments (20220210052715)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "board_id" integer, "user_id" integer, "title" varchar, "comment" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220210052715_create_comments.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220210052715"]]
+  ↳ bin/rails:9
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to ChangeColumnDefaultToQuests (20220210064301)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aquests" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "task_id" integer DEFAULT NULL, "title" varchar DEFAULT NULL, "due_day" date DEFAULT NULL, "start_point" varchar DEFAULT NULL, "start_point_city" varchar DEFAULT NULL, "goal_point" varchar DEFAULT NULL, "goal_point_city" varchar DEFAULT NULL, "is_clear" boolean DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220210064301_change_column_default_to_quests.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aquests" ("id","user_id","task_id","title","due_day","start_point","start_point_city","goal_point","goal_point_city","is_clear","created_at","updated_at")
+                     SELECT "id","user_id","task_id","title","due_day","start_point","start_point_city","goal_point","goal_point_city","is_clear","created_at","updated_at" FROM "quests"[0m
+  ↳ db/migrate/20220210064301_change_column_default_to_quests.rb:3
+  [1m[35m (1.5ms)[0m  [1m[35mDROP TABLE "quests"[0m
+  ↳ db/migrate/20220210064301_change_column_default_to_quests.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "quests" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "task_id" integer DEFAULT NULL, "title" varchar DEFAULT NULL, "due_day" date DEFAULT NULL, "start_point" varchar DEFAULT NULL, "start_point_city" varchar DEFAULT NULL, "goal_point" varchar DEFAULT NULL, "goal_point_city" varchar DEFAULT NULL, "is_clear" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220210064301_change_column_default_to_quests.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "quests" ("id","user_id","task_id","title","due_day","start_point","start_point_city","goal_point","goal_point_city","is_clear","created_at","updated_at")
+                     SELECT "id","user_id","task_id","title","due_day","start_point","start_point_city","goal_point","goal_point_city","is_clear","created_at","updated_at" FROM "aquests"[0m
+  ↳ db/migrate/20220210064301_change_column_default_to_quests.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "aquests"[0m
+  ↳ db/migrate/20220210064301_change_column_default_to_quests.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220210064301"]]
+  ↳ bin/rails:9
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to RenameDetailColumnToTasks (20220211075429)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atasks" ("id" integer NOT NULL PRIMARY KEY, "quest_id" integer DEFAULT NULL, "title" varchar DEFAULT NULL, "body" text DEFAULT NULL, "hint" text DEFAULT NULL, "do_time" date DEFAULT NULL, "importance" integer DEFAULT NULL, "enemy_image_id" varchar DEFAULT NULL, "is_clear" boolean DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220211075429_rename_detail_column_to_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "atasks" ("id","quest_id","title","body","hint","do_time","importance","enemy_image_id","is_clear","created_at","updated_at")
+                     SELECT "id","quest_id","title","detail","hint","do_time","importance","enemy_image_id","is_clear","created_at","updated_at" FROM "tasks"[0m
+  ↳ db/migrate/20220211075429_rename_detail_column_to_tasks.rb:3
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE "tasks"[0m
+  ↳ db/migrate/20220211075429_rename_detail_column_to_tasks.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" integer NOT NULL PRIMARY KEY, "quest_id" integer DEFAULT NULL, "title" varchar DEFAULT NULL, "body" text DEFAULT NULL, "hint" text DEFAULT NULL, "do_time" date DEFAULT NULL, "importance" integer DEFAULT NULL, "enemy_image_id" varchar DEFAULT NULL, "is_clear" boolean DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220211075429_rename_detail_column_to_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("id","quest_id","title","body","hint","do_time","importance","enemy_image_id","is_clear","created_at","updated_at")
+                     SELECT "id","quest_id","title","body","hint","do_time","importance","enemy_image_id","is_clear","created_at","updated_at" FROM "atasks"[0m
+  ↳ db/migrate/20220211075429_rename_detail_column_to_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "atasks"[0m
+  ↳ db/migrate/20220211075429_rename_detail_column_to_tasks.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220211075429"]]
+  ↳ bin/rails:9
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to RenameEnemyImageIdColumnToTasks (20220211083525)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atasks" ("id" integer NOT NULL PRIMARY KEY, "quest_id" integer DEFAULT NULL, "title" varchar DEFAULT NULL, "body" text DEFAULT NULL, "hint" text DEFAULT NULL, "do_time" date DEFAULT NULL, "importance" integer DEFAULT NULL, "image_id" varchar DEFAULT NULL, "is_clear" boolean DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220211083525_rename_enemy_image_id_column_to_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "atasks" ("id","quest_id","title","body","hint","do_time","importance","image_id","is_clear","created_at","updated_at")
+                     SELECT "id","quest_id","title","body","hint","do_time","importance","enemy_image_id","is_clear","created_at","updated_at" FROM "tasks"[0m
+  ↳ db/migrate/20220211083525_rename_enemy_image_id_column_to_tasks.rb:3
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "tasks"[0m
+  ↳ db/migrate/20220211083525_rename_enemy_image_id_column_to_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" integer NOT NULL PRIMARY KEY, "quest_id" integer DEFAULT NULL, "title" varchar DEFAULT NULL, "body" text DEFAULT NULL, "hint" text DEFAULT NULL, "do_time" date DEFAULT NULL, "importance" integer DEFAULT NULL, "image_id" varchar DEFAULT NULL, "is_clear" boolean DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220211083525_rename_enemy_image_id_column_to_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("id","quest_id","title","body","hint","do_time","importance","image_id","is_clear","created_at","updated_at")
+                     SELECT "id","quest_id","title","body","hint","do_time","importance","image_id","is_clear","created_at","updated_at" FROM "atasks"[0m
+  ↳ db/migrate/20220211083525_rename_enemy_image_id_column_to_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "atasks"[0m
+  ↳ db/migrate/20220211083525_rename_enemy_image_id_column_to_tasks.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220211083525"]]
+  ↳ bin/rails:9
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to RemoveColumsInTasks (20220211151314)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atasks" ("id" integer NOT NULL PRIMARY KEY, "quest_id" integer DEFAULT NULL, "title" varchar DEFAULT NULL, "body" text DEFAULT NULL, "hint" text DEFAULT NULL, "do_time" date DEFAULT NULL, "importance" integer DEFAULT NULL, "image_id" varchar DEFAULT NULL, "is_clear" boolean DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "atasks" ("id","quest_id","title","body","hint","do_time","importance","image_id","is_clear","created_at","updated_at")
+                     SELECT "id","quest_id","title","body","hint","do_time","importance","image_id","is_clear","created_at","updated_at" FROM "tasks"[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:3
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE "tasks"[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "body" text DEFAULT NULL, "hint" text DEFAULT NULL, "do_time" date DEFAULT NULL, "importance" integer DEFAULT NULL, "image_id" varchar DEFAULT NULL, "is_clear" boolean DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("id","title","body","hint","do_time","importance","image_id","is_clear","created_at","updated_at")
+                     SELECT "id","title","body","hint","do_time","importance","image_id","is_clear","created_at","updated_at" FROM "atasks"[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "atasks"[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:3
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atasks" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "body" text DEFAULT NULL, "hint" text DEFAULT NULL, "do_time" date DEFAULT NULL, "importance" integer DEFAULT NULL, "image_id" varchar DEFAULT NULL, "is_clear" boolean DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:4
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "atasks" ("id","title","body","hint","do_time","importance","image_id","is_clear","created_at","updated_at")
+                     SELECT "id","title","body","hint","do_time","importance","image_id","is_clear","created_at","updated_at" FROM "tasks"[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "tasks"[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "body" text DEFAULT NULL, "do_time" date DEFAULT NULL, "importance" integer DEFAULT NULL, "image_id" varchar DEFAULT NULL, "is_clear" boolean DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:4
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("id","title","body","do_time","importance","image_id","is_clear","created_at","updated_at")
+                     SELECT "id","title","body","do_time","importance","image_id","is_clear","created_at","updated_at" FROM "atasks"[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "atasks"[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atasks" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "body" text DEFAULT NULL, "do_time" date DEFAULT NULL, "importance" integer DEFAULT NULL, "image_id" varchar DEFAULT NULL, "is_clear" boolean DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:5
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "atasks" ("id","title","body","do_time","importance","image_id","is_clear","created_at","updated_at")
+                     SELECT "id","title","body","do_time","importance","image_id","is_clear","created_at","updated_at" FROM "tasks"[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:5
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "tasks"[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:5
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "body" text DEFAULT NULL, "do_time" date DEFAULT NULL, "importance" integer DEFAULT NULL, "image_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:5
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("id","title","body","do_time","importance","image_id","created_at","updated_at")
+                     SELECT "id","title","body","do_time","importance","image_id","created_at","updated_at" FROM "atasks"[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:5
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "atasks"[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:5
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atasks" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "body" text DEFAULT NULL, "do_time" date DEFAULT NULL, "importance" integer DEFAULT NULL, "image_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:6
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "atasks" ("id","title","body","do_time","importance","image_id","created_at","updated_at")
+                     SELECT "id","title","body","do_time","importance","image_id","created_at","updated_at" FROM "tasks"[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:6
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE "tasks"[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:6
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "body" text DEFAULT NULL, "importance" integer DEFAULT NULL, "image_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:6
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("id","title","body","importance","image_id","created_at","updated_at")
+                     SELECT "id","title","body","importance","image_id","created_at","updated_at" FROM "atasks"[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:6
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "atasks"[0m
+  ↳ db/migrate/20220211151314_remove_colums_in_tasks.rb:6
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220211151314"]]
+  ↳ bin/rails:9
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreatePrefectures (20220213024529)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "prefectures" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220213024529_create_prefectures.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220213024529"]]
+  ↳ bin/rails:9
+  [1m[35m (5.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateCities (20220213025210)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "cities" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "prefecture_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220213025210_create_cities.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220213025210"]]
+  ↳ bin/rails:9
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to AddPrefectureIdToQuests (20220213030134)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "quests" ADD "prefecture_id" integer[0m
+  ↳ db/migrate/20220213030134_add_prefecture_id_to_quests.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220213030134"]]
+  ↳ bin/rails:9
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to AddPrefectureIdToBoards (20220213030225)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "boards" ADD "prefecture_id" integer[0m
+  ↳ db/migrate/20220213030225_add_prefecture_id_to_boards.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220213030225"]]
+  ↳ bin/rails:9
+  [1m[35m (5.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to RemoveColumnsInBoards (20220213030626)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aboards" ("id" integer NOT NULL PRIMARY KEY, "category_id" integer DEFAULT NULL, "title" varchar DEFAULT NULL, "point" varchar DEFAULT NULL, "city_point" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture_id" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20220213030626_remove_columns_in_boards.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aboards" ("id","category_id","title","point","city_point","created_at","updated_at","prefecture_id")
+                     SELECT "id","category_id","title","point","city_point","created_at","updated_at","prefecture_id" FROM "boards"[0m
+  ↳ db/migrate/20220213030626_remove_columns_in_boards.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "boards"[0m
+  ↳ db/migrate/20220213030626_remove_columns_in_boards.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "boards" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "point" varchar DEFAULT NULL, "city_point" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture_id" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20220213030626_remove_columns_in_boards.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "boards" ("id","title","point","city_point","created_at","updated_at","prefecture_id")
+                     SELECT "id","title","point","city_point","created_at","updated_at","prefecture_id" FROM "aboards"[0m
+  ↳ db/migrate/20220213030626_remove_columns_in_boards.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aboards"[0m
+  ↳ db/migrate/20220213030626_remove_columns_in_boards.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aboards" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "point" varchar DEFAULT NULL, "city_point" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture_id" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20220213030626_remove_columns_in_boards.rb:4
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aboards" ("id","title","point","city_point","created_at","updated_at","prefecture_id")
+                     SELECT "id","title","point","city_point","created_at","updated_at","prefecture_id" FROM "boards"[0m
+  ↳ db/migrate/20220213030626_remove_columns_in_boards.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "boards"[0m
+  ↳ db/migrate/20220213030626_remove_columns_in_boards.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "boards" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "city_point" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture_id" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20220213030626_remove_columns_in_boards.rb:4
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "boards" ("id","title","city_point","created_at","updated_at","prefecture_id")
+                     SELECT "id","title","city_point","created_at","updated_at","prefecture_id" FROM "aboards"[0m
+  ↳ db/migrate/20220213030626_remove_columns_in_boards.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aboards"[0m
+  ↳ db/migrate/20220213030626_remove_columns_in_boards.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aboards" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "city_point" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture_id" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20220213030626_remove_columns_in_boards.rb:5
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aboards" ("id","title","city_point","created_at","updated_at","prefecture_id")
+                     SELECT "id","title","city_point","created_at","updated_at","prefecture_id" FROM "boards"[0m
+  ↳ db/migrate/20220213030626_remove_columns_in_boards.rb:5
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "boards"[0m
+  ↳ db/migrate/20220213030626_remove_columns_in_boards.rb:5
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "boards" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture_id" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20220213030626_remove_columns_in_boards.rb:5
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "boards" ("id","title","created_at","updated_at","prefecture_id")
+                     SELECT "id","title","created_at","updated_at","prefecture_id" FROM "aboards"[0m
+  ↳ db/migrate/20220213030626_remove_columns_in_boards.rb:5
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aboards"[0m
+  ↳ db/migrate/20220213030626_remove_columns_in_boards.rb:5
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220213030626"]]
+  ↳ bin/rails:9
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to RemoveColumnsInQuests (20220213030902)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aquests" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "task_id" integer DEFAULT NULL, "title" varchar DEFAULT NULL, "due_day" date DEFAULT NULL, "start_point" varchar DEFAULT NULL, "start_point_city" varchar DEFAULT NULL, "goal_point" varchar DEFAULT NULL, "goal_point_city" varchar DEFAULT NULL, "is_clear" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture_id" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aquests" ("id","user_id","task_id","title","due_day","start_point","start_point_city","goal_point","goal_point_city","is_clear","created_at","updated_at","prefecture_id")
+                     SELECT "id","user_id","task_id","title","due_day","start_point","start_point_city","goal_point","goal_point_city","is_clear","created_at","updated_at","prefecture_id" FROM "quests"[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "quests"[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "quests" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "task_id" integer DEFAULT NULL, "title" varchar DEFAULT NULL, "due_day" date DEFAULT NULL, "start_point_city" varchar DEFAULT NULL, "goal_point" varchar DEFAULT NULL, "goal_point_city" varchar DEFAULT NULL, "is_clear" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture_id" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "quests" ("id","user_id","task_id","title","due_day","start_point_city","goal_point","goal_point_city","is_clear","created_at","updated_at","prefecture_id")
+                     SELECT "id","user_id","task_id","title","due_day","start_point_city","goal_point","goal_point_city","is_clear","created_at","updated_at","prefecture_id" FROM "aquests"[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aquests"[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aquests" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "task_id" integer DEFAULT NULL, "title" varchar DEFAULT NULL, "due_day" date DEFAULT NULL, "start_point_city" varchar DEFAULT NULL, "goal_point" varchar DEFAULT NULL, "goal_point_city" varchar DEFAULT NULL, "is_clear" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture_id" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:4
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aquests" ("id","user_id","task_id","title","due_day","start_point_city","goal_point","goal_point_city","is_clear","created_at","updated_at","prefecture_id")
+                     SELECT "id","user_id","task_id","title","due_day","start_point_city","goal_point","goal_point_city","is_clear","created_at","updated_at","prefecture_id" FROM "quests"[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "quests"[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "quests" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "task_id" integer DEFAULT NULL, "title" varchar DEFAULT NULL, "due_day" date DEFAULT NULL, "goal_point" varchar DEFAULT NULL, "goal_point_city" varchar DEFAULT NULL, "is_clear" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture_id" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:4
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "quests" ("id","user_id","task_id","title","due_day","goal_point","goal_point_city","is_clear","created_at","updated_at","prefecture_id")
+                     SELECT "id","user_id","task_id","title","due_day","goal_point","goal_point_city","is_clear","created_at","updated_at","prefecture_id" FROM "aquests"[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aquests"[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aquests" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "task_id" integer DEFAULT NULL, "title" varchar DEFAULT NULL, "due_day" date DEFAULT NULL, "goal_point" varchar DEFAULT NULL, "goal_point_city" varchar DEFAULT NULL, "is_clear" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture_id" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:5
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aquests" ("id","user_id","task_id","title","due_day","goal_point","goal_point_city","is_clear","created_at","updated_at","prefecture_id")
+                     SELECT "id","user_id","task_id","title","due_day","goal_point","goal_point_city","is_clear","created_at","updated_at","prefecture_id" FROM "quests"[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:5
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "quests"[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:5
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "quests" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "task_id" integer DEFAULT NULL, "title" varchar DEFAULT NULL, "due_day" date DEFAULT NULL, "goal_point_city" varchar DEFAULT NULL, "is_clear" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture_id" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:5
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "quests" ("id","user_id","task_id","title","due_day","goal_point_city","is_clear","created_at","updated_at","prefecture_id")
+                     SELECT "id","user_id","task_id","title","due_day","goal_point_city","is_clear","created_at","updated_at","prefecture_id" FROM "aquests"[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:5
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aquests"[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:5
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aquests" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "task_id" integer DEFAULT NULL, "title" varchar DEFAULT NULL, "due_day" date DEFAULT NULL, "goal_point_city" varchar DEFAULT NULL, "is_clear" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture_id" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:6
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aquests" ("id","user_id","task_id","title","due_day","goal_point_city","is_clear","created_at","updated_at","prefecture_id")
+                     SELECT "id","user_id","task_id","title","due_day","goal_point_city","is_clear","created_at","updated_at","prefecture_id" FROM "quests"[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:6
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "quests"[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:6
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "quests" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "task_id" integer DEFAULT NULL, "title" varchar DEFAULT NULL, "due_day" date DEFAULT NULL, "is_clear" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture_id" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:6
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "quests" ("id","user_id","task_id","title","due_day","is_clear","created_at","updated_at","prefecture_id")
+                     SELECT "id","user_id","task_id","title","due_day","is_clear","created_at","updated_at","prefecture_id" FROM "aquests"[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:6
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aquests"[0m
+  ↳ db/migrate/20220213030902_remove_columns_in_quests.rb:6
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220213030902"]]
+  ↳ bin/rails:9
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to AddColimnsToQuests (20220213064035)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "quests" ADD "start_pref" varchar[0m
+  ↳ db/migrate/20220213064035_add_colimns_to_quests.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "quests" ADD "start_city" varchar[0m
+  ↳ db/migrate/20220213064035_add_colimns_to_quests.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "quests" ADD "goal_pref" varchar[0m
+  ↳ db/migrate/20220213064035_add_colimns_to_quests.rb:5
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "quests" ADD "goal_city" varchar[0m
+  ↳ db/migrate/20220213064035_add_colimns_to_quests.rb:6
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220213064035"]]
+  ↳ bin/rails:9
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to AddColumnsToBoards (20220213064304)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "boards" ADD "prefecture" varchar[0m
+  ↳ db/migrate/20220213064304_add_columns_to_boards.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "boards" ADD "city" varchar[0m
+  ↳ db/migrate/20220213064304_add_columns_to_boards.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220213064304"]]
+  ↳ bin/rails:9
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to RemoveTitleFromQuests (20220213105145)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aquests" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "task_id" integer DEFAULT NULL, "title" varchar DEFAULT NULL, "due_day" date DEFAULT NULL, "is_clear" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture_id" integer DEFAULT NULL, "start_pref" varchar DEFAULT NULL, "start_city" varchar DEFAULT NULL, "goal_pref" varchar DEFAULT NULL, "goal_city" varchar DEFAULT NULL)[0m
+  ↳ db/migrate/20220213105145_remove_title_from_quests.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aquests" ("id","user_id","task_id","title","due_day","is_clear","created_at","updated_at","prefecture_id","start_pref","start_city","goal_pref","goal_city")
+                     SELECT "id","user_id","task_id","title","due_day","is_clear","created_at","updated_at","prefecture_id","start_pref","start_city","goal_pref","goal_city" FROM "quests"[0m
+  ↳ db/migrate/20220213105145_remove_title_from_quests.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "quests"[0m
+  ↳ db/migrate/20220213105145_remove_title_from_quests.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "quests" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "task_id" integer DEFAULT NULL, "due_day" date DEFAULT NULL, "is_clear" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture_id" integer DEFAULT NULL, "start_pref" varchar DEFAULT NULL, "start_city" varchar DEFAULT NULL, "goal_pref" varchar DEFAULT NULL, "goal_city" varchar DEFAULT NULL)[0m
+  ↳ db/migrate/20220213105145_remove_title_from_quests.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "quests" ("id","user_id","task_id","due_day","is_clear","created_at","updated_at","prefecture_id","start_pref","start_city","goal_pref","goal_city")
+                     SELECT "id","user_id","task_id","due_day","is_clear","created_at","updated_at","prefecture_id","start_pref","start_city","goal_pref","goal_city" FROM "aquests"[0m
+  ↳ db/migrate/20220213105145_remove_title_from_quests.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aquests"[0m
+  ↳ db/migrate/20220213105145_remove_title_from_quests.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220213105145"]]
+  ↳ bin/rails:9
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to RemoveTaskIdFromQuests (20220215014851)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aquests" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "task_id" integer DEFAULT NULL, "due_day" date DEFAULT NULL, "is_clear" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture_id" integer DEFAULT NULL, "start_pref" varchar DEFAULT NULL, "start_city" varchar DEFAULT NULL, "goal_pref" varchar DEFAULT NULL, "goal_city" varchar DEFAULT NULL)[0m
+  ↳ db/migrate/20220215014851_remove_task_id_from_quests.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aquests" ("id","user_id","task_id","due_day","is_clear","created_at","updated_at","prefecture_id","start_pref","start_city","goal_pref","goal_city")
+                     SELECT "id","user_id","task_id","due_day","is_clear","created_at","updated_at","prefecture_id","start_pref","start_city","goal_pref","goal_city" FROM "quests"[0m
+  ↳ db/migrate/20220215014851_remove_task_id_from_quests.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "quests"[0m
+  ↳ db/migrate/20220215014851_remove_task_id_from_quests.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "quests" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "due_day" date DEFAULT NULL, "is_clear" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture_id" integer DEFAULT NULL, "start_pref" varchar DEFAULT NULL, "start_city" varchar DEFAULT NULL, "goal_pref" varchar DEFAULT NULL, "goal_city" varchar DEFAULT NULL)[0m
+  ↳ db/migrate/20220215014851_remove_task_id_from_quests.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "quests" ("id","user_id","due_day","is_clear","created_at","updated_at","prefecture_id","start_pref","start_city","goal_pref","goal_city")
+                     SELECT "id","user_id","due_day","is_clear","created_at","updated_at","prefecture_id","start_pref","start_city","goal_pref","goal_city" FROM "aquests"[0m
+  ↳ db/migrate/20220215014851_remove_task_id_from_quests.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aquests"[0m
+  ↳ db/migrate/20220215014851_remove_task_id_from_quests.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220215014851"]]
+  ↳ bin/rails:9
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to ChangeDataDueDayToQuests (20220216080215)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aquests" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "due_day" date DEFAULT NULL, "is_clear" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture_id" integer DEFAULT NULL, "start_pref" varchar DEFAULT NULL, "start_city" varchar DEFAULT NULL, "goal_pref" varchar DEFAULT NULL, "goal_city" varchar DEFAULT NULL)[0m
+  ↳ db/migrate/20220216080215_change_data_due_day_to_quests.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aquests" ("id","user_id","due_day","is_clear","created_at","updated_at","prefecture_id","start_pref","start_city","goal_pref","goal_city")
+                     SELECT "id","user_id","due_day","is_clear","created_at","updated_at","prefecture_id","start_pref","start_city","goal_pref","goal_city" FROM "quests"[0m
+  ↳ db/migrate/20220216080215_change_data_due_day_to_quests.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "quests"[0m
+  ↳ db/migrate/20220216080215_change_data_due_day_to_quests.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "quests" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "due_day" datetime DEFAULT NULL, "is_clear" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture_id" integer DEFAULT NULL, "start_pref" varchar DEFAULT NULL, "start_city" varchar DEFAULT NULL, "goal_pref" varchar DEFAULT NULL, "goal_city" varchar DEFAULT NULL)[0m
+  ↳ db/migrate/20220216080215_change_data_due_day_to_quests.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "quests" ("id","user_id","due_day","is_clear","created_at","updated_at","prefecture_id","start_pref","start_city","goal_pref","goal_city")
+                     SELECT "id","user_id","due_day","is_clear","created_at","updated_at","prefecture_id","start_pref","start_city","goal_pref","goal_city" FROM "aquests"[0m
+  ↳ db/migrate/20220216080215_change_data_due_day_to_quests.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aquests"[0m
+  ↳ db/migrate/20220216080215_change_data_due_day_to_quests.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220216080215"]]
+  ↳ bin/rails:9
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateQuestTasks (20220218034410)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "quest_tasks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quest_id" integer, "task_id" integer, "is_clear" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220218034410_create_quest_tasks.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220218034410"]]
+  ↳ bin/rails:9
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to QuestTasks (20220218034614)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aquest_tasks" ("id" integer NOT NULL PRIMARY KEY, "quest_id" integer DEFAULT NULL, "task_id" integer DEFAULT NULL, "is_clear" boolean DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220218034614_quest_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aquest_tasks" ("id","quest_id","task_id","is_clear","created_at","updated_at")
+                     SELECT "id","quest_id","task_id","is_clear","created_at","updated_at" FROM "quest_tasks"[0m
+  ↳ db/migrate/20220218034614_quest_tasks.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "quest_tasks"[0m
+  ↳ db/migrate/20220218034614_quest_tasks.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "quest_tasks" ("id" integer NOT NULL PRIMARY KEY, "quest_id" integer DEFAULT NULL, "task_id" integer DEFAULT NULL, "is_clear" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220218034614_quest_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("id","quest_id","task_id","is_clear","created_at","updated_at")
+                     SELECT "id","quest_id","task_id","is_clear","created_at","updated_at" FROM "aquest_tasks"[0m
+  ↳ db/migrate/20220218034614_quest_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aquest_tasks"[0m
+  ↳ db/migrate/20220218034614_quest_tasks.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220218034614"]]
+  ↳ bin/rails:9
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to AddStartTimeToQuestTasks (20220218082846)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "quest_tasks" ADD "start_time" datetime[0m
+  ↳ db/migrate/20220218082846_add_start_time_to_quest_tasks.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220218082846"]]
+  ↳ bin/rails:9
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to ChangeColumnsInTasks (20220219054410)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atasks" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "body" text DEFAULT NULL, "importance" integer DEFAULT NULL, "image_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220219054410_change_columns_in_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "atasks" ("id","title","body","importance","image_id","created_at","updated_at")
+                     SELECT "id","title","body","importance","image_id","created_at","updated_at" FROM "tasks"[0m
+  ↳ db/migrate/20220219054410_change_columns_in_tasks.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "tasks"[0m
+  ↳ db/migrate/20220219054410_change_columns_in_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "importance" integer DEFAULT NULL, "image_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220219054410_change_columns_in_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("id","title","importance","image_id","created_at","updated_at")
+                     SELECT "id","title","importance","image_id","created_at","updated_at" FROM "atasks"[0m
+  ↳ db/migrate/20220219054410_change_columns_in_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "atasks"[0m
+  ↳ db/migrate/20220219054410_change_columns_in_tasks.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "tasks" ADD "body_a" text[0m
+  ↳ db/migrate/20220219054410_change_columns_in_tasks.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "tasks" ADD "body_b" text[0m
+  ↳ db/migrate/20220219054410_change_columns_in_tasks.rb:5
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220219054410"]]
+  ↳ bin/rails:9
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to AddNameToTasks (20220219054920)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "tasks" ADD "name" varchar[0m
+  ↳ db/migrate/20220219054920_add_name_to_tasks.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220219054920"]]
+  ↳ bin/rails:9
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to RemoveImportanceFromTasks (20220219055530)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atasks" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "importance" integer DEFAULT NULL, "image_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "body_a" text DEFAULT NULL, "body_b" text DEFAULT NULL, "name" varchar DEFAULT NULL)[0m
+  ↳ db/migrate/20220219055530_remove_importance_from_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "atasks" ("id","title","importance","image_id","created_at","updated_at","body_a","body_b","name")
+                     SELECT "id","title","importance","image_id","created_at","updated_at","body_a","body_b","name" FROM "tasks"[0m
+  ↳ db/migrate/20220219055530_remove_importance_from_tasks.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "tasks"[0m
+  ↳ db/migrate/20220219055530_remove_importance_from_tasks.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "image_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "body_a" text DEFAULT NULL, "body_b" text DEFAULT NULL, "name" varchar DEFAULT NULL)[0m
+  ↳ db/migrate/20220219055530_remove_importance_from_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("id","title","image_id","created_at","updated_at","body_a","body_b","name")
+                     SELECT "id","title","image_id","created_at","updated_at","body_a","body_b","name" FROM "atasks"[0m
+  ↳ db/migrate/20220219055530_remove_importance_from_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "atasks"[0m
+  ↳ db/migrate/20220219055530_remove_importance_from_tasks.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220219055530"]]
+  ↳ bin/rails:9
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to RemovePrefectureIdFromQuests (20220219061606)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aquests" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "due_day" datetime DEFAULT NULL, "is_clear" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture_id" integer DEFAULT NULL, "start_pref" varchar DEFAULT NULL, "start_city" varchar DEFAULT NULL, "goal_pref" varchar DEFAULT NULL, "goal_city" varchar DEFAULT NULL)[0m
+  ↳ db/migrate/20220219061606_remove_prefecture_id_from_quests.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aquests" ("id","user_id","due_day","is_clear","created_at","updated_at","prefecture_id","start_pref","start_city","goal_pref","goal_city")
+                     SELECT "id","user_id","due_day","is_clear","created_at","updated_at","prefecture_id","start_pref","start_city","goal_pref","goal_city" FROM "quests"[0m
+  ↳ db/migrate/20220219061606_remove_prefecture_id_from_quests.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "quests"[0m
+  ↳ db/migrate/20220219061606_remove_prefecture_id_from_quests.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "quests" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "due_day" datetime DEFAULT NULL, "is_clear" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "start_pref" varchar DEFAULT NULL, "start_city" varchar DEFAULT NULL, "goal_pref" varchar DEFAULT NULL, "goal_city" varchar DEFAULT NULL)[0m
+  ↳ db/migrate/20220219061606_remove_prefecture_id_from_quests.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "quests" ("id","user_id","due_day","is_clear","created_at","updated_at","start_pref","start_city","goal_pref","goal_city")
+                     SELECT "id","user_id","due_day","is_clear","created_at","updated_at","start_pref","start_city","goal_pref","goal_city" FROM "aquests"[0m
+  ↳ db/migrate/20220219061606_remove_prefecture_id_from_quests.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aquests"[0m
+  ↳ db/migrate/20220219061606_remove_prefecture_id_from_quests.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220219061606"]]
+  ↳ bin/rails:9
+  [1m[35m (5.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateQuestions (20220220042017)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "questions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "question" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220220042017_create_questions.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220220042017"]]
+  ↳ bin/rails:9
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateChoices (20220220042054)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "choices" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "question_id" integer, "choice" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220220042054_create_choices.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220220042054"]]
+  ↳ bin/rails:9
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to RenameQuestionColumnToQuestions (20220220072401)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aquestions" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220220072401_rename_question_column_to_questions.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aquestions" ("id","title","created_at","updated_at")
+                     SELECT "id","question","created_at","updated_at" FROM "questions"[0m
+  ↳ db/migrate/20220220072401_rename_question_column_to_questions.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "questions"[0m
+  ↳ db/migrate/20220220072401_rename_question_column_to_questions.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "questions" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220220072401_rename_question_column_to_questions.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "questions" ("id","title","created_at","updated_at")
+                     SELECT "id","title","created_at","updated_at" FROM "aquestions"[0m
+  ↳ db/migrate/20220220072401_rename_question_column_to_questions.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aquestions"[0m
+  ↳ db/migrate/20220220072401_rename_question_column_to_questions.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220220072401"]]
+  ↳ bin/rails:9
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to RenameChoiceColumnToChoices (20220220072527)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "achoices" ("id" integer NOT NULL PRIMARY KEY, "question_id" integer DEFAULT NULL, "body" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220220072527_rename_choice_column_to_choices.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "achoices" ("id","question_id","body","created_at","updated_at")
+                     SELECT "id","question_id","choice","created_at","updated_at" FROM "choices"[0m
+  ↳ db/migrate/20220220072527_rename_choice_column_to_choices.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "choices"[0m
+  ↳ db/migrate/20220220072527_rename_choice_column_to_choices.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "choices" ("id" integer NOT NULL PRIMARY KEY, "question_id" integer DEFAULT NULL, "body" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220220072527_rename_choice_column_to_choices.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "choices" ("id","question_id","body","created_at","updated_at")
+                     SELECT "id","question_id","body","created_at","updated_at" FROM "achoices"[0m
+  ↳ db/migrate/20220220072527_rename_choice_column_to_choices.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "achoices"[0m
+  ↳ db/migrate/20220220072527_rename_choice_column_to_choices.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220220072527"]]
+  ↳ bin/rails:9
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to Questions (20220220152454)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "questions"[0m
+  ↳ db/migrate/20220220152454_questions.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220220152454"]]
+  ↳ bin/rails:9
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to Choices (20220220152606)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "choices"[0m
+  ↳ db/migrate/20220220152606_choices.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220220152606"]]
+  ↳ bin/rails:9
+  [1m[35m (8.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to ChangeColumnsToBoards (20220223062052)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aboards" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture_id" integer DEFAULT NULL, "prefecture" varchar DEFAULT NULL, "city" varchar DEFAULT NULL)[0m
+  ↳ db/migrate/20220223062052_change_columns_to_boards.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aboards" ("id","title","created_at","updated_at","prefecture_id","prefecture","city")
+                     SELECT "id","title","created_at","updated_at","prefecture_id","prefecture","city" FROM "boards"[0m
+  ↳ db/migrate/20220223062052_change_columns_to_boards.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "boards"[0m
+  ↳ db/migrate/20220223062052_change_columns_to_boards.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "boards" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture" varchar DEFAULT NULL, "city" varchar DEFAULT NULL)[0m
+  ↳ db/migrate/20220223062052_change_columns_to_boards.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "boards" ("id","title","created_at","updated_at","prefecture","city")
+                     SELECT "id","title","created_at","updated_at","prefecture","city" FROM "aboards"[0m
+  ↳ db/migrate/20220223062052_change_columns_to_boards.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aboards"[0m
+  ↳ db/migrate/20220223062052_change_columns_to_boards.rb:3
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aboards" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "prefecture" varchar DEFAULT NULL, "city" varchar DEFAULT NULL)[0m
+  ↳ db/migrate/20220223062052_change_columns_to_boards.rb:4
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aboards" ("id","title","created_at","updated_at","prefecture","city")
+                     SELECT "id","title","created_at","updated_at","prefecture","city" FROM "boards"[0m
+  ↳ db/migrate/20220223062052_change_columns_to_boards.rb:4
+  [1m[35m (1.1ms)[0m  [1m[35mDROP TABLE "boards"[0m
+  ↳ db/migrate/20220223062052_change_columns_to_boards.rb:4
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "boards" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "city" varchar DEFAULT NULL)[0m
+  ↳ db/migrate/20220223062052_change_columns_to_boards.rb:4
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "boards" ("id","title","created_at","updated_at","city")
+                     SELECT "id","title","created_at","updated_at","city" FROM "aboards"[0m
+  ↳ db/migrate/20220223062052_change_columns_to_boards.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aboards"[0m
+  ↳ db/migrate/20220223062052_change_columns_to_boards.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aboards" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "city" varchar DEFAULT NULL)[0m
+  ↳ db/migrate/20220223062052_change_columns_to_boards.rb:5
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aboards" ("id","title","created_at","updated_at","city")
+                     SELECT "id","title","created_at","updated_at","city" FROM "boards"[0m
+  ↳ db/migrate/20220223062052_change_columns_to_boards.rb:5
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "boards"[0m
+  ↳ db/migrate/20220223062052_change_columns_to_boards.rb:5
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "boards" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220223062052_change_columns_to_boards.rb:5
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "boards" ("id","title","created_at","updated_at")
+                     SELECT "id","title","created_at","updated_at" FROM "aboards"[0m
+  ↳ db/migrate/20220223062052_change_columns_to_boards.rb:5
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aboards"[0m
+  ↳ db/migrate/20220223062052_change_columns_to_boards.rb:5
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "boards" ADD "body" text[0m
+  ↳ db/migrate/20220223062052_change_columns_to_boards.rb:6
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220223062052"]]
+  ↳ bin/rails:9
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to RemoveTitleFromComments (20220223062445)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acomments" ("id" integer NOT NULL PRIMARY KEY, "board_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "title" varchar DEFAULT NULL, "comment" text DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220223062445_remove_title_from_comments.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "acomments" ("id","board_id","user_id","title","comment","created_at","updated_at")
+                     SELECT "id","board_id","user_id","title","comment","created_at","updated_at" FROM "comments"[0m
+  ↳ db/migrate/20220223062445_remove_title_from_comments.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "comments"[0m
+  ↳ db/migrate/20220223062445_remove_title_from_comments.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "comments" ("id" integer NOT NULL PRIMARY KEY, "board_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "comment" text DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220223062445_remove_title_from_comments.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("id","board_id","user_id","comment","created_at","updated_at")
+                     SELECT "id","board_id","user_id","comment","created_at","updated_at" FROM "acomments"[0m
+  ↳ db/migrate/20220223062445_remove_title_from_comments.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "acomments"[0m
+  ↳ db/migrate/20220223062445_remove_title_from_comments.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220223062445"]]
+  ↳ bin/rails:9
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to AddUserIdToBoards (20220223062807)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "boards" ADD "user_id" integer[0m
+  ↳ db/migrate/20220223062807_add_user_id_to_boards.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220223062807"]]
+  ↳ bin/rails:9
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to RemoveImageIdFromTasks (20220302024415)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atasks" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "image_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "body_a" text DEFAULT NULL, "body_b" text DEFAULT NULL, "name" varchar DEFAULT NULL)[0m
+  ↳ db/migrate/20220302024415_remove_image_id_from_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "atasks" ("id","title","image_id","created_at","updated_at","body_a","body_b","name")
+                     SELECT "id","title","image_id","created_at","updated_at","body_a","body_b","name" FROM "tasks"[0m
+  ↳ db/migrate/20220302024415_remove_image_id_from_tasks.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "tasks"[0m
+  ↳ db/migrate/20220302024415_remove_image_id_from_tasks.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "body_a" text DEFAULT NULL, "body_b" text DEFAULT NULL, "name" varchar DEFAULT NULL)[0m
+  ↳ db/migrate/20220302024415_remove_image_id_from_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("id","title","created_at","updated_at","body_a","body_b","name")
+                     SELECT "id","title","created_at","updated_at","body_a","body_b","name" FROM "atasks"[0m
+  ↳ db/migrate/20220302024415_remove_image_id_from_tasks.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "atasks"[0m
+  ↳ db/migrate/20220302024415_remove_image_id_from_tasks.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220302024415"]]
+  ↳ bin/rails:9
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to ChangeDateDueDayToQuests (20220302061212)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aquests" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "due_day" datetime DEFAULT NULL, "is_clear" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "start_pref" varchar DEFAULT NULL, "start_city" varchar DEFAULT NULL, "goal_pref" varchar DEFAULT NULL, "goal_city" varchar DEFAULT NULL)[0m
+  ↳ db/migrate/20220302061212_change_date_due_day_to_quests.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aquests" ("id","user_id","due_day","is_clear","created_at","updated_at","start_pref","start_city","goal_pref","goal_city")
+                     SELECT "id","user_id","due_day","is_clear","created_at","updated_at","start_pref","start_city","goal_pref","goal_city" FROM "quests"[0m
+  ↳ db/migrate/20220302061212_change_date_due_day_to_quests.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "quests"[0m
+  ↳ db/migrate/20220302061212_change_date_due_day_to_quests.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "quests" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "due_day" date DEFAULT NULL, "is_clear" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "start_pref" varchar DEFAULT NULL, "start_city" varchar DEFAULT NULL, "goal_pref" varchar DEFAULT NULL, "goal_city" varchar DEFAULT NULL)[0m
+  ↳ db/migrate/20220302061212_change_date_due_day_to_quests.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "quests" ("id","user_id","due_day","is_clear","created_at","updated_at","start_pref","start_city","goal_pref","goal_city")
+                     SELECT "id","user_id","due_day","is_clear","created_at","updated_at","start_pref","start_city","goal_pref","goal_city" FROM "aquests"[0m
+  ↳ db/migrate/20220302061212_change_date_due_day_to_quests.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aquests"[0m
+  ↳ db/migrate/20220302061212_change_date_due_day_to_quests.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220302061212"]]
+  ↳ bin/rails:9
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateNotifications (20220306034841)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "notifications" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "visitor_id" integer NOT NULL, "visited_id" integer NOT NULL, "board_id" integer, "comment_id" integer, "checked" boolean DEFAULT 0 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20220306034841_create_notifications.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220306034841"]]
+  ↳ bin/rails:9
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-03-17 02:33:32.740412"], ["updated_at", "2022-03-17 02:33:32.740412"]]
+  ↳ bin/rails:9
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.6ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "なし"], ["created_at", "2022-03-17 02:33:45.258351"], ["updated_at", "2022-03-17 02:33:45.258351"], ["body_a", "なし"], ["body_b", "なし"], ["name", "開始日"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "なし"], ["created_at", "2022-03-17 02:33:45.265367"], ["updated_at", "2022-03-17 02:33:45.265367"], ["body_a", "なし"], ["body_b", "なし"], ["name", "３０日前"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "なし"], ["created_at", "2022-03-17 02:33:45.271726"], ["updated_at", "2022-03-17 02:33:45.271726"], ["body_a", "なし"], ["body_b", "なし"], ["name", "１４日前"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "なし"], ["created_at", "2022-03-17 02:33:45.278587"], ["updated_at", "2022-03-17 02:33:45.278587"], ["body_a", "なし"], ["body_b", "なし"], ["name", "当日"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "なし"], ["created_at", "2022-03-17 02:33:45.285002"], ["updated_at", "2022-03-17 02:33:45.285002"], ["body_a", "なし"], ["body_b", "なし"], ["name", "１４日後"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "引越しの見積もりと契約"], ["created_at", "2022-03-17 02:33:45.291255"], ["updated_at", "2022-03-17 02:33:45.291255"], ["body_a", "引っ越し業者へ連絡をして、見積もりをしてもらいます。\n早めに予約しておかないと、引っ越し業者の予定が空いておらず転居に間に合わない、なんて事態も起きかねません。\n特に転勤や進学が決まる1～3月は繁忙期で、1カ月以上前に連絡しても希望する日時が空いていない場合があります。業者によっては3カ月前から予約を受け付けている会社もありますので、繁忙期にあたる時期に引っ越しをされる場合は、より余裕をもって予約をしましょう。\n特に引っ越し時期や日程が決まっていない場合は、4月などあえて繁忙期が終わったタイミングで引っ越すという方法もあります。\nまた、混雑状況や料金体系などは業者によって異なります。1社だけでなく複数の会社から見積もりを取って、条件を比較しながら業者を選ぶのがおすすめです。\n複数の引越し見積もりを比較することで、引越し料金を安い金額で抑えることができたり、各引越し業者へ簡単に値引き交渉を行うことが可能です。\n見積もりの料金と運送内容で問題なければ、見積書の承諾欄にサインをすることで、引越し業者との手続きが完了します。"], ["body_b", "引っ越し業者へ連絡をして、見積もりをしてもらいます。\n早めに予約しておかないと、引っ越し業者の予定が空いておらず転居に間に合わない、なんて事態も起きかねません。\n特に転勤や進学が決まる1～3月は繁忙期で、1カ月以上前に連絡しても希望する日時が空いていない場合があります。業者によっては3カ月前から予約を受け付けている会社もありますので、繁忙期にあたる時期に引っ越しをされる場合は、より余裕をもって予約をしましょう。\n特に引っ越し時期や日程が決まっていない場合は、4月などあえて繁忙期が終わったタイミングで引っ越すという方法もあります。\nまた、混雑状況や料金体系などは業者によって異なります。1社だけでなく複数の会社から見積もりを取って、条件を比較しながら業者を選ぶのがおすすめです。\n複数の引越し見積もりを比較することで、引越し料金を安い金額で抑えることができたり、各引越し業者へ簡単に値引き交渉を行うことが可能です。\n見積もりの料金と運送内容で問題なければ、見積書の承諾欄にサインをすることで、引越し業者との手続きが完了します。"], ["name", "引越しの見積もり・契約"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (14.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "賃貸の解約手続き"], ["created_at", "2022-03-17 02:33:45.307708"], ["updated_at", "2022-03-17 02:33:45.307708"], ["body_a", "退去通知の期限については、賃貸借契約書を確認してみてください。\nほとんどの賃貸物件では「契約を終える場合は退去の2～1か月前に解約申し出をする」と決められています。\n退去通知が遅くなってしまうと、余分に家賃を払わなければいけないなんてことにもなりかねません。\n引越し予定日が決定し次第、早めに管理会社や不動産会社、もしくは大家へ連絡をしましょう"], ["body_b", "退去通知の期限については、賃貸借契約書を確認してみてください。\nほとんどの賃貸物件では「契約を終える場合は退去の2～1か月前に解約申し出をする」と決められています。\n退去通知が遅くなってしまうと、余分に家賃を払わなければいけないなんてことにもなりかねません。\n引越し予定日が決定し次第、早めに管理会社や不動産会社、もしくは大家へ連絡をしましょう"], ["name", "賃貸の解約"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "駐車場の解約手続き"], ["created_at", "2022-03-17 02:33:45.314669"], ["updated_at", "2022-03-17 02:33:45.314669"], ["body_a", "駐車場は、物件に付属しているものを借りている場合や、別の場所で借りている場合がありますが、どちらも引越し予定日の一ヶ月前に解約の届け出をおこなうように契約で決められていることがほとんどです。\n提出期限に間に合わないと、引越しをおこなった月の翌月分まで利用料金の支払いを求められる場合もあるので、まずは駐車場の賃貸契約書を確認し、いつまでに解約の通知をおこなう必要があるか、調べておきましょう。"], ["body_b", "駐車場は、物件に付属しているものを借りている場合や、別の場所で借りている場合がありますが、どちらも引越し予定日の一ヶ月前に解約の届け出をおこなうように契約で決められていることがほとんどです。\n提出期限に間に合わないと、引越しをおこなった月の翌月分まで利用料金の支払いを求められる場合もあるので、まずは駐車場の賃貸契約書を確認し、いつまでに解約の通知をおこなう必要があるか、調べておきましょう。"], ["name", "駐車場の解約"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "粗大ごみの処分手続き"], ["created_at", "2022-03-17 02:33:45.320805"], ["updated_at", "2022-03-17 02:33:45.320805"], ["body_a", "家財のうち、どれを新居に持って行くか、どれを処分するかを決め、早めに整理に取りかかりましょう。\n大型の家具などを処分する場合、市区町村の粗大ごみ受付センターなどに予約を入れる必要があり、すぐには処分できません。家庭用の「エアコン」「テレビ」「冷蔵庫・冷凍庫」「洗濯機・衣類乾燥機」の4品目は家電リサイクル法の対象品目となっており、粗大ごみとして処分することはできません。購入した電器店に連絡して回収してもらいましょう。購入店が不明な場合は各市区町村役所・役場に処分方法を問い合わせてください。"], ["body_b", "家財のうち、どれを新居に持って行くか、どれを処分するかを決め、早めに整理に取りかかりましょう。\n大型の家具などを処分する場合、市区町村の粗大ごみ受付センターなどに予約を入れる必要があり、すぐには処分できません。家庭用の「エアコン」「テレビ」「冷蔵庫・冷凍庫」「洗濯機・衣類乾燥機」の4品目は家電リサイクル法の対象品目となっており、粗大ごみとして処分することはできません。購入した電器店に連絡して回収してもらいましょう。購入店が不明な場合は各市区町村役所・役場に処分方法を問い合わせてください。"], ["name", "粗大ごみの処分"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "学校の転校手続き"], ["created_at", "2022-03-17 02:33:45.327748"], ["updated_at", "2022-03-17 02:33:45.327748"], ["body_a", "子供が転校する先が、公立か私立か、あるいは小中学校か高校かによって、必要な手続きは異なります。\n旧住所の市区町村役場に設置されている『教育委員会』、新住所の『教育委員会』、さらに、転校前・転校先の学校が窓口となります。\n\n【引越し先が同一市区町村以外で、公立小中学校に転校する場合】\n1．在学している学校に、引越し前に転校する旨を連絡し、『在学証明書』と『教科書給与証明書』を発行してもらう\n2．現住所の役所で転出届を提出し、『転出証明書』を発行してもらう転校先が指定される\n3．新住所の役場へ転入届と転出証明書を提出し、『入学通知書』を発行してもらう\n4．『在学証明書』、『教科書給与証明書』、『入学通知書』を、転校先の学校へ提出する\n\n【私立小中学校へ転入する場合】\n　各学校によって、編入方法や必要な手続きが異なります。引越し先の教育委員会に確認してください。\n\n【公立高校へ転入する場合】\n　各都道府県によって、手続き方法が異なります。欠員があり、編入試験がおこなわれるのが一般的で、合格すると、転入が認められます。詳細は、引越し先の教育委員会に確認してください。\n\n【私立高校へ転入する場合】\n　各都道府県にある私立中学高等学校協会や教育委員会に問い合わせをおこない、直接希望する学校に手続きをしてください。公立高校と同様に、欠員があり、編入試験がおこなわれるのが一般的です。"], ["body_b", "子供が転校する先が、公立か私立か、あるいは小中学校か高校かによって、必要な手続きは異なります。\n旧住所の市区町村役場に設置されている『教育委員会』、新住所の『教育委員会』、さらに、転校前・転校先の学校が窓口となります。\n\n【引越し先が同一市区町村で、公立小中学校に転校する場合】\n1．在学している学校に、引越し前に転校する旨を連絡し、『在学証明書』と『教科書給与証明書』を発行してもらう\n2．現住所の役所で転居届を提出し、『入学通知書』を発行してもらう転校先が指定される\n3．『在学証明書』、『教科書給与証明書』、『入学通知書』を、転校先の学校へ提出する\n\n【私立小中学校へ転入する場合】\n　各学校によって、編入方法や必要な手続きが異なります。引越し先の教育委員会に確認してください。\n\n【公立高校へ転入する場合】\n　各都道府県によって、手続き方法が異なります。欠員があり、編入試験がおこなわれるのが一般的で、合格すると、転入が認められます。詳細は、引越し先の教育委員会に確認してください。\n\n【私立高校へ転入する場合】\n　各都道府県にある私立中学高等学校協会や教育委員会に問い合わせをおこない、直接希望する学校に手続きをしてください。公立高校と同様に、欠員があり、編入試験がおこなわれるのが一般的です。"], ["name", "学校の転校手続き"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "火災保険の住所変更手続き"], ["created_at", "2022-03-17 02:33:45.335091"], ["updated_at", "2022-03-17 02:33:45.335091"], ["body_a", "基本的には現在契約している保険の異動手続きをおこなえば、引越し後も保険を引き継ぐことができます。 \nしかし、賃貸物件によっては、管理会社指定の火災保険の加入を義務付けている場合があります。その場合、現在の火災保険を解約し、業者指定の火災保険に加入する必要があるので、事前に賃貸借契約書の内容をしっかり確認しておきましょう。"], ["body_b", "基本的には現在契約している保険の異動手続きをおこなえば、引越し後も保険を引き継ぐことができます。 \nしかし、賃貸物件によっては、管理会社指定の火災保険の加入を義務付けている場合があります。その場合、現在の火災保険を解約し、業者指定の火災保険に加入する必要があるので、事前に賃貸借契約書の内容をしっかり確認しておきましょう。"], ["name", "保険の住所変更手続き"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "インターネットの引越し手続き"], ["created_at", "2022-03-17 02:33:45.341444"], ["updated_at", "2022-03-17 02:33:45.341444"], ["body_a", "インターネット回線の契約をしている人は、NTTやプロバイダへ引越し手続きを行います。\n新居での開通工事に時間がかかる場合が多いため、早めに手続きしておきましょう。\n特に、3月～4月の繁忙期は予約が取れなくなることがあるため、1ヶ月以上前から行動するのがおすすめです。"], ["body_b", "インターネット回線の契約をしている人は、NTTやプロバイダへ引越し手続きを行います。\n新居での開通工事に時間がかかる場合が多いため、早めに手続きしておきましょう。\n特に、3月～4月の繁忙期は予約が取れなくなることがあるため、1ヶ月以上前から行動するのがおすすめです。"], ["name", "インターネットの手続き"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "転出届の提出"], ["created_at", "2022-03-17 02:33:45.347924"], ["updated_at", "2022-03-17 02:33:45.347924"], ["body_a", "現在の自治体と異なる住所へ引越しするときは、引越し元の役所で『転出届』を提出して住民票を移します。\n届け出が完了すると『転出証明書』を受け取りますので、失くさないように保管しておきましょう。\n引越しをしたのに届け出をしないままでいると、罰金が発生する可能性もありますので、忘れずにしっかり届け出をしましょう。\n\n転出届は、同一世帯の家族であれば、本人以外の人が手続きを行うこともできます。\nしかし、同一世帯員ではない人が本人の代わりに手続きをする場合は、委任状が必要です。\n同じ住所に住んでいる家族でも同一世帯ではない場合、血縁関係はあるが別世帯の家族の場合などは、代理人という扱いになります。\n代理人申請は、引越しをした本人が、怪我や病気などで起き上がれない等、どうしても役所へ行くことができない場合に行います。\n代理人が転出届を提出する方法は、本人が手続きする場合と変わりません。\nただし、委任状など「必要なもの」の内容が変わります。\n\n＜必要書類＞\n・本人確認書類（運転免許証、パスポート等）\n・印鑑\n・国民健康保険証、高齢者医療受給者証、乳幼児医療証など（該当者のみ）\n・印鑑登録証（登録者のみ）\n・マイナンバーカードもしくはマイナンバー通知カード\n\n＜代理人による転出届の提出に必要なもの＞\n・代理人の本人確認書類\n・代理人の印鑑\n・委任状\n・転出届を提出する人の印鑑\n・転出届を提出する人のマイナンバーカードもしくはマイナンバー通知カード\n・転出届を提出する人の国民健康保険証・乳児医療小・後期高齢者医療保険被保険者証・介護保険証・年金手帳など（持っている場合のみ）"], ["body_b", "なし"], ["name", "転出届の提出"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "国民健康保険の資格喪失手続き"], ["created_at", "2022-03-17 02:33:45.354970"], ["updated_at", "2022-03-17 02:33:45.354970"], ["body_a", "現在、国民健康保険に加入しているという方は、旧住所の役所で資格喪失手続きを行います。国保の手続きが遅れると保険診療が使えなくなったり、保険料をさかのぼって収めたりする必要がでてくるため、忘れずに手続きすることが重要です。\n\n【必要書類】\n・国民健康保険証\n・本人確認書類（運転免許証、パスポートなど）\n・印章\n\n【代理人申請の場合】\n・委任状（申請人の自署押印が必要）\n・代理人自身の印章と本人確認書類"], ["body_b", "なし"], ["name", "国民健康保険の手続き"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "印鑑登録の抹消"], ["created_at", "2022-03-17 02:33:45.362121"], ["updated_at", "2022-03-17 02:33:45.362121"], ["body_a", "旧住所の市区町村役場に『転出届』を出す際は、同時に現在登録している印鑑の『印鑑登録証』を持参し、登録抹消の手続きをおこないましょう。\n『転出届の提出』と『印鑑登録証の返却』がおこなわれると同時に、印鑑登録が抹消されます。自治体によっては、『転出届』の提出だけで、自動的に印鑑登録が抹消される場合もあります。\n\n【必要書類】\n・本人確認書類（運転免許証、パスポート、顔写真付きの住民基本台帳カードなど）\n・登録する印鑑　（大きさが一辺8mm〜25mmの正方形に収まるもの）\n※他人が既に登録している印鑑や、ゴム印、欠けている印鑑などは使用できません。\n\n【代理人申請の場合】\n・委任状（申請人の自署押印が必要）\n・代理人の印鑑と本人確認書類\n・登録する印鑑"], ["body_b", "なし"], ["name", "印鑑登録の抹消"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "電気の使用停止・開始手続き"], ["created_at", "2022-03-17 02:33:45.368211"], ["updated_at", "2022-03-17 02:33:45.368211"], ["body_a", "旧居の電気の利用を停止するために、旧居で利用指定していた電力会社に契約を解除するための連絡をします。\n電話、もしくは各電力会社のWEBサイトから手続きすることができます。\n引っ越し日までの利用料金は、直接もしくは後日振込みなどの形で支払います。"], ["body_b", "旧居の電気の利用を停止するために、旧居で利用指定していた電力会社に契約を解除するための連絡をします。\n電話、もしくは各電力会社のWEBサイトから手続きすることができます。\n引っ越し日までの利用料金は、直接もしくは後日振込みなどの形で支払います。"], ["name", "電気の手続き"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "ガスの使用中止・開始手続き"], ["created_at", "2022-03-17 02:33:45.375443"], ["updated_at", "2022-03-17 02:33:45.375443"], ["body_a", "旧居のガスの利用を停止するために、旧居で利用指定していたガス会社に契約を解除するための連絡をします。\n\n同時に、引越し後すぐにガスを使えるようにするため、新居で利用するガス会社で開始手続きを行いましょう。\n引っ越し日までの利用料金は、立会いの際に直接支払うか、後日振込みなどで支払います。"], ["body_b", "旧居のガスの利用を停止するために、旧居で利用指定していたガス会社に契約を解除するための連絡をします。\n\n同時に、引越し後すぐにガスを使えるようにするため、新居で利用するガス会社で開始手続きを行いましょう。\n引っ越し日までの利用料金は、立会いの際に直接支払うか、後日振込みなどで支払います。"], ["name", "ガスの手続き"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "水道の使用中止・開始手続き"], ["created_at", "2022-03-17 02:33:45.382853"], ["updated_at", "2022-03-17 02:33:45.382853"], ["body_a", "旧居の水道の利用を停止するために、現住所の管轄の水道局へ連絡し、利用料金を精算する手続きを行います。\nこの手続きを忘れると、住んでいない部屋の水道料金を支払わなければいけなくなるため、注意が必要です。\n引っ越し日までの利用料金は、立会いの際に直接支払うか、後日振込みなどで支払います。"], ["body_b", "旧居の水道の利用を停止するために、現住所の管轄の水道局へ連絡し、利用料金を精算する手続きを行います。\nこの手続きを忘れると、住んでいない部屋の水道料金を支払わなければいけなくなるため、注意が必要です。\n引っ越し日までの利用料金は、立会いの際に直接支払うか、後日振込みなどで支払います。"], ["name", "水道の手続き"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "児童手当の住所変更手続き"], ["created_at", "2022-03-17 02:33:45.389243"], ["updated_at", "2022-03-17 02:33:45.389243"], ["body_a", "引越し先でも児童手当を受給するためにはまず、現在お住まいの市区町村役場で『児童手当受給事由消滅届』を提出することが必要です。\nその際に、引越し先で児童手当の請求をおこなうのに必要となる『所得課税証明書』を発行してもらいましょう。"], ["body_b", "同市区町村内でお引越しの場合、手続きはありません。"], ["name", "児童手当の手続き"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "バイクの廃車手続き"], ["created_at", "2022-03-17 02:33:45.396222"], ["updated_at", "2022-03-17 02:33:45.396222"], ["body_a", "引越しをしたら、バイクの住所変更手続きを忘れずにおこないましょう。『原付バイク』『軽二輪バイク』『小型二輪バイク』など、バイクの種類によって必要書類や手続きの方法、手続き場所が異なるため、注意が必要です。\n住所変更だけでなく、ナンバープレートの変更が必要な場合もあります。\n転居元の市区町村役場でナンバープレートを返却し、『廃車証明書』をもらう手続きを行います。"], ["body_b", "同市区町村内でお引越しの場合、手続きはありません。"], ["name", "バイクの手続き"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "郵便局で住所変更手続き"], ["created_at", "2022-03-17 02:33:45.403218"], ["updated_at", "2022-03-17 02:33:45.403218"], ["body_a", "郵便局では、引越し後1年間は、郵便物を自動的に新住所へ転送してくれるサービスがあります。\n手続きが有効になるまで1週間程度かかる場合があるため、早めに届出をしておきましょう。ネットからも可能。日本郵便の「e転居」を活用すると便利です。"], ["body_b", "郵便局では、引越し後1年間は、郵便物を自動的に新住所へ転送してくれるサービスがあります。\n手続きが有効になるまで1週間程度かかる場合があるため、早めに届出をしておきましょう。ネットからも可能。日本郵便の「e転居」を活用すると便利です。"], ["name", "郵便局の手続き"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "固定電話の変更手続き"], ["created_at", "2022-03-17 02:33:45.410916"], ["updated_at", "2022-03-17 02:33:45.410916"], ["body_a", "現在利用している回線のサービス会社にウェブサイトもしくは電話で、引越し手続きを行います。\nNTTの場合、「116」に電話するか公式サイトにアクセスし、今の住居の電話の停止日と新居の電話取り付け希望日を申し込みます。\n新居で工事をしなければいけない場合、3～4週間くらい前から工事の予約をしておくのが無難です。なお、引っ越し先が同一市区町村の場合はそのまま電話番号を引き継ぐことも可能です。"], ["body_b", "現在利用している回線のサービス会社にウェブサイトもしくは電話で、引越し手続きを行います。\nNTTの場合、「116」に電話するか公式サイトにアクセスし、今の住居の電話の停止日と新居の電話取り付け希望日を申し込みます。\n新居で工事をしなければいけない場合、3～4週間くらい前から工事の予約をしておくのが無難です。なお、引っ越し先が同一市区町村の場合はそのまま電話番号を引き継ぐことも可能です。"], ["name", "固定電話の手続き"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "新聞の解約手続き"], ["created_at", "2022-03-17 02:33:45.417778"], ["updated_at", "2022-03-17 02:33:45.417778"], ["body_a", "旧居で新聞を取っていた場合は、販売店に対して解約手続きを行います。配達停止日までに連絡し、精算してもらいましょう。\n新居で新聞を取る場合は新規契約を結びます。いずれも引っ越し2週間前くらいまでに販売店に連絡してください。なお、新聞社によっては、ネット上から、現在の住所、引越し先の住所を入力することで、それぞれ最寄りの新聞販売店に連絡してくれ、支払い清算も簡単にすることができます。"], ["body_b", "旧居で新聞を取っていた場合は、販売店に対して解約手続きを行います。配達停止日までに連絡し、精算してもらいましょう。\n新居で新聞を取る場合は新規契約を結びます。いずれも引っ越し2週間前くらいまでに販売店に連絡してください。なお、新聞社によっては、ネット上から、現在の住所、引越し先の住所を入力することで、それぞれ最寄りの新聞販売店に連絡してくれ、支払い清算も簡単にすることができます。"], ["name", "新聞の解約"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "荷造り"], ["created_at", "2022-03-17 02:33:45.424285"], ["updated_at", "2022-03-17 02:33:45.424285"], ["body_a", "梱包資材は基本的に、引越し業者から無料でもらえたりレンタルできます。\nどこからダンボールに詰めれば良いのかわからないし、終わる気がしない。やる気もでない…」と、なかなか梱包作業の手が進まない方もいるのではないでしょうか？\n実は、引越しの荷造りには効率のよい手順があり、順番を間違えてしまうと無駄な手間と時間がかかってしまいます。\n\n荷造り手順1.部屋をブロックに分ける\n　　最初の手順は、荷造りを必要とする部屋をブロックにして分けることです。\n　　部屋ごとにブロックを分け、トイレや洗面台など荷物が少ない場所は、互いの位置関係と日常で利用する用途が近い場所どうしを1つにまとめましょう。\n荷造り手順2.ブロックをグループに分ける\n　　ブロックに分けただけでは、まだ何から手をつけていいのか判断が難しいため、次の手順ではブロックをさらに細かくしグループ分けをします。\n　　グループ分けの方法は「クローゼットなどの収納」や「引っ越し後も旧居と同じレイアウトで配置する荷物」で分けます。\n荷造り手順3.使う予定がない荷物をダンボールへ詰める\n　　グループ分けが終わった後は、「引越し後まで使う予定のない荷物」のグループを見つけて、真っ先にダンボールへ詰めていきます。\n　　荷物を詰め終えたダンボールには「ブロック・グループ・荷物」をマジックペンで大きく書きこみましょう。（記載例：洋間・クローゼット・夏物服）\n　　ダンボールに「ブロック・グループ・荷物」を書けば、引越し後の開梱作業でどのダンボールに何が入っているのかがわかり、必要なものから優先的に片付けることがでます。\n荷造り手順4.使うかもしれない荷物をダンボールへ詰める\n　　「引越し後まで使う予定のない荷物」の梱包が終わったら、次は「もしかしたら引越し中に使うかもしれない荷物」をダンボールに詰めます。\n　　これらの荷物は、ダンボールに詰め終わってもフタは空けたまま（ガムテープで封をしない）にしておくと良いでしょう。\n　　もし、ダンボールに入れた荷物が必要になれば、都度、取り出して使い終わったタイミングでダンボールに戻し、引越し当日に封をしましょう\n荷造り手順5.引越しの当日にすべての荷物をダンボールへ詰める\n　　最後は、引越し当日もしくは前夜に、梱包していない残りの荷物をダンボールに梱包して荷造り完了です。\n　　当日は思いがけず残った荷物が見つかる可能性もあるので、ダンボール箱は余裕を持った数を用意しておくことをおすすめします。\n\n"], ["body_b", "梱包資材は基本的に、引越し業者から無料でもらえたりレンタルできます。\nどこからダンボールに詰めれば良いのかわからないし、終わる気がしない。やる気もでない…」と、なかなか梱包作業の手が進まない方もいるのではないでしょうか？\n実は、引越しの荷造りには効率のよい手順があり、順番を間違えてしまうと無駄な手間と時間がかかってしまいます。\n\n荷造り手順1.部屋をブロックに分ける\n　　最初の手順は、荷造りを必要とする部屋をブロックにして分けることです。\n　　部屋ごとにブロックを分け、トイレや洗面台など荷物が少ない場所は、互いの位置関係と日常で利用する用途が近い場所どうしを1つにまとめましょう。\n荷造り手順2.ブロックをグループに分ける\n　　ブロックに分けただけでは、まだ何から手をつけていいのか判断が難しいため、次の手順ではブロックをさらに細かくしグループ分けをします。\n　　グループ分けの方法は「クローゼットなどの収納」や「引っ越し後も旧居と同じレイアウトで配置する荷物」で分けます。\n荷造り手順3.使う予定がない荷物をダンボールへ詰める\n　　グループ分けが終わった後は、「引越し後まで使う予定のない荷物」のグループを見つけて、真っ先にダンボールへ詰めていきます。\n　　荷物を詰め終えたダンボールには「ブロック・グループ・荷物」をマジックペンで大きく書きこみましょう。（記載例：洋間・クローゼット・夏物服）\n　　ダンボールに「ブロック・グループ・荷物」を書けば、引越し後の開梱作業でどのダンボールに何が入っているのかがわかり、必要なものから優先的に片付けることがでます。\n荷造り手順4.使うかもしれない荷物をダンボールへ詰める\n　　「引越し後まで使う予定のない荷物」の梱包が終わったら、次は「もしかしたら引越し中に使うかもしれない荷物」をダンボールに詰めます。\n　　これらの荷物は、ダンボールに詰め終わってもフタは空けたまま（ガムテープで封をしない）にしておくと良いでしょう。\n　　もし、ダンボールに入れた荷物が必要になれば、都度、取り出して使い終わったタイミングでダンボールに戻し、引越し当日に封をしましょう\n荷造り手順5.引越しの当日にすべての荷物をダンボールへ詰める\n　　最後は、引越し当日もしくは前夜に、梱包していない残りの荷物をダンボールに梱包して荷造り完了です。\n　　当日は思いがけず残った荷物が見つかる可能性もあるので、ダンボール箱は余裕を持った数を用意しておくことをおすすめします。\n\n"], ["name", "荷造り開始"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "ガス・水道の使用停止の立会い"], ["created_at", "2022-03-17 02:33:45.431700"], ["updated_at", "2022-03-17 02:33:45.431700"], ["body_a", "ガスと水道の場合、住んでいる場所の条件によって、立会いが必要になることがあります。\nガスはメーターが室内についている場合、水道はオートロックのマンションに住んでいる場合などです。"], ["body_b", "ガスと水道の場合、住んでいる場所の条件によって、立会いが必要になることがあります。\nガスはメーターが室内についている場合、水道はオートロックのマンションに住んでいる場合などです。"], ["name", "ガス・水道停止の立会い"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "退去立ち会い・カギ返却\n"], ["created_at", "2022-03-17 02:33:45.438970"], ["updated_at", "2022-03-17 02:33:45.438970"], ["body_a", "退去の立ち合いは基本的に退去日となります。\n退去の立会いに備えて掃除を開始しましょう。立合いのタイミングの部屋の状況によって、退去費用が大きく変わります。\n掃除をしっかりとして、部屋の状態を良くすることで退去の費用を抑えたり、敷金の返還金額が増えたりとお得になります。\nカギの返却を求められます。必ずオリジナルキー（純正の鍵）を用意しておきましょう。入居時に2本のカギを借りている場会は必ず2本返却する必要があります。\nこのカギの原本を1本でもなくしてしまった場合は、賃貸契約にのっとってカギのシリンダー交換費用を弁償しなければなりません。"], ["body_b", "退去の立ち合いは基本的に退去日となります。\n退去の立会いに備えて掃除を開始しましょう。立合いのタイミングの部屋の状況によって、退去費用が大きく変わります。\n掃除をしっかりとして、部屋の状態を良くすることで退去の費用を抑えたり、敷金の返還金額が増えたりとお得になります。\nカギの返却を求められます。必ずオリジナルキー（純正の鍵）を用意しておきましょう。入居時に2本のカギを借りている場会は必ず2本返却する必要があります。\nこのカギの原本を1本でもなくしてしまった場合は、賃貸契約にのっとってカギのシリンダー交換費用を弁償しなければなりません。"], ["name", "退去立ち会い・カギ返却"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "電気・水道の使用開始"], ["created_at", "2022-03-17 02:33:45.445619"], ["updated_at", "2022-03-17 02:33:45.445619"], ["body_a", "基本的に、電気と水道は入居したら自分で開栓・開始を行います。\n手続きは、新居に届いている申込書を郵送するか、届いていない場合は電話・ファックス・インターネットなどで行うことができます。"], ["body_b", "基本的に、電気と水道は入居したら自分で開栓・開始を行います。\n手続きは、新居に届いている申込書を郵送するか、届いていない場合は電話・ファックス・インターネットなどで行うことができます。"], ["name", "電気・水道の使用開始"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "ガスの開栓の立会い"], ["created_at", "2022-03-17 02:33:45.451994"], ["updated_at", "2022-03-17 02:33:45.451994"], ["body_a", "ガスの開栓は、自分で行うことができないため、業者の人に開栓作業をしてもらう必要があります。\n開栓作業の際は、ガス機器を設置した上で必ず立会いをしなければいけないため、スケジュールを確認しておきましょう。"], ["body_b", "ガスの開栓は、自分で行うことができないため、業者の人に開栓作業をしてもらう必要があります。\n開栓作業の際は、ガス機器を設置した上で必ず立会いをしなければいけないため、スケジュールを確認しておきましょう。"], ["name", "ガスの開栓の立会い"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "転居届"], ["created_at", "2022-03-17 02:33:45.459000"], ["updated_at", "2022-03-17 02:33:45.459000"], ["body_a", "ありません"], ["body_b", "旧住所と同じ市区町村の中で引越しをしたときは、市区町村役場で転居届を提出します。\n引越しから14日以内に必ず行いましょう。特に、転入届・転居届を出し忘れると、最大5万円の過料（罰金）がかかることがあるため、必ず期間内に行いましょう。\n\n転居届は同一世帯の家族であれば、本人以外の人が手続きを行うこともできます。\nしかし、同一世帯員ではない人が本人の代わりに手続きをする場合は、委任状が必要です。\n同じ住所に住んでいる家族でも同一世帯ではない場合、血縁関係はあるが別世帯の家族の場合などは、代理人という扱いになります。\n代理人申請は、引越しをした本人が、怪我や病気などで起き上がれない等、どうしても役所へ行くことができない場合に行います。\n代理人が転居届を提出する方法は、本人が手続きする場合と変わりません。\nただし、委任状など「必要なもの」の内容が変わります。\n\n＜必要書類＞\n・本人確認書類（運転免許証、パスポート等）\n・印鑑\n・国民健康保険証、高齢者医療受給者証、乳幼児医療証など（該当者のみ）\n・印鑑登録証（登録者のみ）\n・マイナンバーカードもしくはマイナンバー通知カード\n\n\n＜代理人による転居届の提出に必要なもの＞\n・代理人の本人確認書類\n・代理人の印鑑\n・委任状\n・転居届を提出する人の印鑑\n・転居届を提出する人のマイナンバーカードもしくはマイナンバー通知カード\n・転居届を提出する人の国民健康保険証・乳児医療小・後期高齢者医療保険被保険者証・介護保険証・年金手帳など（持っている場合のみ）"], ["name", "転居届"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "転入届"], ["created_at", "2022-03-17 02:33:45.466575"], ["updated_at", "2022-03-17 02:33:45.466575"], ["body_a", "旧住所と異なる市区町村へ引越しした時は、、引越しから14日以内に新住所の管轄の市区町村役場へ転入届を提出します。\n転入届を提出するときには、転出届を出したときにもらった『転出証明書』が必要なので忘れないようにしましょう。特に、転入届・転居届を出し忘れると、最大5万円の過料（罰金）がかかることがあるため、必ず期間内に行いましょう。\n\n転出届・転入届・転居届はいずれも、同一世帯の家族であれば、本人以外の人が手続きを行うこともできます。\nしかし、同一世帯員ではない人が本人の代わりに手続きをする場合は、委任状が必要です。\n同じ住所に住んでいる家族でも同一世帯ではない場合、血縁関係はあるが別世帯の家族の場合などは、代理人という扱いになります。\n代理人申請は、引越しをした本人が、怪我や病気などで起き上がれない等、どうしても役所へ行くことができない場合に行います。\n代理人が転出届・転入届・転居届を提出する方法は、本人が手続きする場合と変わりません。\n\n＜必要書類＞\n・本人確認書類（運転免許証、パスポート等）\n・印鑑\n・転出証明書（転出届を提出したときにもらえる書類）\n・国民健康保険証、高齢者医療受給者証、乳幼児医療証など（該当者のみ）\n・印鑑登録証（登録者のみ）\n・マイナンバーカードもしくはマイナンバー通知カード\n\n＜代理人による転出届・転入届・転居届の提出に必要なもの＞\n・代理人の本人確認書類\n・代理人の印鑑\n・委任状\n・転出届・転入届・転居届を提出する人の印鑑\n・転出届・転入届・転居届を提出する人のマイナンバーカードもしくはマイナンバー通知カード\n・転出届・転入届・転居届を提出する人の国民健康保険証・乳児医療小・後期高齢者医療保険被保険者証・介護保険証・年金手帳など（持っている場合のみ）"], ["body_b", "なし"], ["name", "転入届"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "国民健康保険証の住所変更"], ["created_at", "2022-03-17 02:33:45.473226"], ["updated_at", "2022-03-17 02:33:45.473226"], ["body_a", "引越し元で国保の「資格喪失手続き」をした後に、引越し先で「加入手続き」を行い住所変更をします。\n現在お持ちの保険証を一度返却して、新しい自治体で保険に入り直す流れです。\n加入手続きも、「転入届」と合わせて行ってしまうことをおすすめします。\n\n【本人申請の場合】\n・国民健康保険証\n・本人確認書類（運転免許証、パスポートなど）\n・印章\n【代理人申請の場合】\n・委任状（申請人の自署押印が必要）\n・代理人自身の印章と本人確認書類\n\n新居へ移った際に国民健康保険への再加入が済んでいない場合は、保険診療が使えないため、医療費は全額負担となります。\n加入手続きが完了すれば保険診療分は払い戻されますが、思わぬ事態に慌てないためにも、早めの手続きをおすすめします。"], ["body_b", "同じ市区町村内で引越しをする場合は、引越し先の役所で国民健康保険の住所変更だけ行えば良いです。\n「転居届」の手続き時に、国保も合わせて手続きをするとスムーズです。\n\n【本人申請の場合】\n・国民健康保険証\n・本人確認書類（運転免許証、パスポートなど）\n・印章\n\n【代理人申請の場合】\n・委任状（申請人の自署押印が必要）\n・代理人自身の印章と本人確認書類\n"], ["name", "国民健康保険証の住所変更"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "国民健康保険の加入手続き"], ["created_at", "2022-03-17 02:33:45.480348"], ["updated_at", "2022-03-17 02:33:45.480348"], ["body_a", "新居へ移った際に国民健康保険への再加入が済んでいない場合は、保険診療が使えないため、医療費は全額負担となります。\n加入手続きが完了すれば保険診療分は払い戻されますが、思わぬ事態に慌てないためにも、早めの手続きをおすすめします。\n国保の資格喪失手続きが済んだら、新居の自治体にて加入手続きを行います。\n加入手続きも、「転入届」と合わせて行ってしまうことをおすすめします。\n\n【本人申請の場合】\n・国民健康保険証\n・本人確認書類（運転免許証、パスポートなど）\n・印章\n\n【代理人申請の場合】\n・委任状（申請人の自署押印が必要）\n・代理人自身の印章と本人確認書類"], ["body_b", "同じ市区町村内で引越しをする場合は、引越し先の役所で国民健康保険の住所変更だけ行えば良いです。\n「転居届」の手続き時に、国保も合わせて手続きをするとスムーズです。\n\n【本人申請の場合】\n・国民健康保険証\n・本人確認書類（運転免許証、パスポートなど）\n・印章\n\n【代理人申請の場合】\n・委任状（申請人の自署押印が必要）\n・代理人自身の印章と本人確認書類"], ["name", "国民健康保険の手続き"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "マイナンバーの住所変更"], ["created_at", "2022-03-17 02:33:45.487044"], ["updated_at", "2022-03-17 02:33:45.487044"], ["body_a", "マイナンバー通知カードもしくはマイナンバーカードと一緒に、身分証明書・印鑑などを持って行きましょう。"], ["body_b", "マイナンバー通知カードもしくはマイナンバーカードと一緒に、身分証明書・印鑑などを持って行きましょう。"], ["name", "マイナンバーの住所変更"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "印鑑登録"], ["created_at", "2022-03-17 02:33:45.493404"], ["updated_at", "2022-03-17 02:33:45.493404"], ["body_a", "新住所の役場で改めて印鑑を登録します。申請書に必要事項を記入し、印影を登録すると、『印鑑登録証』が発行されます。\n『印鑑登録証』は『印鑑証明』発行の際に必要となりますので、紛失しないように気を付けてください。自治体によっては、即日発行をおこなわず、文書による照会を必須としているところもあります。その場合は、後日自宅に照会状が送付されますので、本人が必要事項を記入し、市区町村役場の窓口で『印鑑登録証』を受け取ってください。\n\n【本人申請の場合】\n・本人確認書類（運転免許証、パスポート、顔写真付きの住民基本台帳カードなど）\n・登録する印鑑　（大きさが一辺8mm〜25mmの正方形に収まるもの）\n※他人が既に登録している印鑑や、ゴム印、欠けている印鑑などは使用できません。\n\n【代理人申請の場合】\n・委任状（申請人の自署押印が必要）\n・代理人の印鑑と本人確認書類\n・登録する印鑑"], ["body_b", "同じ市区町村内に引越しをした場合は、転居届の提出と同時に、印鑑登録上の住所も変更になります。あらためて印鑑登録をおこなう必要はありません。\nただし、政令指定都市の場合、同じ市内への転居でも、区が異なれば手続きが必要となる場合もあります。詳しくは、地域管轄の自治体に確認してください。"], ["name", "印鑑登録"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "国民年金の住所変更"], ["created_at", "2022-03-17 02:33:45.500428"], ["updated_at", "2022-03-17 02:33:45.500428"], ["body_a", "新しい住所の市区町村役場で、国民年金の住所変更手続きをおこないます。\n転入届の手続きと同時におこなうことで、効率良く済ませることができます。ただし、役場での手続きが必要となるのは、国民年金の『第1号被保険者』に該当する方のみとなります。『国民年金第3号被保険者』に該当する方は、配偶者の勤務先で手続きをおこなう形になります。\n\n【本人申請の場合】\n・国民年金手帳\n・印鑑\n\n【代理人申請の場合】\n・国民年金手帳\n・委任状（申請本人の自署押印がされたもの）\n・代理人自身の印鑑と本人確認書類"], ["body_b", "同じ市区町村内に引越した場合も、住所変更の手続きが必要です。\n自治体によっては、引越しの住所変更をおこなうと同時に、国民年金の住所も変更される場合があるので、各自治体に確認してください。ただし、役場での手続きが必要となるのは、国民年金の『第1号被保険者』に該当する方のみとなります。\n『国民年金第3号被保険者』に該当する方は、配偶者の勤務先で手続きをおこなう形になります。\n※手続きが遅れ、未納期間が発生すると、将来の年金受取額が減少してしまったり、正しい年金額が受給されなかったりする可能性があります。引越しの際は、国民年金の手続きを忘れずにおこなってください。\n\n【本人申請の場合】\n・国民年金手帳\n・印鑑\n\n【代理人申請の場合】\n・国民年金手帳\n・委任状（申請本人の自署押印がされたもの）\n・代理人自身の印鑑と本人確認書類"], ["name", "国民年金の住所変更"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "国民健康保険の加入"], ["created_at", "2022-03-17 02:33:45.507832"], ["updated_at", "2022-03-17 02:33:45.507832"], ["body_a", "引越し元で国保の「資格喪失手続き」をした後に、引越し先で「加入手続き」を行い住所変更をします。\n国保の資格喪失手続きが済んだら、新居の自治体にて加入手続きを行います。\n加入手続きも、「転入届」と合わせて行ってしまうことをおすすめします。\n\n【本人申請の場合】\n・国民健康保険証\n・本人確認書類（運転免許証、パスポートなど）\n・印章\n\n【代理人申請の場合】\n・委任状（申請人の自署押印が必要）\n・代理人自身の印章と本人確認書類"], ["body_b", "同じ市区町村内で引越しをする場合は、引越し先の役所で国民健康保険の住所変更だけ行えば良いです。\n「転居届」の手続き時に、国保も合わせて手続きをするとスムーズです。\n\n【本人申請の場合】\n・国民健康保険証\n・本人確認書類（運転免許証、パスポートなど）\n・印章\n\n【代理人申請の場合】\n・委任状（申請人の自署押印が必要）\n・代理人自身の印章と本人確認書類\n"], ["name", "国民健康保険の加入"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "免許証の住所変更手続き\n"], ["created_at", "2022-03-17 02:33:45.514873"], ["updated_at", "2022-03-17 02:33:45.514873"], ["body_a", "運転免許証を所持している人は、『記載事項変更』を行います。\n転居先の警察署か運転免許センター、運転免許試験場などで手続きを行うことができます。\n\n【本人申請の場合】\n・運転免許証記載事項変更届  ※警察署や運転免許センターにあります\n・運転免許証\n・新住所を確認できる書類（住民票の写し（※マイナンバーが記載されたもの、およびコピーされたものは不可）、健康保険証、マイナンバーカード（※通知カードは不可）など）\n\n【代理人申請の場合（同居の家族に限られている場合）】\n・運転免許証記載事項変更届  ※警察署や運転免許センターにあります\n・本人の運転免許証\n・代理人の本人確認書類（運転免許証、マイナンバーカードなど）\n・本人と代理人が併記された住民票（※マイナンバーが記載されたもの、およびコピーされたものは不可）\n・委任状"], ["body_b", "運転免許証を所持している人は、『記載事項変更』を行います。\n転居先の警察署か運転免許センター、運転免許試験場などで手続きを行うことができます。\n\n【本人申請の場合】\n・運転免許証記載事項変更届  ※警察署や運転免許センターにあります\n・運転免許証\n・新住所を確認できる書類（住民票の写し（※マイナンバーが記載されたもの、およびコピーされたものは不可）、健康保険証、マイナンバーカード（※通知カードは不可）など）\n\n【代理人申請の場合（同居の家族に限られている場合）】\n・運転免許証記載事項変更届  ※警察署や運転免許センターにあります\n・本人の運転免許証\n・代理人の本人確認書類（運転免許証、マイナンバーカードなど）\n・本人と代理人が併記された住民票（※マイナンバーが記載されたもの、およびコピーされたものは不可）\n・委任状"], ["name", "免許証の住所変更\n"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "駐車場の契約"], ["created_at", "2022-03-17 02:33:45.521256"], ["updated_at", "2022-03-17 02:33:45.521256"], ["body_a", "引越し先の住居に駐車場が備わっている場合は、住居の賃貸契約と同時に駐車場の契約もおこなえますが、駐車場が付属していない場合は、別途月極の駐車場探して利用の契約をしましょう。\nまた、駐車場の住所が変更されたら車庫証明の届出をおこなう必要があります。原則として、引越しをしてから、15日以内に届出をすることになっており、これを過ぎると罰則の対象になるので、注意が必要です。\n車庫証明の届出をおこなう際に、『自動車保管場所使用承諾証明書』が必要になります。\n駐車場の契約をおこなう際に、不動産会社や管理会社に発行してもらいましょう。\n\n＜必要書類＞\n・印鑑（実印・認印）\n・身分証\n・住民票\n・印鑑証明\n・車検証の写し\n・引き落とし口座の通帳やカード\n・銀行印\n・敷金、礼金、事務手数料、一ヶ月分の賃料\n"], ["body_b", "引越し先の住居に駐車場が備わっている場合は、住居の賃貸契約と同時に駐車場の契約もおこなえますが、駐車場が付属していない場合は、別途月極の駐車場探して利用の契約をしましょう。\nまた、駐車場の住所が変更されたら車庫証明の届出をおこなう必要があります。原則として、引越しをしてから、15日以内に届出をすることになっており、これを過ぎると罰則の対象になるので、注意が必要です。\n車庫証明の届出をおこなう際に、『自動車保管場所使用承諾証明書』が必要になります。\n駐車場の契約をおこなう際に、不動産会社や管理会社に発行してもらいましょう。\n\n＜必要書類＞\n・印鑑（実印・認印）\n・身分証\n・住民票\n・印鑑証明\n・車検証の写し\n・引き落とし口座の通帳やカード\n・銀行印\n・敷金、礼金、事務手数料、一ヶ月分の賃料\n"], ["name", "駐車場の契約"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "自動車保管場所証明書（車庫証明書）の申請手続き"], ["created_at", "2022-03-17 02:33:45.528661"], ["updated_at", "2022-03-17 02:33:45.528661"], ["body_a", "駐車場の住所を管轄する警察署窓口にて記入した各書類の提出をし、申請手続きを行います。\n普通自動車の車庫を住所変更する際は「自動車保管場所証明申請書」、軽自動車の場合は「自動車保管場所届出書」が必要です。\n滞りなく申請が受理されれば、後日、警察署に「保管場所標章（車庫証明シール）」や車庫証明書などの書類の受け取りをしに行き、すべての手続きが完了です。車庫証明の申請から「保管場所標章」の発行までは3日～1週間程度かかるのが平均的です。\nなお、各種書類の受け取りは郵送で対応してくれる警察署もあるようなので、申請の際に確認してみましょう。\n\n・「自動車保管場所証明申請書」や「自動車保管場所届出書」は自動車の保管場所を申請する際に必要な書類で、自動車のメーカーや型式、保管場所の住所などを記載します。駐車場がある住所を管轄する警察署の担当窓口へ行って入手するか、もしくは各都道府県警のWebサイトでダウンロードすることも可能です。\n・「保管場所標章交付申請書」は車庫証明書が交付されたことを示す「保管場所標章（円形のシール）」を受け取るために必要です。「自動車保管場所証明申請書」と同様、駐車場がある住所を管轄する警察署の担当窓口へ行って入手するか各都道府県警のWebサイトでダウンロードできます。\n・「保管場所の所在図・配置図」は自宅と駐車場の位置関係、および駐車場近辺の道路や建物の配置などを記載する書類です。こちらの書類も、駐車場がある住所を管轄する警察署の担当窓口へ行って入手するか各都道府県警のWebサイトでダウンロード可能です。\n自分が所有する土地を駐車場として申請する際には「保管場所使用権原疎明書面」が必要です。こちらの書類も、駐車場がある住所を管轄する警察署の担当窓口へ行って入手するか各都道府県警のWebサイトでダウンロード可能です。\n・賃貸物件に付帯する駐車場や、月極駐車場などの他人が所有する場所を駐車場として申請するには「保管場所使用承諾証明書」が必要です。\n前述した通り、場合によっては「駐車場の賃貸契約書のコピー」でも代替できますが、前もって担当窓口への事前確認をおすすめします。こちらの書類も、駐車場がある住所を管轄する警察署の担当窓口へ行って入手するか各都道府県警のWebサイトでダウンロード可能です。\n・自動車の「使用の本拠の位置」が確認できるもの\n引越し先の新居の住所を証明するものです。住所変更手続きが済んでいる場合は住民票や運転免許証、保険証などが該当します。電気やガス、水道といった公共料金の領収書や消印のある郵便物などでも申請が可能です。"], ["body_b", "駐車場の住所を管轄する警察署窓口にて記入した各書類の提出をし、申請手続きを行います。\n普通自動車の車庫を住所変更する際は「自動車保管場所証明申請書」、軽自動車の場合は「自動車保管場所届出書」が必要です。\n滞りなく申請が受理されれば、後日、警察署に「保管場所標章（車庫証明シール）」や車庫証明書などの書類の受け取りをしに行き、すべての手続きが完了です。車庫証明の申請から「保管場所標章」の発行までは3日～1週間程度かかるのが平均的です。\nなお、各種書類の受け取りは郵送で対応してくれる警察署もあるようなので、申請の際に確認してみましょう。\n\n・「自動車保管場所証明申請書」や「自動車保管場所届出書」は自動車の保管場所を申請する際に必要な書類で、自動車のメーカーや型式、保管場所の住所などを記載します。駐車場がある住所を管轄する警察署の担当窓口へ行って入手するか、もしくは各都道府県警のWebサイトでダウンロードすることも可能です。\n・「保管場所標章交付申請書」は車庫証明書が交付されたことを示す「保管場所標章（円形のシール）」を受け取るために必要です。「自動車保管場所証明申請書」と同様、駐車場がある住所を管轄する警察署の担当窓口へ行って入手するか各都道府県警のWebサイトでダウンロードできます。\n・「保管場所の所在図・配置図」は自宅と駐車場の位置関係、および駐車場近辺の道路や建物の配置などを記載する書類です。こちらの書類も、駐車場がある住所を管轄する警察署の担当窓口へ行って入手するか各都道府県警のWebサイトでダウンロード可能です。\n自分が所有する土地を駐車場として申請する際には「保管場所使用権原疎明書面」が必要です。こちらの書類も、駐車場がある住所を管轄する警察署の担当窓口へ行って入手するか各都道府県警のWebサイトでダウンロード可能です。\n・賃貸物件に付帯する駐車場や、月極駐車場などの他人が所有する場所を駐車場として申請するには「保管場所使用承諾証明書」が必要です。\n前述した通り、場合によっては「駐車場の賃貸契約書のコピー」でも代替できますが、前もって担当窓口への事前確認をおすすめします。こちらの書類も、駐車場がある住所を管轄する警察署の担当窓口へ行って入手するか各都道府県警のWebサイトでダウンロード可能です。\n・自動車の「使用の本拠の位置」が確認できるもの\n引越し先の新居の住所を証明するものです。住所変更手続きが済んでいる場合は住民票や運転免許証、保険証などが該当します。電気やガス、水道といった公共料金の領収書や消印のある郵便物などでも申請が可能です。"], ["name", "車庫証明書の申請手続き"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "自動車の住所変更手続き"], ["created_at", "2022-03-17 02:33:45.536292"], ["updated_at", "2022-03-17 02:33:45.536292"], ["body_a", "登録している自動車において、所有者の氏名・住所などに変更があった場合、『変更登録』といわれる手続きが必要となります。\n引越し前後で陸運支局が変わる場合は、ナンバープレートが変更されるため、車を持っていく必要があります。\n引越し前後で、管轄の陸運支局が変わらない場合、ナンバープレートは変更されないため、手続きの際に車を持っていく必要はありません。一方、引越し前後で陸運支局が変わる場合は、ナンバープレートが変更されるため、車を持っていく必要があります。登録の際は、住民票や車庫証明書などを提出する必要があり、準備に時間がかかることも多いので、計画的におこなうようにしてください。\n\n＜必要書類＞\n・自動車保管場所証明書（車庫証明）　※1ヶ月以内に発行したもの\n・車検証\n・印鑑\n・新住所の住民票　※3ヶ月以内に発行したもの\n・委任状　※代理人が申請をおこなう場合のみ\n・申請書（OCRシート）\n・自動車納税申告書\n・手数料納付書\n\n申請書、自動車納税申告書、手数料納付書は、運輸局で当日に用意することができます。"], ["body_b", "登録している自動車において、所有者の氏名・住所などに変更があった場合、『変更登録』といわれる手続きが必要となります。\n引越し前後で陸運支局が変わる場合は、ナンバープレートが変更されるため、車を持っていく必要があります。\n引越し前後で、管轄の陸運支局が変わらない場合、ナンバープレートは変更されないため、手続きの際に車を持っていく必要はありません。一方、引越し前後で陸運支局が変わる場合は、ナンバープレートが変更されるため、車を持っていく必要があります。登録の際は、住民票や車庫証明書などを提出する必要があり、準備に時間がかかることも多いので、計画的におこなうようにしてください。\n\n＜必要書類＞\n・自動車保管場所証明書（車庫証明）　※1ヶ月以内に発行したもの\n・車検証\n・印鑑\n・新住所の住民票　※3ヶ月以内に発行したもの\n・委任状　※代理人が申請をおこなう場合のみ\n・申請書（OCRシート）\n・自動車納税申告書\n・手数料納付書\n\n申請書、自動車納税申告書、手数料納付書は、運輸局で当日に用意することができます。"], ["name", "自動車の住所変更"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "バイクの住所変更"], ["created_at", "2022-03-17 02:33:45.543651"], ["updated_at", "2022-03-17 02:33:45.543651"], ["body_a", "異なる市区町村へ引越した場合、転居もとの市区町村役場でもらった『廃車証明書』と必要書類を提出します。\n『原付バイク』『軽二輪バイク』『小型二輪バイク』など、バイクの種類によって必要書類や手続きの方法、手続き場所が異なるため、注意が必要です。住所変更だけでなく、ナンバープレートの変更が必要な場合もあります。\n\n【原付バイク（50cc～125cc）の引っ越し手続き方法】\n転居元の市区町村役場で発行された『廃車証明書』を、新住所の市区町村役場に提出してください。新しいナンバープレートが発行されます。\n＜必要書類＞\n・廃車証明書\n・標識交付証明書\n・新住所の住民票\n・印鑑\n\n【軽二輪バイク（126cc～250cc）の引っ越し手続き方法】\n転居先の管轄の陸運局で手続きをおこないます。\n同一管轄内で引っ越した場合は、下記書類を提出のうえ、住所変更の手続きをしてください。異なる管轄内へ引っ越した場合は、住所変更に加えて、ナンバープレートも変わります。\n＜必要書類＞\n・軽自動車届出済証（車検証）\n・自動車損害賠償責任保険証明書\n・新住所の住民票\n・印鑑\n・旧ナンバープレート（※陸運局の管轄が異なる場合のみ）\n\n【小型二輪バイク（251cc以上）の引っ越し手続き方法】\n転居先の管轄の陸運局で手続きをおこないます。\n必要書類は、軽自動車届出済証ではなく、自動車検査証（車検証）ですので注意してください。 異なる管轄内へ引っ越した場合は、住所変更に加えて、ナンバープレートも変わります。\n＜必要書類＞\n・手数料納付書\n・自動車検査証（車検証）\n・自動車損害賠償責任保険証明書\n・新住所の住民票\n・印鑑\n・旧ナンバープレート（※陸運局の管轄が異なる場合のみ）\n＜本人申請の場合＞\n・住民票 （発行日から3か月以内）\n・車検証\n・車庫証明書（発行日から1か月以内）\n・手数料納付書（陸運局・支局にて入手）\n・自動車税、自動車取得税申告書（陸運局・支局にて入手）\n・印鑑\n＜代理人申請の場合＞\n・住民票 （発行日から3か月以内）\n・車検証\n・車庫証明書（発行日から1か月以内）\n・手数料納付書\n・自動車税、自動車取得税申告書\n・委任状（申請本人の自署押印のされたもの）\n※必要書類等は、転居先、バイクの種類によって異なります。\n※各市区町村や、引越し形態によって手続き方法が異なる場合がありますので、必ず確認してから実行しましょう。"], ["body_b", "【原付バイク（50cc～125cc）の引っ越し手続き方法\n市区町村役場に『転居届』を提出すると同時に、自動的に所有者の住所変更がおこなわれます。住所変更の手続きをする必要はありません。同じナンバープレートをそのまま使用することができます。\n＜必要書類＞\n・転居届\n\n【軽二輪バイク（126cc～250cc）の引っ越し手続き方法】\n転居先の管轄の陸運局で手続きをおこないます。\n同一管轄内で引っ越した場合は、下記書類を提出のうえ、住所変更の手続きをしてください。異なる管轄内へ引っ越した場合は、住所変更に加えて、ナンバープレートも変わります。\n＜必要書類＞\n・軽自動車届出済証（車検証）\n・自動車損害賠償責任保険証明書\n・新住所の住民票\n・印鑑\n・旧ナンバープレート（※陸運局の管轄が異なる場合のみ）\n\n【小型二輪バイク（251cc以上）の引っ越し手続き方法】\n転居先の管轄の陸運局で手続きをおこないます。\n必要書類は、軽自動車届出済証ではなく、自動車検査証（車検証）ですので注意してください。 異なる管轄内へ引っ越した場合は、住所変更に加えて、ナンバープレートも変わります。\n＜必要書類＞\n・手数料納付書\n・自動車検査証（車検証）\n・自動車損害賠償責任保険証明書\n・新住所の住民票\n・印鑑\n・旧ナンバープレート（※陸運局の管轄が異なる場合のみ）\n＜本人申請の場合＞\n・住民票 （発行日から3か月以内）\n・車検証\n・車庫証明書（発行日から1か月以内）\n・手数料納付書（陸運局・支局にて入手）\n・自動車税、自動車取得税申告書（陸運局・支局にて入手）\n・印鑑\n＜代理人申請の場合＞\n・住民票 （発行日から3か月以内）\n・車検証\n・車庫証明書（発行日から1か月以内）\n・手数料納付書\n・自動車税、自動車取得税申告書\n・委任状（申請本人の自署押印のされたもの）\n※必要書類等は、転居先、バイクの種類によって異なります。\n※各市区町村や、引越し形態によって手続き方法が異なる場合がありますので、必ず確認してから実行しましょう。"], ["name", "バイクの住所変更"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "児童手当の認定申請"], ["created_at", "2022-03-17 02:33:45.551167"], ["updated_at", "2022-03-17 02:33:45.551167"], ["body_a", "転居元の役場で手続きをした際に交付された『所得課税証明書』と必要書類を持参して、『児童手当認定請求書』を提出します。\n引っ越しから15日以内に手続きを行う必要があるので注意しましょう。\n\n＜必要書類等＞\n・印鑑\n・請求者名義の普通慮金通帳\n・請求者の健康保険証のコピー\n・所得課税証明書\n・別居監護申立書、別居している児童の世帯全員の住民票(請求者と子どもが別居している場合)\n・生計監護維持申立書（請求者が子どもの実父・実母以外の人、及び連れ子の場合)"], ["body_b", "児童手当の受給元は変わらないため、現在お住まいの市区町村役場に『住所変更届』を提出すれば、手続きは完了です。"], ["name", "児童手当の認定申請"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "学校の転校手続き"], ["created_at", "2022-03-17 02:33:45.557517"], ["updated_at", "2022-03-17 02:33:45.557517"], ["body_a", "子供が転校する先が、公立か私立か、あるいは小中学校か高校かによって、必要な手続きは異なります。\n旧住所の市区町村役場に設置されている『教育委員会』、新住所の『教育委員会』、さらに、転校前・転校先の学校が窓口となります。\n\n【引越し先が同一市区町村以外で、公立小中学校に転校する場合】\n1．在学している学校に、引越し前に転校する旨を連絡し、『在学証明書』と『教科書給与証明書』を発行してもらう\n2．現住所の役所で転出届を提出し、『転出証明書』を発行してもらう転校先が指定される\n3．新住所の役場へ転入届と転出証明書を提出し、『入学通知書』を発行してもらう\n4．『在学証明書』、『教科書給与証明書』、『入学通知書』を、転校先の学校へ提出する\n\n【私立小中学校へ転入する場合】\n　各学校によって、編入方法や必要な手続きが異なります。引越し先の教育委員会に確認してください。\n\n【公立高校へ転入する場合】\n　各都道府県によって、手続き方法が異なります。欠員があり、編入試験がおこなわれるのが一般的で、合格すると、転入が認められます。詳細は、引越し先の教育委員会に確認してください。\n\n【私立高校へ転入する場合】\n　各都道府県にある私立中学高等学校協会や教育委員会に問い合わせをおこない、直接希望する学校に手続きをしてください。公立高校と同様に、欠員があり、編入試験がおこなわれるのが一般的です。"], ["body_b", "子供が転校する先が、公立か私立か、あるいは小中学校か高校かによって、必要な手続きは異なります。\n旧住所の市区町村役場に設置されている『教育委員会』、新住所の『教育委員会』、さらに、転校前・転校先の学校が窓口となります。\n\n【引越し先が同一市区町村で、公立小中学校に転校する場合】\n1．在学している学校に、引越し前に転校する旨を連絡し、『在学証明書』と『教科書給与証明書』を発行してもらう\n2．現住所の役所で転居届を提出し、『入学通知書』を発行してもらう転校先が指定される\n3．『在学証明書』、『教科書給与証明書』、『入学通知書』を、転校先の学校へ提出する\n\n【私立小中学校へ転入する場合】\n　各学校によって、編入方法や必要な手続きが異なります。引越し先の教育委員会に確認してください。\n\n【公立高校へ転入する場合】\n　各都道府県によって、手続き方法が異なります。欠員があり、編入試験がおこなわれるのが一般的で、合格すると、転入が認められます。詳細は、引越し先の教育委員会に確認してください。\n\n【私立高校へ転入する場合】\n　各都道府県にある私立中学高等学校協会や教育委員会に問い合わせをおこない、直接希望する学校に手続きをしてください。公立高校と同様に、欠員があり、編入試験がおこなわれるのが一般的です。"], ["name", "学校の転校手続き"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (1.1ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "クレジットカードの住所変更手続き"], ["created_at", "2022-03-17 02:33:45.564170"], ["updated_at", "2022-03-17 02:33:45.564170"], ["body_a", "引越しをしたら、クレジットカード会社に登録されている住所の変更手続きを行います。\n銀行やカード会社から新しいキャッシュカードやクレジットカードが送付される場合、送付先は登録された住所のみとなり、郵便局に転送手続きをしていても転送されません。引越しの際は住所変更手続きを忘れないようにしましょう。\n住所の変更手続きを行わないと、更新時期を迎えた後に送られてくる新しいカードが家に届かなくなってしまう可能性があります。"], ["body_b", "引越しをしたら、クレジットカード会社に登録されている住所の変更手続きを行います。\n銀行やカード会社から新しいキャッシュカードやクレジットカードが送付される場合、送付先は登録された住所のみとなり、郵便局に転送手続きをしていても転送されません。引越しの際は住所変更手続きを忘れないようにしましょう。\n住所の変更手続きを行わないと、更新時期を迎えた後に送られてくる新しいカードが家に届かなくなってしまう可能性があります。"], ["name", "クレカの住所変更"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "created_at", "updated_at", "body_a", "body_b", "name") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "通販サイトの住所変更手続き"], ["created_at", "2022-03-17 02:33:45.572480"], ["updated_at", "2022-03-17 02:33:45.572480"], ["body_a", "通販サイトに届け先の住所として旧居の住所を登録している場合は、速やかに変更手続きを行いましょう。\n手続き方法は通販サイトによって異なりますので、事前に確認しておきましょう。"], ["body_b", "引越しをしたら、クレジットカード会社に登録されている住所の変更手続きを行います。銀行やカード会社から新しいキャッシュカードやクレジットカードが送付される場合、送付先は登録された住所のみとなり、郵便局に転送手続きをしていても転送されません。引越しの際は住所変更手続きを忘れないようにしましょう。\n住所の変更手続きを行わないと、更新時期を迎えた後に送られてくる新しいカードが家に届かなくなってしまう可能性があります。"], ["name", "通販サイトの住所変更"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12

@@ -79,3 +79,8 @@ gem 'bootstrap5-kaminari-views', '~> 0.0.1'
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'font-awesome-sass'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
