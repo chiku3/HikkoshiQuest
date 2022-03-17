@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  root "homes#top"
+  root to: "homes#top"
   get 'help' => "homes#help"
-  
+
   get 'quest_tasks/:id/complete' => "quest_tasks#complete", as:"complete_task"
   resources :quest_tasks, only:[:show, :update]
 
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :boards, only:[:index, :create, :show]
 
   resources :comments, only:[:create]
-  
+
   resources :notifications, only:[:index]
 
   devise_for :users, controllers: {
