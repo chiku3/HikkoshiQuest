@@ -36,9 +36,8 @@
 
 <!--質問一覧-->
   <div class ="row">
-    <div class="mx-auto col-lg-5 col-md-5">
+    <div class="mx-auto my-4 border rounded-lg bg-white px-5 py-2">
       <%= form_with model: @quest, url: quests_path, local:true do |f| %>
-      <div class="my-4 border rounded-lg bg-white px-5 py-2">
 
          <div>
             <p>質問１:引越し予定日は...？</p>
@@ -131,10 +130,8 @@
          <div class="text-center">
          <%= f.submit "内容を保存", data: { confirm: 'この内容で保存しますか？'}, class:"btn btn-sm btn-success mt-4" %>
          </div>
-
-      </div>
+         
       <% end %>
-
     </div>
   </div>
 

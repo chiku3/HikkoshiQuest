@@ -29383,3 +29383,17 @@ Processing by QuestsController#new as HTML
 Completed 200 OK in 501ms (Views: 463.4ms | ActiveRecord: 1.9ms)
 
 
+Started GET "/quests/new" for 111.239.162.123 at 2022-03-18 09:08:16 +0000
+Cannot render console from 111.239.162.123! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by QuestsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering quests/new.html.erb within layouts/application
+  Rendered quests/new.html.erb within layouts/application (62.0ms)
+  [1m[36mNotification Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 1], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 489ms (Views: 449.0ms | ActiveRecord: 3.5ms)
+
+
