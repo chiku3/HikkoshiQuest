@@ -19,6 +19,7 @@
 //= require turbolinks
 //= require_tree .
 
+
 // スタート
 jQuery(document).on('turbolinks:load', function(){
 $.getJSON('/pref_city.json', function(data) {
