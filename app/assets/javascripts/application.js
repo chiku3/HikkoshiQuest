@@ -22,7 +22,7 @@
 
 // スタート
 jQuery(document).on('turbolinks:load', function(){
-$.getJSON('/pref_city.json', function(data) {
+$.getJSON('/assets/pref_city.json', function(data) {
 
     for(var i=1; i<48; i++) {
       var code = ('00'+code).slice(-2); // ゼロパディング
@@ -43,7 +43,7 @@ $('#start-pref').on('change', function() {
     var start_pref = ('00'+$('#start-pref option:selected').val()).slice(-2);
 
     var key = Number(start_pref)-1;
-    $.getJSON('/pref_city.json', function(data) {
+    $.getJSON('/assets/pref_city.json', function(data) {
       for(var i=0; i<data[key][start_pref].city.length; i++){
 
         $('#start-city').append('<option value="'+data[key][start_pref].city[i].name+'">'+data[key][start_pref].city[i].name+'</option>');
@@ -55,7 +55,7 @@ $('#start-pref').on('change', function() {
 
 // ゴール
 jQuery(document).on('turbolinks:load', function(){
-$.getJSON('/pref_city.json', function(data) {
+$.getJSON('/assets/pref_city.json', function(data) {
 
     for(var i=1; i<48; i++) {
       var code = ('00'+code).slice(-2); // ゼロパディング
@@ -76,7 +76,7 @@ $('#goal-pref').on('change', function() {
     var goal_pref = ('00'+$('#goal-pref option:selected').val()).slice(-2);
 
     var key = Number(goal_pref)-1;
-    $.getJSON('/pref_city.json', function(data) {
+    $.getJSON('/assets/pref_city.json', function(data) {
       for(var i=0; i<data[key][goal_pref].city.length; i++){
 
         $('#goal-city').append('<option value="'+data[key][goal_pref].city[i].name+'">'+data[key][goal_pref].city[i].name+'</option>');
