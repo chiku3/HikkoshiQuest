@@ -29397,3 +29397,66 @@ Processing by QuestsController#new as HTML
 Completed 200 OK in 489ms (Views: 449.0ms | ActiveRecord: 3.5ms)
 
 
+Started GET "/" for 111.239.162.123 at 2022-03-19 07:15:10 +0000
+Cannot render console from 111.239.162.123! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by HomesController#top as HTML
+  Rendering homes/top.html.erb within layouts/application
+  Rendered homes/top.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 1597ms (Views: 1566.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 111.239.162.123 at 2022-03-19 07:15:30 +0000
+Cannot render console from 111.239.162.123! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by HomesController#top as HTML
+  Rendering homes/top.html.erb within layouts/application
+  Rendered homes/top.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 93ms (Views: 91.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 111.239.162.123 at 2022-03-19 07:15:38 +0000
+Cannot render console from 111.239.162.123! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by HomesController#top as HTML
+  Rendering homes/top.html.erb within layouts/application
+  Rendered homes/top.html.erb within layouts/application (1.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:27
+  [1m[36mNotification Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 1], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 116ms (Views: 114.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/my_page" for 111.239.162.123 at 2022-03-19 07:15:44 +0000
+Cannot render console from 111.239.162.123! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by UsersController#mypage as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."is_clear" = ? AND "quests"."user_id" = ? LIMIT ?[0m  [["is_clear", 0], ["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  Rendering users/mypage.html.erb within layouts/application
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT "quests".* FROM "quests" WHERE "quests"."is_clear" = ? AND "quests"."user_id" = ?[0m  [["is_clear", 1], ["user_id", 1]]
+  ↳ app/views/users/mypage.html.erb:39
+  [1m[36mBoard Load (0.1ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."user_id" = ? LIMIT ? OFFSET ?[0m  [["user_id", 1], ["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/users/mypage.html.erb:53
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 1]]
+  ↳ app/views/users/mypage.html.erb:59
+  Rendered simple_calendar/_month_calendar.html.erb (393.0ms)
+  Rendered users/mypage.html.erb within layouts/application (419.4ms)
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 1], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 531ms (Views: 500.0ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/quests/new" for 111.239.162.123 at 2022-03-19 07:15:46 +0000
+Cannot render console from 111.239.162.123! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by QuestsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering quests/new.html.erb within layouts/application
+  Rendered quests/new.html.erb within layouts/application (81.6ms)
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 1], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 198ms (Views: 177.4ms | ActiveRecord: 0.8ms)
+
+
