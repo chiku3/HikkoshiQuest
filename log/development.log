@@ -29797,3 +29797,1330 @@ Processing by QuestsController#new as HTML
 Completed 200 OK in 53ms (Views: 50.1ms | ActiveRecord: 0.3ms)
 
 
+Started POST "/quests" for 61.23.106.114 at 2022-03-19 11:22:58 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by QuestsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4+jutW1d7fN6bPihuz+zh/JqbyKr8MwAkTgnwfsLgJALT01gGPw7ZLEGdVEHmQTIqb1ocVPSwOszws04FKeWzg==", "quest"=>{"due_day"=>"2022-04-07", "start_pref"=>"03", "start_city"=>"大船渡市", "goal_pref"=>"03", "goal_city"=>"宮古市", "question_4"=>"1", "question_5"=>"1", "question_6"=>"1", "question_7"=>"1", "question_8"=>"1", "question_9"=>"1", "question_10"=>"1", "question_11"=>"1", "user_id"=>"1", "is_clear"=>"0"}, "commit"=>"内容を保存"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Unpermitted parameters: :question_4, :question_5, :question_6, :question_7, :question_8, :question_9, :question_10, :question_11
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."user_id" = ? AND "quests"."is_clear" = ? LIMIT ?[0m  [["user_id", 1], ["is_clear", 0], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:10
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:16
+  [1m[36mQuest Create (0.2ms)[0m  [1m[32mINSERT INTO "quests" ("user_id", "due_day", "created_at", "updated_at", "start_pref", "start_city", "goal_pref", "goal_city") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_id", 1], ["due_day", "2022-04-07"], ["created_at", "2022-03-19 11:22:58.785325"], ["updated_at", "2022-03-19 11:22:58.785325"], ["start_pref", "03"], ["start_city", "大船渡市"], ["goal_pref", "03"], ["goal_city", "宮古市"]]
+  ↳ app/controllers/quests_controller.rb:16
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:16
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:23
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:23
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:23
+  [1m[36mQuestTask Create (0.2ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at", "start_time") VALUES (?, ?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 1], ["created_at", "2022-03-19 11:22:58.811754"], ["updated_at", "2022-03-19 11:22:58.811754"], ["start_time", "2022-03-19 11:22:58.785325"]]
+  ↳ app/controllers/quests_controller.rb:23
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:23
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:28
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:28
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:28
+  [1m[36mQuestTask Create (0.2ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at", "start_time") VALUES (?, ?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 2], ["created_at", "2022-03-19 11:22:58.822778"], ["updated_at", "2022-03-19 11:22:58.822778"], ["start_time", "2022-03-07 15:00:00"]]
+  ↳ app/controllers/quests_controller.rb:28
+  [1m[35m (3.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:28
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:33
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:33
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:33
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at", "start_time") VALUES (?, ?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 3], ["created_at", "2022-03-19 11:22:58.832238"], ["updated_at", "2022-03-19 11:22:58.832238"], ["start_time", "2022-03-23 15:00:00"]]
+  ↳ app/controllers/quests_controller.rb:33
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:33
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:38
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:38
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:38
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at", "start_time") VALUES (?, ?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 4], ["created_at", "2022-03-19 11:22:58.841686"], ["updated_at", "2022-03-19 11:22:58.841686"], ["start_time", "2022-04-06 15:00:00"]]
+  ↳ app/controllers/quests_controller.rb:38
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:38
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:43
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:43
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:43
+  [1m[36mQuestTask Create (0.2ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at", "start_time") VALUES (?, ?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 5], ["created_at", "2022-03-19 11:22:58.849844"], ["updated_at", "2022-03-19 11:22:58.849844"], ["start_time", "2022-04-20 15:00:00"]]
+  ↳ app/controllers/quests_controller.rb:43
+  [1m[35m (3.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:43
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", 6], ["id", 9], ["id", 11], ["id", 13], ["id", 14], ["id", 15], ["id", 21], ["id", 24], ["id", 27], ["id", 28], ["id", 30], ["id", 31], ["id", 32], ["id", 33], ["id", 34], ["id", 35], ["id", 36], ["id", 44], ["id", 45]]
+  ↳ app/controllers/quests_controller.rb:56
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 6], ["created_at", "2022-03-19 11:22:58.859890"], ["updated_at", "2022-03-19 11:22:58.859890"]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 9], ["created_at", "2022-03-19 11:22:58.867600"], ["updated_at", "2022-03-19 11:22:58.867600"]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 11], ["created_at", "2022-03-19 11:22:58.875369"], ["updated_at", "2022-03-19 11:22:58.875369"]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 13], ["created_at", "2022-03-19 11:22:58.883135"], ["updated_at", "2022-03-19 11:22:58.883135"]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 14], ["created_at", "2022-03-19 11:22:58.891652"], ["updated_at", "2022-03-19 11:22:58.891652"]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 15], ["created_at", "2022-03-19 11:22:58.900085"], ["updated_at", "2022-03-19 11:22:58.900085"]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuestTask Create (0.2ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 21], ["created_at", "2022-03-19 11:22:58.907962"], ["updated_at", "2022-03-19 11:22:58.907962"]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 24], ["created_at", "2022-03-19 11:22:58.916003"], ["updated_at", "2022-03-19 11:22:58.916003"]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (7.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuestTask Create (0.7ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 27], ["created_at", "2022-03-19 11:22:58.927404"], ["updated_at", "2022-03-19 11:22:58.927404"]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuestTask Create (0.2ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 28], ["created_at", "2022-03-19 11:22:58.936149"], ["updated_at", "2022-03-19 11:22:58.936149"]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 30], ["created_at", "2022-03-19 11:22:58.944204"], ["updated_at", "2022-03-19 11:22:58.944204"]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 31], ["created_at", "2022-03-19 11:22:58.952059"], ["updated_at", "2022-03-19 11:22:58.952059"]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 32], ["created_at", "2022-03-19 11:22:58.959963"], ["updated_at", "2022-03-19 11:22:58.959963"]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 33], ["created_at", "2022-03-19 11:22:58.967880"], ["updated_at", "2022-03-19 11:22:58.967880"]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 34], ["created_at", "2022-03-19 11:22:58.975649"], ["updated_at", "2022-03-19 11:22:58.975649"]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 35], ["created_at", "2022-03-19 11:22:58.983260"], ["updated_at", "2022-03-19 11:22:58.983260"]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 36], ["created_at", "2022-03-19 11:22:58.991369"], ["updated_at", "2022-03-19 11:22:58.991369"]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 44], ["created_at", "2022-03-19 11:22:58.998628"], ["updated_at", "2022-03-19 11:22:58.998628"]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 45], ["created_at", "2022-03-19 11:22:59.005793"], ["updated_at", "2022-03-19 11:22:59.005793"]]
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:60
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" IN (?, ?, ?, ?, ?, ?)[0m  [["id", 7], ["id", 16], ["id", 17], ["id", 18], ["id", 25], ["id", 26]]
+  ↳ app/controllers/quests_controller.rb:66
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 7], ["created_at", "2022-03-19 11:22:59.013762"], ["updated_at", "2022-03-19 11:22:59.013762"]]
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 16], ["created_at", "2022-03-19 11:22:59.020688"], ["updated_at", "2022-03-19 11:22:59.020688"]]
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 17], ["created_at", "2022-03-19 11:22:59.027620"], ["updated_at", "2022-03-19 11:22:59.027620"]]
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 18], ["created_at", "2022-03-19 11:22:59.034732"], ["updated_at", "2022-03-19 11:22:59.034732"]]
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 25], ["created_at", "2022-03-19 11:22:59.041952"], ["updated_at", "2022-03-19 11:22:59.041952"]]
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[36mQuestTask Create (0.2ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 26], ["created_at", "2022-03-19 11:22:59.064535"], ["updated_at", "2022-03-19 11:22:59.064535"]]
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:70
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 37]]
+  ↳ app/controllers/quests_controller.rb:76
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:80
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:80
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:80
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 37], ["created_at", "2022-03-19 11:22:59.072469"], ["updated_at", "2022-03-19 11:22:59.072469"]]
+  ↳ app/controllers/quests_controller.rb:80
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:80
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" IN (?, ?, ?, ?)[0m  [["id", 8], ["id", 38], ["id", 39], ["id", 40]]
+  ↳ app/controllers/quests_controller.rb:86
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:90
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:90
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:90
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 8], ["created_at", "2022-03-19 11:22:59.080349"], ["updated_at", "2022-03-19 11:22:59.080349"]]
+  ↳ app/controllers/quests_controller.rb:90
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:90
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:90
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 38], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:90
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:90
+  [1m[36mQuestTask Create (0.2ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 38], ["created_at", "2022-03-19 11:22:59.087308"], ["updated_at", "2022-03-19 11:22:59.087308"]]
+  ↳ app/controllers/quests_controller.rb:90
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:90
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:90
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:90
+  [1m[36mQuest Load (0.0ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:90
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 39], ["created_at", "2022-03-19 11:22:59.095260"], ["updated_at", "2022-03-19 11:22:59.095260"]]
+  ↳ app/controllers/quests_controller.rb:90
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:90
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:90
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:90
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:90
+  [1m[36mQuestTask Create (0.2ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 40], ["created_at", "2022-03-19 11:22:59.102189"], ["updated_at", "2022-03-19 11:22:59.102189"]]
+  ↳ app/controllers/quests_controller.rb:90
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:90
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" IN (?, ?)[0m  [["id", 20], ["id", 41]]
+  ↳ app/controllers/quests_controller.rb:96
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:100
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:100
+  [1m[36mQuest Load (0.0ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:100
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 20], ["created_at", "2022-03-19 11:22:59.110103"], ["updated_at", "2022-03-19 11:22:59.110103"]]
+  ↳ app/controllers/quests_controller.rb:100
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:100
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:100
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:100
+  [1m[36mQuest Load (0.0ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:100
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 41], ["created_at", "2022-03-19 11:22:59.116844"], ["updated_at", "2022-03-19 11:22:59.116844"]]
+  ↳ app/controllers/quests_controller.rb:100
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:100
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" IN (?, ?, ?, ?)[0m  [["id", 10], ["id", 19], ["id", 42], ["id", 43]]
+  ↳ app/controllers/quests_controller.rb:106
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:110
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:110
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:110
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 10], ["created_at", "2022-03-19 11:22:59.124759"], ["updated_at", "2022-03-19 11:22:59.124759"]]
+  ↳ app/controllers/quests_controller.rb:110
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:110
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:110
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:110
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:110
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 19], ["created_at", "2022-03-19 11:22:59.131924"], ["updated_at", "2022-03-19 11:22:59.131924"]]
+  ↳ app/controllers/quests_controller.rb:110
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:110
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:110
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:110
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:110
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 42], ["created_at", "2022-03-19 11:22:59.138492"], ["updated_at", "2022-03-19 11:22:59.138492"]]
+  ↳ app/controllers/quests_controller.rb:110
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:110
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:110
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 43], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:110
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:110
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 43], ["created_at", "2022-03-19 11:22:59.145158"], ["updated_at", "2022-03-19 11:22:59.145158"]]
+  ↳ app/controllers/quests_controller.rb:110
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:110
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 12]]
+  ↳ app/controllers/quests_controller.rb:116
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:120
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:120
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:120
+  [1m[36mQuestTask Create (0.2ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 12], ["created_at", "2022-03-19 11:22:59.152158"], ["updated_at", "2022-03-19 11:22:59.152158"]]
+  ↳ app/controllers/quests_controller.rb:120
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:120
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 22]]
+  ↳ app/controllers/quests_controller.rb:126
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:130
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:130
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:130
+  [1m[36mQuestTask Create (0.1ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 22], ["created_at", "2022-03-19 11:22:59.158945"], ["updated_at", "2022-03-19 11:22:59.158945"]]
+  ↳ app/controllers/quests_controller.rb:130
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:130
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 23]]
+  ↳ app/controllers/quests_controller.rb:136
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quests_controller.rb:140
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:140
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:140
+  [1m[36mQuestTask Create (0.2ms)[0m  [1m[32mINSERT INTO "quest_tasks" ("quest_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["quest_id", 1], ["task_id", 23], ["created_at", "2022-03-19 11:22:59.165598"], ["updated_at", "2022-03-19 11:22:59.165598"]]
+  ↳ app/controllers/quests_controller.rb:140
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quests_controller.rb:140
+Redirected to https://a6a270985c1c4aa5ad9a36a142146b81.vfs.cloud9.ap-northeast-1.amazonaws.com/quests/1
+Completed 302 Found in 420ms (ActiveRecord: 158.6ms)
+
+
+Started GET "/quests/1" for 61.23.106.114 at 2022-03-19 11:22:59 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by QuestsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quests_controller.rb:153
+  Rendering quests/show.html.erb within layouts/application
+  [1m[36mQuestTask Load (0.3ms)[0m  [1m[34mSELECT "quest_tasks".* FROM "quest_tasks" WHERE "quest_tasks"."quest_id" = ? AND "quest_tasks"."task_id" BETWEEN ? AND ? ORDER BY "quest_tasks"."task_id" ASC[0m  [["quest_id", 1], ["task_id", 6], ["task_id", 10]]
+  ↳ app/views/quests/show.html.erb:33
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:38
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:38
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:38
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:38
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:38
+  [1m[36mQuestTask Load (0.2ms)[0m  [1m[34mSELECT "quest_tasks".* FROM "quest_tasks" WHERE "quest_tasks"."quest_id" = ? AND "quest_tasks"."task_id" IN (?, ?) ORDER BY "quest_tasks"."task_id" ASC[0m  [["quest_id", 1], ["task_id", 11], ["task_id", 12]]
+  ↳ app/views/quests/show.html.erb:47
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:52
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:52
+  [1m[36mQuestTask Load (0.1ms)[0m  [1m[34mSELECT "quest_tasks".* FROM "quest_tasks" WHERE "quest_tasks"."quest_id" = ? AND "quest_tasks"."task_id" BETWEEN ? AND ? ORDER BY "quest_tasks"."task_id" ASC[0m  [["quest_id", 1], ["task_id", 13], ["task_id", 24]]
+  ↳ app/views/quests/show.html.erb:61
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:66
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:66
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:66
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:66
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:66
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:66
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:66
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:66
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:66
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:66
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:66
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:66
+  [1m[36mQuestTask Load (0.1ms)[0m  [1m[34mSELECT "quest_tasks".* FROM "quest_tasks" WHERE "quest_tasks"."quest_id" = ? AND "quest_tasks"."task_id" BETWEEN ? AND ? ORDER BY "quest_tasks"."task_id" ASC[0m  [["quest_id", 1], ["task_id", 25], ["task_id", 28]]
+  ↳ app/views/quests/show.html.erb:75
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:80
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:80
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:80
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:80
+  [1m[36mQuestTask Load (0.1ms)[0m  [1m[34mSELECT "quest_tasks".* FROM "quest_tasks" WHERE "quest_tasks"."quest_id" = ? AND "quest_tasks"."task_id" BETWEEN ? AND ? ORDER BY "quest_tasks"."task_id" ASC[0m  [["quest_id", 1], ["task_id", 29], ["task_id", 45]]
+  ↳ app/views/quests/show.html.erb:89
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:94
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:94
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:94
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:94
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:94
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:94
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:94
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:94
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 38], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:94
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:94
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:94
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:94
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:94
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 43], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:94
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:94
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:94
+  [1m[36mQuestTask Load (0.2ms)[0m  [1m[34mSELECT "quest_tasks".* FROM "quest_tasks" WHERE "quest_tasks"."quest_id" = ? AND (task_id < 6)[0m  [["quest_id", 1]]
+  ↳ app/views/quests/show.html.erb:104
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:107
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:107
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/quests/show.html.erb:107
+  Rendered simple_calendar/_month_calendar.html.erb (8.1ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "quest_tasks" WHERE "quest_tasks"."quest_id" = ? AND (task_id > 5)[0m  [["quest_id", 1]]
+  ↳ app/views/quests/show.html.erb:117
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "quest_tasks" WHERE "quest_tasks"."quest_id" = ? AND (task_id > 5) AND "quest_tasks"."is_clear" = ?[0m  [["quest_id", 1], ["is_clear", 1]]
+  ↳ app/views/quests/show.html.erb:117
+  Rendered quests/show.html.erb within layouts/application (134.7ms)
+  [1m[36mNotification Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 1], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 474ms (Views: 464.1ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/boards" for 61.23.106.114 at 2022-03-19 11:23:43 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering boards/index.html.erb within layouts/application
+  [1m[36mBoard Load (0.2ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" ORDER BY "boards"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  ↳ app/views/boards/index.html.erb:85
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 1]]
+  ↳ app/views/boards/index.html.erb:90
+  Rendered boards/index.html.erb within layouts/application (12.8ms)
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 1], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 72ms (Views: 60.0ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/boards" for 61.23.106.114 at 2022-03-19 11:23:47 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pRGpvtcbGS5a4rCc8r1/RUre8WQMXchfFezFHe4GyPINNJdrWm9MgU9DRT8mAbZ8J+eUnGPAQKO1l5rZ3Qm9ow==", "board"=>{"title"=>"引越しについて", "body"=>"bbb", "user_id"=>"1"}, "commit"=>"投稿"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/boards_controller.rb:15
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:15
+  [1m[36mBoard Create (0.2ms)[0m  [1m[32mINSERT INTO "boards" ("title", "created_at", "updated_at", "body", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["title", "引越しについて"], ["created_at", "2022-03-19 11:23:48.007751"], ["updated_at", "2022-03-19 11:23:48.007751"], ["body", "bbb"], ["user_id", 1]]
+  ↳ app/controllers/boards_controller.rb:15
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/boards_controller.rb:15
+Redirected to https://a6a270985c1c4aa5ad9a36a142146b81.vfs.cloud9.ap-northeast-1.amazonaws.com/boards/2
+Completed 302 Found in 13ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/boards/2" for 61.23.106.114 at 2022-03-19 11:23:48 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mBoard Load (0.2ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:23
+  Rendering boards/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/boards/show.html.erb:27
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."board_id" = ? LIMIT ? OFFSET ?[0m  [["board_id", 2], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/boards/show.html.erb:57
+  Rendered boards/show.html.erb within layouts/application (7.2ms)
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 1], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 77ms (Views: 67.4ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/comments" for 61.23.106.114 at 2022-03-19 11:23:51 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CkWn1OqZko8tkgcHPGvfplCrF+pMT85SFZTbMA2CFD7OkTGgxrZHqt/v9Qx8h8JCoBDjH8z94ku/VPZ3j6WPXQ==", "comment"=>{"comment"=>"bb", "user_id"=>"1", "board_id"=>"2"}, "commit"=>"コメントする"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mBoard Load (0.1ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/comments_controller.rb:5
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:5
+  [1m[36mComment Create (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("board_id", "user_id", "comment", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["board_id", 2], ["user_id", 1], ["comment", "bb"], ["created_at", "2022-03-19 11:23:51.297850"], ["updated_at", "2022-03-19 11:23:51.297850"]]
+  ↳ app/controllers/comments_controller.rb:5
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/comments_controller.rb:5
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT DISTINCT "comments"."user_id" FROM "comments" WHERE "comments"."board_id" = ? AND "comments"."user_id" != ?[0m  [["board_id", 2], ["user_id", 1]]
+  ↳ app/models/board.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/board.rb:27
+  [1m[36mNotification Create (0.2ms)[0m  [1m[32mINSERT INTO "notifications" ("visitor_id", "visited_id", "board_id", "comment_id", "checked", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["visitor_id", 1], ["visited_id", 1], ["board_id", 2], ["comment_id", 2], ["checked", 1], ["created_at", "2022-03-19 11:23:51.312871"], ["updated_at", "2022-03-19 11:23:51.312871"]]
+  ↳ app/models/board.rb:27
+  [1m[35m (3.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/board.rb:27
+Redirected to https://a6a270985c1c4aa5ad9a36a142146b81.vfs.cloud9.ap-northeast-1.amazonaws.com/boards/2
+Completed 302 Found in 29ms (ActiveRecord: 7.3ms)
+
+
+Started GET "/boards/2" for 61.23.106.114 at 2022-03-19 11:23:51 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mBoard Load (0.1ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:23
+  Rendering boards/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/boards/show.html.erb:27
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."board_id" = ? LIMIT ? OFFSET ?[0m  [["board_id", 2], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/boards/show.html.erb:57
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/boards/show.html.erb:66
+  Rendered boards/show.html.erb within layouts/application (7.8ms)
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 1], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 68ms (Views: 64.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/boards/2?utf8=%E2%9C%93&word=bb&commit=%E6%A4%9C%E7%B4%A2" for 61.23.106.114 at 2022-03-19 11:23:55 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardsController#show as HTML
+  Parameters: {"utf8"=>"✓", "word"=>"bb", "commit"=>"検索", "id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mBoard Load (0.1ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:23
+  Rendering boards/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/boards/show.html.erb:27
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE (comment LIKE '%bb%') LIMIT ? OFFSET ?[0m  [["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/boards/show.html.erb:57
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/boards/show.html.erb:66
+  Rendered boards/show.html.erb within layouts/application (8.1ms)
+  [1m[36mNotification Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 1], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 58ms (Views: 53.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/notifications" for 61.23.106.114 at 2022-03-19 11:24:00 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by NotificationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mNotification Load (0.2ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? ORDER BY "notifications"."created_at" DESC[0m  [["visited_id", 1], ["checked", 0]]
+  ↳ app/controllers/notifications_controller.rb:5
+  Rendering notifications/index.html.erb within layouts/application
+  [1m[36mNotification Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."visitor_id" != ? LIMIT ?[0m  [["visited_id", 1], ["visitor_id", 1], ["LIMIT", 1]]
+  ↳ app/views/notifications/index.html.erb:4
+  Rendered notifications/index.html.erb within layouts/application (1.9ms)
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 1], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 65ms (Views: 59.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/boards" for 61.23.106.114 at 2022-03-19 11:24:00 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering boards/index.html.erb within layouts/application
+  [1m[36mBoard Load (0.1ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" ORDER BY "boards"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  ↳ app/views/boards/index.html.erb:85
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 2]]
+  ↳ app/views/boards/index.html.erb:90
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 1]]
+  ↳ app/views/boards/index.html.erb:90
+  Rendered boards/index.html.erb within layouts/application (9.0ms)
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 1], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 59ms (Views: 56.0ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/boards" for 61.23.106.114 at 2022-03-19 11:24:03 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BM6eA5dlNaLmD7mm19OcXBl9acmFr39nKtxjharGR9us66DWGhFgDfOuTAUDb1VldEQMMeoy95uKpzxBmckyig==", "board"=>{"title"=>"bb", "body"=>"bb", "user_id"=>"1"}, "commit"=>"投稿"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/boards_controller.rb:15
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:15
+  [1m[36mBoard Create (0.2ms)[0m  [1m[32mINSERT INTO "boards" ("title", "created_at", "updated_at", "body", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["title", "bb"], ["created_at", "2022-03-19 11:24:03.687636"], ["updated_at", "2022-03-19 11:24:03.687636"], ["body", "bb"], ["user_id", 1]]
+  ↳ app/controllers/boards_controller.rb:15
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/boards_controller.rb:15
+Redirected to https://a6a270985c1c4aa5ad9a36a142146b81.vfs.cloud9.ap-northeast-1.amazonaws.com/boards/3
+Completed 302 Found in 12ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/boards/3" for 61.23.106.114 at 2022-03-19 11:24:03 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mBoard Load (0.1ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:23
+  Rendering boards/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/boards/show.html.erb:27
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."board_id" = ? LIMIT ? OFFSET ?[0m  [["board_id", 3], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/boards/show.html.erb:57
+  Rendered boards/show.html.erb within layouts/application (6.7ms)
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 1], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 69ms (Views: 64.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/boards" for 61.23.106.114 at 2022-03-19 11:24:05 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering boards/index.html.erb within layouts/application
+  [1m[36mBoard Load (0.1ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" ORDER BY "boards"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  ↳ app/views/boards/index.html.erb:85
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 3]]
+  ↳ app/views/boards/index.html.erb:90
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 2]]
+  ↳ app/views/boards/index.html.erb:90
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 1]]
+  ↳ app/views/boards/index.html.erb:90
+  Rendered boards/index.html.erb within layouts/application (9.2ms)
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 1], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 59ms (Views: 55.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/boards" for 61.23.106.114 at 2022-03-19 11:31:44 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering boards/index.html.erb within layouts/application
+  [1m[36mBoard Load (0.2ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" ORDER BY "boards"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  ↳ app/views/boards/index.html.erb:85
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 3]]
+  ↳ app/views/boards/index.html.erb:90
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 2]]
+  ↳ app/views/boards/index.html.erb:90
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 1]]
+  ↳ app/views/boards/index.html.erb:90
+  Rendered boards/index.html.erb within layouts/application (9.0ms)
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 1], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 72ms (Views: 66.4ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/users/sign_out" for 61.23.106.114 at 2022-03-19 11:31:56 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"bEMlXI5XPNvVoQrXxQIPF8THBBJgwZSFbFr4oQtdNz6ol7Moonjp/ifc+NyF7hLzNHzw5+BzuJzGmtXmiXqsXQ=="}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Redirected to https://a6a270985c1c4aa5ad9a36a142146b81.vfs.cloud9.ap-northeast-1.amazonaws.com/
+Completed 302 Found in 11ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 61.23.106.114 at 2022-03-19 11:31:56 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by HomesController#top as HTML
+  Rendering homes/top.html.erb within layouts/application
+  Rendered homes/top.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 51ms (Views: 49.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 61.23.106.114 at 2022-03-19 11:32:00 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0uVRvBHNXcJCjT6ATQ9Ci8r6qsPVBPN5kSZGr4NoTH/itq6DJtmbe990qjzTjhueGTCFlp7RytRj1RER2g+YgA==", "user"=>{"email"=>"chi@chi", "password"=>"[FILTERED]"}, "commit"=>"ログイン"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "chi@chi"], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.2ms)
+
+
+Processing by Users::SessionsController#fail as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0uVRvBHNXcJCjT6ATQ9Ci8r6qsPVBPN5kSZGr4NoTH/itq6DJtmbe990qjzTjhueGTCFlp7RytRj1RER2g+YgA==", "user"=>{"email"=>"chi@chi", "password"=>"[FILTERED]"}, "commit"=>"ログイン"}
+Redirected to https://a6a270985c1c4aa5ad9a36a142146b81.vfs.cloud9.ap-northeast-1.amazonaws.com/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 61.23.106.114 at 2022-03-19 11:32:01 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by HomesController#top as HTML
+  Rendering homes/top.html.erb within layouts/application
+  Rendered homes/top.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 60ms (Views: 58.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 61.23.106.114 at 2022-03-19 11:32:03 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Users::RegistrationsController#new as HTML
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (0.4ms)
+  Rendered users/registrations/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 54ms (Views: 52.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 61.23.106.114 at 2022-03-19 11:32:09 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YjVFKWBTQfQwWFXXvRJH+o4OSng8mZrj9R1FYARxBIm/11juVc/qhXsGJjpdyJdCL0C3F2ThoPhpoZj7AOaihw==", "user"=>{"name"=>"chi", "email"=>"chi@chi", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"新規登録"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "chi@chi"], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "chi@chi"], ["encrypted_password", "$2a$12$cKJsuWI16gF1aMJsdfIkC.E2Rw9EsNPIIV0V/r1vu/.fZ7y.geCJ."], ["name", "chi"], ["created_at", "2022-03-19 11:32:09.362471"], ["updated_at", "2022-03-19 11:32:09.362471"]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Redirected to https://a6a270985c1c4aa5ad9a36a142146b81.vfs.cloud9.ap-northeast-1.amazonaws.com/quests/new
+Completed 302 Found in 329ms (ActiveRecord: 4.1ms)
+
+
+Started GET "/quests/new" for 61.23.106.114 at 2022-03-19 11:32:09 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by QuestsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering quests/new.html.erb within layouts/application
+  Rendered quests/new.html.erb within layouts/application (72.8ms)
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 2], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 127ms (Views: 122.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/boards" for 61.23.106.114 at 2022-03-19 11:32:13 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering boards/index.html.erb within layouts/application
+  [1m[36mBoard Load (0.1ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" ORDER BY "boards"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  ↳ app/views/boards/index.html.erb:85
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 3]]
+  ↳ app/views/boards/index.html.erb:90
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 2]]
+  ↳ app/views/boards/index.html.erb:90
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 1]]
+  ↳ app/views/boards/index.html.erb:90
+  Rendered boards/index.html.erb within layouts/application (8.8ms)
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 2], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 82ms (Views: 79.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/boards/3" for 61.23.106.114 at 2022-03-19 11:32:15 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mBoard Load (0.1ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:23
+  Rendering boards/show.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/boards/show.html.erb:27
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."board_id" = ? LIMIT ? OFFSET ?[0m  [["board_id", 3], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/boards/show.html.erb:57
+  Rendered boards/show.html.erb within layouts/application (11.6ms)
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 2], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 135ms (Views: 129.5ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/comments" for 61.23.106.114 at 2022-03-19 11:32:18 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"goDSk+eVkuukIlaXpVa4UhPYkJOg16AZ3nwM4c+8NKhnZps8g954dWpKQ6eDavwhx6nMCV8jNVHgNBDC//wQWw==", "comment"=>{"comment"=>"ll\r\n", "user_id"=>"2", "board_id"=>"3"}, "commit"=>"コメントする"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mBoard Load (0.1ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/comments_controller.rb:5
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:5
+  [1m[36mComment Create (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("board_id", "user_id", "comment", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["board_id", 3], ["user_id", 2], ["comment", "ll\r\n"], ["created_at", "2022-03-19 11:32:18.771349"], ["updated_at", "2022-03-19 11:32:18.771349"]]
+  ↳ app/controllers/comments_controller.rb:5
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/comments_controller.rb:5
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT DISTINCT "comments"."user_id" FROM "comments" WHERE "comments"."board_id" = ? AND "comments"."user_id" != ?[0m  [["board_id", 3], ["user_id", 2]]
+  ↳ app/models/board.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/board.rb:27
+  [1m[36mNotification Create (0.2ms)[0m  [1m[32mINSERT INTO "notifications" ("visitor_id", "visited_id", "board_id", "comment_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["visitor_id", 2], ["visited_id", 1], ["board_id", 3], ["comment_id", 3], ["created_at", "2022-03-19 11:32:18.780382"], ["updated_at", "2022-03-19 11:32:18.780382"]]
+  ↳ app/models/board.rb:27
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/board.rb:27
+Redirected to https://a6a270985c1c4aa5ad9a36a142146b81.vfs.cloud9.ap-northeast-1.amazonaws.com/boards/3
+Completed 302 Found in 22ms (ActiveRecord: 6.7ms)
+
+
+Started GET "/boards/3" for 61.23.106.114 at 2022-03-19 11:32:18 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mBoard Load (0.1ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:23
+  Rendering boards/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/boards/show.html.erb:27
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."board_id" = ? LIMIT ? OFFSET ?[0m  [["board_id", 3], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/boards/show.html.erb:57
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/boards/show.html.erb:66
+  Rendered boards/show.html.erb within layouts/application (8.5ms)
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 2], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 60ms (Views: 55.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/boards" for 61.23.106.114 at 2022-03-19 11:32:22 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering boards/index.html.erb within layouts/application
+  [1m[36mBoard Load (0.1ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" ORDER BY "boards"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  ↳ app/views/boards/index.html.erb:85
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 3]]
+  ↳ app/views/boards/index.html.erb:90
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 2]]
+  ↳ app/views/boards/index.html.erb:90
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 1]]
+  ↳ app/views/boards/index.html.erb:90
+  Rendered boards/index.html.erb within layouts/application (9.0ms)
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 2], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 57ms (Views: 53.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/boards/3" for 61.23.106.114 at 2022-03-19 11:32:27 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mBoard Load (0.1ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:23
+  Rendering boards/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/boards/show.html.erb:27
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."board_id" = ? LIMIT ? OFFSET ?[0m  [["board_id", 3], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/boards/show.html.erb:57
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/boards/show.html.erb:66
+  Rendered boards/show.html.erb within layouts/application (8.3ms)
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 2], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 60ms (Views: 56.1ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/comments" for 61.23.106.114 at 2022-03-19 11:32:41 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xcp4l/B27Wkn6yt/g9qn83ne0KPjgt1XOqHb1NatzCZtmYeox2Ir0LoSv8MdW/7mqhT/9qhX5PrIUoxqj8oY2Q==", "comment"=>{"comment"=>"jj", "user_id"=>"2", "board_id"=>"3"}, "commit"=>"コメントする"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mBoard Load (0.1ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/comments_controller.rb:5
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:5
+  [1m[36mComment Create (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("board_id", "user_id", "comment", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["board_id", 3], ["user_id", 2], ["comment", "jj"], ["created_at", "2022-03-19 11:32:41.322621"], ["updated_at", "2022-03-19 11:32:41.322621"]]
+  ↳ app/controllers/comments_controller.rb:5
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/comments_controller.rb:5
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT DISTINCT "comments"."user_id" FROM "comments" WHERE "comments"."board_id" = ? AND "comments"."user_id" != ?[0m  [["board_id", 3], ["user_id", 2]]
+  ↳ app/models/board.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/board.rb:27
+  [1m[36mNotification Create (0.2ms)[0m  [1m[32mINSERT INTO "notifications" ("visitor_id", "visited_id", "board_id", "comment_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["visitor_id", 2], ["visited_id", 1], ["board_id", 3], ["comment_id", 4], ["created_at", "2022-03-19 11:32:41.331417"], ["updated_at", "2022-03-19 11:32:41.331417"]]
+  ↳ app/models/board.rb:27
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/board.rb:27
+Redirected to https://a6a270985c1c4aa5ad9a36a142146b81.vfs.cloud9.ap-northeast-1.amazonaws.com/boards/3
+Completed 302 Found in 22ms (ActiveRecord: 6.9ms)
+
+
+Started GET "/boards/3" for 61.23.106.114 at 2022-03-19 11:32:41 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mBoard Load (0.1ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:23
+  Rendering boards/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/boards/show.html.erb:27
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."board_id" = ? LIMIT ? OFFSET ?[0m  [["board_id", 3], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/boards/show.html.erb:57
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/boards/show.html.erb:66
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/boards/show.html.erb:66
+  Rendered boards/show.html.erb within layouts/application (9.7ms)
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 2], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 81ms (Views: 77.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 61.23.106.114 at 2022-03-19 11:32:47 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by HomesController#top as HTML
+  Rendering homes/top.html.erb within layouts/application
+  Rendered homes/top.html.erb within layouts/application (1.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:27
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 2], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 51ms (Views: 50.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/notifications" for 61.23.106.114 at 2022-03-19 11:32:51 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by NotificationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mNotification Load (0.2ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? ORDER BY "notifications"."created_at" DESC[0m  [["visited_id", 2], ["checked", 0]]
+  ↳ app/controllers/notifications_controller.rb:5
+  Rendering notifications/index.html.erb within layouts/application
+  [1m[36mNotification Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."visitor_id" != ? LIMIT ?[0m  [["visited_id", 2], ["visitor_id", 2], ["LIMIT", 1]]
+  ↳ app/views/notifications/index.html.erb:4
+  Rendered notifications/index.html.erb within layouts/application (1.9ms)
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 2], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 53ms (Views: 47.9ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/users/sign_out" for 61.23.106.114 at 2022-03-19 11:33:02 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"AbJMqVe8LN4gPRKTyeRmet3qYiSEVwXMY6744ddg254x4bOWYKjqZ73Ehi9XZT9vDiBNcc+CPGGRXa9fjgcPYQ=="}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Redirected to https://a6a270985c1c4aa5ad9a36a142146b81.vfs.cloud9.ap-northeast-1.amazonaws.com/
+Completed 302 Found in 6ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 61.23.106.114 at 2022-03-19 11:33:03 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by HomesController#top as HTML
+  Rendering homes/top.html.erb within layouts/application
+  Rendered homes/top.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 45ms (Views: 44.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 61.23.106.114 at 2022-03-19 11:33:07 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2dqOtNy+E5ipnzUiNxogMiow9a/p9vIM2yePa66zrEADvs2EEJZWbK4qL2kbsWuDwIMVfAqi8n6JNV3tXzDoiw==", "user"=>{"email"=>"taro@taro", "password"=>"[FILTERED]"}, "commit"=>"ログイン"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "taro@taro"], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Redirected to https://a6a270985c1c4aa5ad9a36a142146b81.vfs.cloud9.ap-northeast-1.amazonaws.com/my_page
+Completed 302 Found in 317ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/my_page" for 61.23.106.114 at 2022-03-19 11:33:08 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by UsersController#mypage as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mQuest Load (0.2ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."is_clear" = ? AND "quests"."user_id" = ? LIMIT ?[0m  [["is_clear", 0], ["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  Rendering users/mypage.html.erb within layouts/application
+  [1m[36mQuest Load (0.2ms)[0m  [1m[34mSELECT "quests".* FROM "quests" WHERE "quests"."is_clear" = ? AND "quests"."user_id" = ?[0m  [["is_clear", 1], ["user_id", 1]]
+  ↳ app/views/users/mypage.html.erb:39
+  [1m[36mBoard Load (0.1ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."user_id" = ? LIMIT ? OFFSET ?[0m  [["user_id", 1], ["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/users/mypage.html.erb:53
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 1]]
+  ↳ app/views/users/mypage.html.erb:59
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 2]]
+  ↳ app/views/users/mypage.html.erb:59
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 3]]
+  ↳ app/views/users/mypage.html.erb:59
+  [1m[36mQuestTask Load (0.1ms)[0m  [1m[34mSELECT "quest_tasks".* FROM "quest_tasks" WHERE "quest_tasks"."quest_id" = ? AND (task_id < 5)[0m  [["quest_id", 1]]
+  ↳ app/views/users/mypage.html.erb:81
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/mypage.html.erb:84
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/mypage.html.erb:84
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/mypage.html.erb:84
+  Rendered simple_calendar/_month_calendar.html.erb (9.0ms)
+  Rendered users/mypage.html.erb within layouts/application (21.2ms)
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 1], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 71ms (Views: 65.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/my_page" for 61.23.106.114 at 2022-03-19 11:34:34 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by UsersController#mypage as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."is_clear" = ? AND "quests"."user_id" = ? LIMIT ?[0m  [["is_clear", 0], ["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  Rendering users/mypage.html.erb within layouts/application
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT "quests".* FROM "quests" WHERE "quests"."is_clear" = ? AND "quests"."user_id" = ?[0m  [["is_clear", 1], ["user_id", 1]]
+  ↳ app/views/users/mypage.html.erb:39
+  [1m[36mBoard Load (0.1ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."user_id" = ? LIMIT ? OFFSET ?[0m  [["user_id", 1], ["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/users/mypage.html.erb:53
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 1]]
+  ↳ app/views/users/mypage.html.erb:59
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 2]]
+  ↳ app/views/users/mypage.html.erb:59
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 3]]
+  ↳ app/views/users/mypage.html.erb:59
+  [1m[36mQuestTask Load (0.1ms)[0m  [1m[34mSELECT "quest_tasks".* FROM "quest_tasks" WHERE "quest_tasks"."quest_id" = ? AND (task_id < 5)[0m  [["quest_id", 1]]
+  ↳ app/views/users/mypage.html.erb:81
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/mypage.html.erb:84
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/mypage.html.erb:84
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/mypage.html.erb:84
+  Rendered simple_calendar/_month_calendar.html.erb (9.0ms)
+  Rendered users/mypage.html.erb within layouts/application (20.8ms)
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 1], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 92ms (Views: 86.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/my_page" for 61.23.106.114 at 2022-03-19 11:34:48 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by UsersController#mypage as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."is_clear" = ? AND "quests"."user_id" = ? LIMIT ?[0m  [["is_clear", 0], ["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  Rendering users/mypage.html.erb within layouts/application
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT "quests".* FROM "quests" WHERE "quests"."is_clear" = ? AND "quests"."user_id" = ?[0m  [["is_clear", 1], ["user_id", 1]]
+  ↳ app/views/users/mypage.html.erb:39
+  [1m[36mBoard Load (0.1ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."user_id" = ? LIMIT ? OFFSET ?[0m  [["user_id", 1], ["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/users/mypage.html.erb:53
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 1]]
+  ↳ app/views/users/mypage.html.erb:59
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 2]]
+  ↳ app/views/users/mypage.html.erb:59
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 3]]
+  ↳ app/views/users/mypage.html.erb:59
+  [1m[36mQuestTask Load (0.1ms)[0m  [1m[34mSELECT "quest_tasks".* FROM "quest_tasks" WHERE "quest_tasks"."quest_id" = ? AND (task_id < 5)[0m  [["quest_id", 1]]
+  ↳ app/views/users/mypage.html.erb:81
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/mypage.html.erb:84
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/mypage.html.erb:84
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/mypage.html.erb:84
+  Rendered simple_calendar/_month_calendar.html.erb (9.5ms)
+  Rendered users/mypage.html.erb within layouts/application (22.0ms)
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 1], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 73ms (Views: 67.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/my_page" for 61.23.106.114 at 2022-03-19 11:35:00 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by UsersController#mypage as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT  "quests".* FROM "quests" WHERE "quests"."is_clear" = ? AND "quests"."user_id" = ? LIMIT ?[0m  [["is_clear", 0], ["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  Rendering users/mypage.html.erb within layouts/application
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT "quests".* FROM "quests" WHERE "quests"."is_clear" = ? AND "quests"."user_id" = ?[0m  [["is_clear", 1], ["user_id", 1]]
+  ↳ app/views/users/mypage.html.erb:39
+  [1m[36mBoard Load (0.1ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."user_id" = ? LIMIT ? OFFSET ?[0m  [["user_id", 1], ["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/users/mypage.html.erb:53
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 1]]
+  ↳ app/views/users/mypage.html.erb:59
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 2]]
+  ↳ app/views/users/mypage.html.erb:59
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."board_id" = ?[0m  [["board_id", 3]]
+  ↳ app/views/users/mypage.html.erb:59
+  [1m[36mQuestTask Load (0.1ms)[0m  [1m[34mSELECT "quest_tasks".* FROM "quest_tasks" WHERE "quest_tasks"."quest_id" = ? AND (task_id < 5)[0m  [["quest_id", 1]]
+  ↳ app/views/users/mypage.html.erb:81
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/mypage.html.erb:84
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/mypage.html.erb:84
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/mypage.html.erb:84
+  Rendered simple_calendar/_month_calendar.html.erb (12.9ms)
+  Rendered users/mypage.html.erb within layouts/application (25.0ms)
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 1], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 77ms (Views: 71.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/notifications" for 61.23.106.114 at 2022-03-19 11:35:03 +0000
+Cannot render console from 61.23.106.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by NotificationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mNotification Load (0.1ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? ORDER BY "notifications"."created_at" DESC[0m  [["visited_id", 1], ["checked", 0]]
+  ↳ app/controllers/notifications_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/notifications_controller.rb:6
+  [1m[36mNotification Update (0.2ms)[0m  [1m[33mUPDATE "notifications" SET "checked" = ?, "updated_at" = ? WHERE "notifications"."id" = ?[0m  [["checked", 1], ["updated_at", "2022-03-19 11:35:03.086645"], ["id", 4]]
+  ↳ app/controllers/notifications_controller.rb:6
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/notifications_controller.rb:6
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/notifications_controller.rb:6
+  [1m[36mNotification Update (0.2ms)[0m  [1m[33mUPDATE "notifications" SET "checked" = ?, "updated_at" = ? WHERE "notifications"."id" = ?[0m  [["checked", 1], ["updated_at", "2022-03-19 11:35:03.093407"], ["id", 3]]
+  ↳ app/controllers/notifications_controller.rb:6
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/notifications_controller.rb:6
+  Rendering notifications/index.html.erb within layouts/application
+  [1m[36mNotification Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."visitor_id" != ? LIMIT ?[0m  [["visited_id", 1], ["visitor_id", 1], ["LIMIT", 1]]
+  ↳ app/views/notifications/index.html.erb:4
+  [1m[36mNotification Load (0.2ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."visitor_id" != ? ORDER BY "notifications"."created_at" DESC[0m  [["visited_id", 1], ["visitor_id", 1]]
+  ↳ app/views/notifications/index.html.erb:7
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/notifications/index.html.erb:8
+  [1m[36mBoard Load (0.1ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/notifications/index.html.erb:10
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/notifications/index.html.erb:18
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/notifications/index.html.erb:8
+  [1m[36mCACHE Board Load (0.0ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/notifications/index.html.erb:10
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/notifications/index.html.erb:18
+  Rendered notifications/index.html.erb within layouts/application (12.7ms)
+  [1m[36mNotification Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "notifications" WHERE "notifications"."visited_id" = ? AND "notifications"."checked" = ? LIMIT ?[0m  [["visited_id", 1], ["checked", 0], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 78ms (Views: 57.9ms | ActiveRecord: 7.2ms)
+
+
