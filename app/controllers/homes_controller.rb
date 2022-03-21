@@ -3,6 +3,5 @@ class HomesController < ApplicationController
     @user = User.new
   end
 
-  def help
-  end
+  def help; end
 end

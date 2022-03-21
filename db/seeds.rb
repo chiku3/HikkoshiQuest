@@ -7,12 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # タスク
- require "csv"
- CSV.foreach('lib/タスク一覧.csv', headers: true) do |row|
+require 'csv'
+CSV.foreach('lib/タスク一覧.csv', headers: true) do |row|
   Task.create(
-    name: row["name"],
+    name: row['name'],
     title: row['title'],
-    body_a: row["body_a"],
-    body_b: row["body_b"],
+    body_a: row['body_a'],
+    body_b: row['body_b']
   )
 end

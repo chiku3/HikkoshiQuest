@@ -9,17 +9,17 @@
   <div class ="row" >
     <div class="mx-auto border rounded-lg bg-white p-3">
       <div class="text-center">
-        <%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-circle border" %>
+        <%= attachment_image_tag current_user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-circle border" %>
       </div>
 
         <table class="table table-borderless">
           <tr>
             <th>ニックネーム</th>
-            <td><%= @user.name %></td>
+            <td><%= current_user.name %></td>
           </tr>
           <tr>
             <th>メールアドレス</th>
-            <td><%= @user.email %></td>
+            <td><%= current_user.email %></td>
           </tr>
         </table>
     </div>

@@ -1,5 +1,4 @@
 class QuestTasksController < ApplicationController
-
   def show
     @quest_task = QuestTask.find(params[:id])
     @quest = @quest_task.quest_id
@@ -11,7 +10,7 @@ class QuestTasksController < ApplicationController
     @quest_task.update(quest_task_params)
     redirect_to quest_path(@quest)
   end
-  
+
   def complete
     @quest_task = QuestTask.find(params[:id])
     @quest = @quest_task.quest_id

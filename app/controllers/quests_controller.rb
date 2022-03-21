@@ -7,40 +7,38 @@ class QuestsController < ApplicationController
 
   def create
     @quest = Quest.new(quest_params)
-    @quests = Quest.find_by(user_id: current_user,is_clear: false)
-    if
-      @quests.present?
-      flash[:notice] = "現在進行中のクエストがあるため保存できませんでした。"
+    @quests = Quest.find_by(user_id: current_user, is_clear: false)
+    if @quests.present?
+      flash[:notice] = '現在進行中のクエストがあるため保存できませんでした。'
       redirect_to my_page_path
-    elsif
-      @quest.save
+    elsif @quest.save
 
       # カレンダー表示用タスクを保存
-          quest_task = QuestTask.new
-            quest_task.task_id = 1
-            quest_task.quest_id  = @quest.id
-            quest_task.start_time = @quest.created_at  # クエスト開始日
-          quest_task.save
-          quest_task = QuestTask.new
-            quest_task.task_id = 2
-            quest_task.quest_id  = @quest.id
-            quest_task.start_time = @quest.due_day.ago(30.days)  # 引越し３０日前
-          quest_task.save
-          quest_task = QuestTask.new
-            quest_task.task_id = 3
-            quest_task.quest_id  = @quest.id
-            quest_task.start_time = @quest.due_day.ago(14.days)  # 引越し１４日前
-          quest_task.save
-          quest_task = QuestTask.new
-            quest_task.task_id = 4
-            quest_task.quest_id  = @quest.id
-            quest_task.start_time = @quest.due_day  # 引越し当日
-          quest_task.save
-          quest_task = QuestTask.new
-            quest_task.task_id = 5
-            quest_task.quest_id  = @quest.id
-            quest_task.start_time = @quest.due_day.since(14.days)  # 引越し１４日後
-         quest_task.save
+      quest_task = QuestTask.new
+      quest_task.task_id = 1
+      quest_task.quest_id = @quest.id
+      quest_task.start_time = @quest.created_at # クエスト開始日
+      quest_task.save
+      quest_task = QuestTask.new
+      quest_task.task_id = 2
+      quest_task.quest_id = @quest.id
+      quest_task.start_time = @quest.due_day.ago(30.days)  # 引越し３０日前
+      quest_task.save
+      quest_task = QuestTask.new
+      quest_task.task_id = 3
+      quest_task.quest_id = @quest.id
+      quest_task.start_time = @quest.due_day.ago(14.days)  # 引越し１４日前
+      quest_task.save
+      quest_task = QuestTask.new
+      quest_task.task_id = 4
+      quest_task.quest_id = @quest.id
+      quest_task.start_time = @quest.due_day # 引越し当日
+      quest_task.save
+      quest_task = QuestTask.new
+      quest_task.task_id = 5
+      quest_task.quest_id = @quest.id
+      quest_task.start_time = @quest.due_day.since(14.days) # 引越し１４日後
+      quest_task.save
 
       # 必須のタスクを保存
       if  @quest.start_pref == @quest.goal_pref and @quest.start_city == @quest.goal_city
@@ -141,23 +139,23 @@ class QuestsController < ApplicationController
           end
         end
 
-      flash[:notice] = "クエストが発生しました！"
+      flash[:notice] = 'クエストが発生しました！'
       redirect_to quest_path(@quest)
 
     else
-	    redirect_to new_quest_path, flash:{ danger: @quest.errors.full_messages.join(',')}
+      redirect_to new_quest_path, flash: { danger: @quest.errors.full_messages.join(',') }
     end
   end
 
   def show
     @quest = Quest.find(params[:id])
-    @quest_task = QuestTask.where(quest_id: @quest.id).where("task_id > ?", 5)     #すべての実行タスク
-    @quest_tasks = QuestTask.where(quest_id: @quest.id).where("task_id < ?", 6)    #カレンダー表示用
-    @quest_task_1 = QuestTask.where(quest_id: @quest.id).where(task_id: [6..10]).order(:task_id)    #すぐやろうタスク
-    @quest_task_2 = QuestTask.where(quest_id: @quest.id).where(task_id: [11,12]).order(:task_id)    #引越し３０日前頃にやろうタスク
-    @quest_task_3 = QuestTask.where(quest_id: @quest.id).where(task_id: [13..24]).order(:task_id)  #引越し１４日前頃にやろうタスク
-    @quest_task_4 = QuestTask.where(quest_id: @quest.id).where(task_id: [25..28]).order(:task_id)    #引越し当日にやろうタスク
-    @quest_task_5 = QuestTask.where(quest_id: @quest.id).where(task_id: [29..45]).order(:task_id)   #引越し後１４日以内にやろうタスク
+    @quest_task = QuestTask.where(quest_id: @quest.id).where('task_id > ?', 5)     # すべての実行タスク
+    @quest_tasks = QuestTask.where(quest_id: @quest.id).where('task_id < ?', 6)    # カレンダー表示用
+    @quest_task_1 = QuestTask.where(quest_id: @quest.id).where(task_id: [6..10]).order(:task_id) # すぐやろうタスク
+    @quest_task_2 = QuestTask.where(quest_id: @quest.id).where(task_id: [11, 12]).order(:task_id) # 引越し３０日前頃にやろうタスク
+    @quest_task_3 = QuestTask.where(quest_id: @quest.id).where(task_id: [13..24]).order(:task_id) # 引越し１４日前頃にやろうタスク
+    @quest_task_4 = QuestTask.where(quest_id: @quest.id).where(task_id: [25..28]).order(:task_id) # 引越し当日にやろうタスク
+    @quest_task_5 = QuestTask.where(quest_id: @quest.id).where(task_id: [29..45]).order(:task_id) # 引越し後１４日以内にやろうタスク
   end
 
   def update
@@ -172,13 +170,13 @@ class QuestsController < ApplicationController
 
   def complete
     @quest = Quest.find(params[:id])
-    @quest_task = QuestTask.where(quest_id: @quest.id).where("task_id > ?", 5)     #すべての実行タスク
-    @quest_tasks = QuestTask.where(quest_id: @quest.id).where("task_id < ?", 6)    #カレンダー表示用
-    @quest_task_1 = QuestTask.where(quest_id: @quest.id).where(task_id: [6..10]).order(:task_id)    #すぐやろうタスク
-    @quest_task_2 = QuestTask.where(quest_id: @quest.id).where(task_id: [11,12]).order(:task_id)    #引越し３０日前頃にやろうタスク
-    @quest_task_3 = QuestTask.where(quest_id: @quest.id).where(task_id: [13..24]).order(:task_id)  #引越し１４日前頃にやろうタスク
-    @quest_task_4 = QuestTask.where(quest_id: @quest.id).where(task_id: [25..28]).order(:task_id)    #引越し当日にやろうタスク
-    @quest_task_5 = QuestTask.where(quest_id: @quest.id).where(task_id: [29..45]).order(:task_id)   #引越し後１４日以内にやろうタスク
+    @quest_task = QuestTask.where(quest_id: @quest.id).where('task_id > ?', 5)     # すべての実行タスク
+    @quest_tasks = QuestTask.where(quest_id: @quest.id).where('task_id < ?', 6)    # カレンダー表示用
+    @quest_task_1 = QuestTask.where(quest_id: @quest.id).where(task_id: [6..10]).order(:task_id) # すぐやろうタスク
+    @quest_task_2 = QuestTask.where(quest_id: @quest.id).where(task_id: [11, 12]).order(:task_id) # 引越し３０日前頃にやろうタスク
+    @quest_task_3 = QuestTask.where(quest_id: @quest.id).where(task_id: [13..24]).order(:task_id) # 引越し１４日前頃にやろうタスク
+    @quest_task_4 = QuestTask.where(quest_id: @quest.id).where(task_id: [25..28]).order(:task_id) # 引越し当日にやろうタスク
+    @quest_task_5 = QuestTask.where(quest_id: @quest.id).where(task_id: [29..45]).order(:task_id)   # 引越し後１４日以内にやろうタスク
   end
 
   def destroy
@@ -191,7 +189,7 @@ class QuestsController < ApplicationController
 
   def quest_params
     params.require(:quest).permit(:user_id, :due_day, :start_pref,
-    :start_city, :goal_pref, :goal_city, :is_clear)
+                                  :start_city, :goal_pref, :goal_city, :is_clear)
   end
 
   def quest_task_params

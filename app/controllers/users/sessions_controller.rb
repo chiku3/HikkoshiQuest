@@ -5,13 +5,13 @@ class Users::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
   def new
-   redirect_to root_path
+    redirect_to root_path
   end
 
   # POST /resource/sign_in
-  #def create
+  # def create
   #  super
-  #end
+  # end
 
   # DELETE /resource/sign_out
   # def destroy
@@ -24,7 +24,7 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-  
+
   def fail
     redirect_to root_path
   end

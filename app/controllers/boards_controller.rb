@@ -2,20 +2,21 @@ class BoardsController < ApplicationController
   def index
     @board = Board.new
     if params[:word].present?
-      @boards = Board.where('title LIKE ? OR body LIKE ?', "%#{params[:word]}%", "%#{params[:word]}%").order(created_at: "DESC").page(params[:page])
+      @boards = Board.where('title LIKE ? OR body LIKE ?', "%#{params[:word]}%",
+                            "%#{params[:word]}%").order(created_at: 'DESC').page(params[:page])
       @word = params[:word]
     else
-      @boards = Board.all.order(created_at: "DESC").page(params[:page]).per(20)
+      @boards = Board.all.order(created_at: 'DESC').page(params[:page]).per(20)
     end
   end
 
   def create
     @board = Board.new(board_params)
-    @boards = Board.all.order(created_at: "DESC").page(params[:page]).per(20)
+    @boards = Board.all.order(created_at: 'DESC').page(params[:page]).per(20)
     if @board.save
-       redirect_to board_path(@board)
+      redirect_to board_path(@board)
     else
-       render :index
+      render :index
     end
   end
 
@@ -30,11 +31,9 @@ class BoardsController < ApplicationController
     end
   end
 
-
   private
 
   def board_params
     params.require(:board).permit(:title, :body, :user_id)
   end
-
 end

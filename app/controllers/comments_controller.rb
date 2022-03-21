@@ -3,10 +3,10 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @board = @comment.board
     if @comment.save
-       @board.create_notification_comment!(current_user, @comment.id)
-       redirect_to board_path(@board)
+      @board.create_notification_comment!(current_user, @comment.id)
+      redirect_to board_path(@board)
     else
-       redirect_to board_path(@board)
+      redirect_to board_path(@board)
     end
   end
 

@@ -1,53 +1,53 @@
 require 'rails_helper'
 
-describe "ユーザー新規登録のテスト" do
+describe 'ユーザー新規登録のテスト' do
   before do
     visit new_user_registration_path
   end
 
   context '表示内容の確認' do
-      it 'URLが正しい' do
-        expect(current_path).to eq '/users/sign_up'
-      end
-      it '「新規登録」と表示される' do
-        expect(page).to have_content '新規登録'
-      end
-      it 'nameフォームが表示される' do
-        expect(page).to have_field 'user[name]'
-      end
-      it 'emailフォームが表示される' do
-        expect(page).to have_field 'user[email]'
-      end
-      it 'passwordフォームが表示される' do
-        expect(page).to have_field 'user[password]'
-      end
-      it 'password_confirmationフォームが表示される' do
-        expect(page).to have_field 'user[password_confirmation]'
-      end
-      it '新規登録ボタンが表示される' do
-        expect(page).to have_button '新規登録'
-      end
+    it 'URLが正しい' do
+      expect(current_path).to eq '/users/sign_up'
     end
+    it '「新規登録」と表示される' do
+      expect(page).to have_content '新規登録'
+    end
+    it 'nameフォームが表示される' do
+      expect(page).to have_field 'user[name]'
+    end
+    it 'emailフォームが表示される' do
+      expect(page).to have_field 'user[email]'
+    end
+    it 'passwordフォームが表示される' do
+      expect(page).to have_field 'user[password]'
+    end
+    it 'password_confirmationフォームが表示される' do
+      expect(page).to have_field 'user[password_confirmation]'
+    end
+    it '新規登録ボタンが表示される' do
+      expect(page).to have_button '新規登録'
+    end
+  end
 
-  context "新規登録成功のテスト" do
+  context '新規登録成功のテスト' do
     before do
-      fill_in "user[name]", with: Faker::Lorem.characters(number: 10)
-      fill_in "user[email]", with: Faker::Internet.email
-      fill_in "user[password]", with: "password"
-      fill_in "user[password_confirmation]", with: "password"
+      fill_in 'user[name]', with: Faker::Lorem.characters(number: 10)
+      fill_in 'user[email]', with: Faker::Internet.email
+      fill_in 'user[password]', with: 'password'
+      fill_in 'user[password_confirmation]', with: 'password'
     end
 
-    it "正しく新規登録される" do
-      expect{click_button "新規登録"}.to change(User.all, :count).by(1)
+    it '正しく新規登録される' do
+      expect { click_button '新規登録' }.to change(User.all, :count).by(1)
     end
-    it "新規登録後のリダイレクト先が、クエスト登録画面になっている" do
-      click_button "新規登録"
-      expect(current_path).to eq "/quests/new"
+    it '新規登録後のリダイレクト先が、クエスト登録画面になっている' do
+      click_button '新規登録'
+      expect(current_path).to eq '/quests/new'
     end
   end
 end
 
-describe "ユーザーログインのテスト" do
+describe 'ユーザーログインのテスト' do
   let(:user) { create(:user) }
 
   before do
@@ -55,70 +55,69 @@ describe "ユーザーログインのテスト" do
   end
 
   context '表示内容の確認' do
-      it 'URLが正しい' do
-        expect(current_path).to eq '/'
-      end
-      it '「ログイン」と表示される' do
-        expect(page).to have_content 'ログイン'
-      end
-      it 'nameフォームが表示される' do
-        expect(page).to have_field 'user[email]'
-      end
-      it 'passwordフォームが表示される' do
-        expect(page).to have_field 'user[password]'
-      end
-      it 'ログインボタンが表示される' do
-        expect(page).to have_button 'ログイン'
-      end
-      it 'nameフォームは表示されない' do
-        expect(page).not_to have_field 'user[name]'
-      end
+    it 'URLが正しい' do
+      expect(current_path).to eq '/'
     end
-
-  context "ログイン成功のテスト" do
-    before do
-      visit root_path
-      fill_in "user[email]", with: user.email
-      fill_in "user[password]", with: user.password
-      click_button "ログイン"
+    it '「ログイン」と表示される' do
+      expect(page).to have_content 'ログイン'
     end
-
-    it "ログイン後のリダイレクト先が、ログインしたユーザーのマイページになっている" do
-      expect(current_path).to eq "/my_page"
+    it 'nameフォームが表示される' do
+      expect(page).to have_field 'user[email]'
+    end
+    it 'passwordフォームが表示される' do
+      expect(page).to have_field 'user[password]'
+    end
+    it 'ログインボタンが表示される' do
+      expect(page).to have_button 'ログイン'
+    end
+    it 'nameフォームは表示されない' do
+      expect(page).not_to have_field 'user[name]'
     end
   end
 
-  context "ログイン失敗のテスト" do
+  context 'ログイン成功のテスト' do
     before do
-      fill_in "user[email]", with: ""
-      fill_in "user[password]", with: ""
-      click_button "ログイン"
+      visit root_path
+      fill_in 'user[email]', with: user.email
+      fill_in 'user[password]', with: user.password
+      click_button 'ログイン'
     end
 
-    it "ログインに失敗し、ログイン画面にリダイレクトされる" do
-      expect(current_path).to eq "/"
+    it 'ログイン後のリダイレクト先が、ログインしたユーザーのマイページになっている' do
+      expect(current_path).to eq '/my_page'
+    end
+  end
+
+  context 'ログイン失敗のテスト' do
+    before do
+      fill_in 'user[email]', with: ''
+      fill_in 'user[password]', with: ''
+      click_button 'ログイン'
+    end
+
+    it 'ログインに失敗し、ログイン画面にリダイレクトされる' do
+      expect(current_path).to eq '/'
     end
   end
 end
 
-describe "ユーザーログアウトのテスト" do
-  let(:user) {create(:user)}
+describe 'ユーザーログアウトのテスト' do
+  let(:user) { create(:user) }
 
   before do
     visit root_path
-    fill_in "user[email]", with: user.email
-    fill_in "user[password]", with: user.password
-    click_button "ログイン"
-    click_link "ログアウト"
+    fill_in 'user[email]', with: user.email
+    fill_in 'user[password]', with: user.password
+    click_button 'ログイン'
+    click_link 'ログアウト'
   end
 
-
-  context "ログアウト機能のテスト" do
-    it "正しくログアウトできている" do
+  context 'ログアウト機能のテスト' do
+    it '正しくログアウトできている' do
       expect(page).to have_link
     end
-    it "リダイレクト先がトップ画面になっている" do
-      expect(current_path).to eq "/"
+    it 'リダイレクト先がトップ画面になっている' do
+      expect(current_path).to eq '/'
     end
   end
 end
